@@ -1,10 +1,28 @@
 .nav {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: auto;
-  width: 70%;
-  height: 50px;
-  background-color: white;
-  top: 25%;
+  justify-content: space-between;
+  width: 100%;
+  height: 65px;
+  background-color: rgba(255, 255, 255, 1);
+
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+  color: black;
+
+  .rightNav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    width: 35%;
+  }
+
+  .logo {
+    margin-left: 50px;
+  }
+
+  img {
+    margin-top: 2px;
+    width: 28.5%;
+    height: auto;
+  }
 }
