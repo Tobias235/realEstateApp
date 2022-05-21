@@ -2,7 +2,7 @@ html,
 body {
   margin: 0;
   box-sizing: border-box;
-  background: url(../assets/images/realestatebackground.webp) no-repeat center
+  background: url(./assets/images/realestatebackground.webp) no-repeat center
     center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;

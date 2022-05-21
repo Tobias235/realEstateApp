@@ -1,0 +1,33 @@
+.navButton {
+  height: 100%;
+  width: 20%;
+  border-radius: 10px;
+  border: none;
+  background-color: transparent;
+  font-weight: bold;
+
+  &:hover {
+    color: #e5a036;
+    transition: all 500ms ease;
+  }
+
+  div {
+    padding: 500px;
+    ul {
+      margin: 0;
+    }
+  }
+}
+
+.subMenu {
+  width: 86.5%;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+
+  li {
+    border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+  }
+
+  :last-of-type {
+    border: none;
+  }
+}
