@@ -22,9 +22,11 @@
 .subMenu {
   width: 86.5%;
   border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+  top: 0 !important;
 
   li {
     border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+    top: 0;
   }
 
   :last-of-type {
