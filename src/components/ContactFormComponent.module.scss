@@ -1,0 +1,22 @@
+.form {
+  display: flex;
+  flex-direction: column;
+
+  input {
+    height: 35px;
+    width: 250px;
+    border-radius: 5px;
+    border: 1px solid black;
+  }
+
+  textarea {
+    height: 100px;
+    width: 250px;
+    border-radius: 5px;
+    border: 1px solid black;
+
+    ::placeholder {
+      font-size: arial;
+    }
+  }
+}
