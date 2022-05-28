@@ -1,0 +1,17 @@
+.contactInformation {
+  width: 70% !important;
+  flex-direction: column !important ;
+  align-items: flex-start !important;
+  margin-top: 28px;
+  border-left: 2px solid gray;
+
+  p {
+    margin: 0;
+    margin-left: 5px;
+  }
+
+  span {
+    margin-bottom: 15px;
+    margin-left: 5px;
+  }
+}

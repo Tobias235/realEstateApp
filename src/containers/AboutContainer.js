@@ -1,4 +1,4 @@
-import AboutUsComponent from "../components/AboutUsComponent";
+import AboutUsComponent from "../components/AboutComponent/AboutUsComponent";
 import styles from "./AboutContainer.module.scss";
 
 const AboutContainer = () => {

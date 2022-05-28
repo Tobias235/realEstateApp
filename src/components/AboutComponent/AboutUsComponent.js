@@ -1,5 +1,5 @@
 import styles from "./AboutUsComponent.module.scss";
-import team from "../assets/images/team.webp";
+import team from "../../assets/images/team.webp";
 
 const AboutUsComponent = () => {
   return (

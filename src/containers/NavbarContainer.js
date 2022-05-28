@@ -1,5 +1,5 @@
-import DropDownComponent from "../components/DropDownComponent";
-import NavButtonComponent from "../components/NavButtonComponent";
+import DropDownComponent from "../components/NavBarComponent/DropDownComponent";
+import NavButtonComponent from "../components/NavBarComponent/NavButtonComponent";
 import styles from "./NavbarContainer.module.scss";
 import logo from "../assets/images/roomrental.webp";
 

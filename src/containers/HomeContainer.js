@@ -1,4 +1,4 @@
-import HomeButtonComponent from "../components/HomeButtonComponent";
+import HomeButtonComponent from "../components/HomeComponent/HomeButtonComponent";
 import styles from "./HomeContainer.module.scss";
 
 const HomeContainer = () => {

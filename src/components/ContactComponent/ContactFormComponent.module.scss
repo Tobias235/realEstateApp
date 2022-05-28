@@ -1,17 +1,24 @@
 .form {
+  width: 100%;
   display: flex;
   flex-direction: column;
+  align-items: flex-end;
+  margin: 25px;
+
+  label {
+    align-self: center;
+  }
 
   input {
     height: 35px;
-    width: 250px;
+    width: 60%;
     border-radius: 5px;
     border: 1px solid black;
   }
 
   textarea {
     height: 100px;
-    width: 250px;
+    width: 60%;
     border-radius: 5px;
     border: 1px solid black;
 
