@@ -1,12 +1,13 @@
 .aboutUs {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
+  margin-top: 50px;
   img {
-    width: 35%;
+    width: 25%;
+    height: auto;
   }
 
   p {
     width: 35%;
-    margin-left: 25px;
   }
 }
