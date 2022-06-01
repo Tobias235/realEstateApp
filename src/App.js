@@ -3,6 +3,7 @@ import AboutContainer from "./containers/AboutContainer";
 import ContactContainer from "./containers/ContactContainer";
 import HomeContainer from "./containers/HomeContainer";
 import NavbarContainer from "./containers/NavbarContainer";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <HomeContainer />
       <AboutContainer />
       <ContactContainer />
+      <Footer />
     </>
   );
 }
