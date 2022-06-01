@@ -1,10 +1,11 @@
 import AboutUsComponent from "../components/AboutComponent/AboutUsComponent";
+import AboutTitleComponent from "../components/AboutComponent/AboutTitleComponent";
 import styles from "./AboutContainer.module.scss";
 
 const AboutContainer = () => {
   return (
     <div className={styles.about}>
-      <h1>About PRESMIY</h1>
+      <AboutTitleComponent />
       <AboutUsComponent />
     </div>
   );
