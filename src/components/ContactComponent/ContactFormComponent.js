@@ -11,6 +11,7 @@ const ContactFormComponent = () => {
       <input type="text" placeholder="Subject" />
       <label>Enter Your Message</label>
       <textarea row="10" placeholder="Enter Your Message"></textarea>
+      <button type="submit">Send</button>
     </form>
   );
 };
