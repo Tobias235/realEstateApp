@@ -6,6 +6,7 @@ const Footer = () => {
       <p>
         created by <a href="https://github.com/Tobias235/">Tobias235</a>
       </p>
+      <a href="http://www.freepik.com">Contact image by Freepik</a>
     </footer>
   );
 };

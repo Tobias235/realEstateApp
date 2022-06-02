@@ -1,7 +1,13 @@
 .footer {
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
   color: #a9a9a9;
+
+  p {
+    margin: 0;
+  }
 
   a {
     color: #a9a9a9;
