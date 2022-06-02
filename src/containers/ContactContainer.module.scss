@@ -8,11 +8,32 @@
 
   h1 {
     margin: 0;
+    font-size: 40px;
+    font-weight: 800;
+  }
+
+  p {
+    font-size: 17px;
   }
 
   div {
     display: flex;
     width: 100%;
     height: auto;
+  }
+
+  .middle {
+    width: 5%;
+    height: 100%;
+  }
+
+  .contactInfo {
+    margin-top: 35px;
+  }
+
+  .formContainer {
+    width: 100%;
+    display: flex;
+    justify-content: end;
   }
 }

@@ -1,30 +1,27 @@
 .form {
-  width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  margin: 25px;
 
   label {
-    align-self: center;
+    font-size: 14px;
+    font-weight: 600;
   }
 
   input {
     height: 35px;
-    width: 60%;
+    width: 350px;
     border-radius: 5px;
     border: 1px solid black;
+    font-family: "Montserrat", sans-serif;
+    margin-bottom: 10px;
   }
 
   textarea {
     height: 100px;
-    width: 60%;
+    width: 350px;
     border-radius: 5px;
     border: 1px solid black;
-
-    ::placeholder {
-      font-size: arial;
-    }
+    font-family: "Montserrat", sans-serif;
   }
   button {
     height: 40px;
