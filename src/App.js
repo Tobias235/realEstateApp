@@ -1,4 +1,5 @@
 import styles from "./App.module.scss";
+import PropertiesContainer from "./containers/PropertiesContainer";
 import AboutContainer from "./containers/AboutContainer";
 import ContactContainer from "./containers/ContactContainer";
 import HomeContainer from "./containers/HomeContainer";
@@ -10,6 +11,7 @@ function App() {
     <>
       <NavbarContainer />
       <HomeContainer />
+      <PropertiesContainer />
       <AboutContainer />
       <ContactContainer />
       <Footer />
