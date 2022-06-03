@@ -26,11 +26,12 @@
   button {
     height: 40px;
     width: 100px;
-    margin: 10px;
+    margin: 15px;
     border-radius: 5px;
     border: none;
     box-shadow: 0 5px 24px rgba(0, 0, 0, 0.3);
     background-color: rgba(231, 161, 48, 0.8);
+    align-self: flex-end;
 
     &:hover {
       color: #e5a036;
