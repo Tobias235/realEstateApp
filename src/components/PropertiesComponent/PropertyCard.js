@@ -1,7 +1,7 @@
-import styles from "./PropertiesAvailable.module.scss";
+import styles from "./PropertyCard.module.scss";
 import placeholder from "../../assets/images/placeholderProperties.webp";
 
-const PropertiesAvailable = () => {
+const PropertyCard = () => {
   return (
     <div className={styles.properties}>
       <img src={placeholder} alt="Placeholder for properties" />
@@ -17,4 +17,4 @@ const PropertiesAvailable = () => {
   );
 };
 
-export default PropertiesAvailable;
+export default PropertyCard;
