@@ -14,6 +14,7 @@
     border: 1px solid black;
     font-family: "Montserrat", sans-serif;
     margin-bottom: 10px;
+    outline: none;
   }
 
   textarea {
@@ -23,6 +24,7 @@
     border: 1px solid black;
     font-family: "Montserrat", sans-serif;
     resize: none;
+    outline: none;
   }
   button {
     height: 40px;
@@ -43,6 +45,13 @@
   }
 
   .error {
-    border: 2px solid red;
+    border: 2px solid red !important;
+    margin-bottom: 0;
+  }
+
+  .errorText {
+    font-size: 10px;
+    color: red;
+    margin-bottom: 10px;
   }
 }
