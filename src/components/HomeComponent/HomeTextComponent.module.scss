@@ -1,0 +1,19 @@
+@use "../../assets/util/" as *;
+
+h1 {
+  font-size: 30px;
+  text-align: center;
+  margin: 0;
+  @include respond-to("small") {
+    font-size: 45px;
+  }
+}
+
+h2 {
+  font-size: 18px;
+  text-align: center;
+  margin: 15px;
+  @include respond-to("small") {
+    font-size: 25px;
+  }
+}
