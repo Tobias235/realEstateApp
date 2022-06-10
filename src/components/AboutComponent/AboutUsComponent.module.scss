@@ -1,14 +1,28 @@
+@use "../../assets/util/" as *;
+
 .aboutUs {
   display: flex;
   justify-content: space-evenly;
+  flex-direction: column;
+  align-items: center;
   margin-top: 50px;
+  @include respond-to("small") {
+    flex-direction: row;
+  }
+
   img {
-    width: 20%;
-    height: auto;
+    width: 70%;
+    @include respond-to("small") {
+      width: 30%;
+    }
   }
 
   p {
-    width: 35%;
+    width: 80%;
     font-size: 15px;
+    text-align: justify;
+    @include respond-to("small") {
+      width: 35%;
+    }
   }
 }
