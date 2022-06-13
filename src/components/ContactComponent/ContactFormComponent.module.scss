@@ -1,6 +1,14 @@
+@use "../../assets/util/" as *;
+
 .form {
   display: flex;
   flex-direction: column;
+  width: 90%;
+  margin: auto;
+  @include respond-to("small") {
+    width: auto;
+    margin: 0;
+  }
 
   label {
     font-size: 14px;
@@ -9,32 +17,41 @@
 
   input {
     height: 35px;
-    width: 350px;
+    width: 100%;
     border-radius: 5px;
     border: 1px solid black;
     font-family: "Montserrat", sans-serif;
     margin-bottom: 10px;
     outline: none;
+    @include respond-to("small") {
+      width: 350px;
+    }
   }
 
   textarea {
     height: 100px;
-    width: 350px;
+    width: 100%;
     border-radius: 5px;
     border: 1px solid black;
     font-family: "Montserrat", sans-serif;
     resize: none;
     outline: none;
+    @include respond-to("small") {
+      width: 350px;
+    }
   }
   button {
     height: 40px;
-    width: 100px;
-    margin: 15px;
+    width: 95%;
+    margin: 15px auto;
     border-radius: 5px;
     border: none;
     box-shadow: 0 5px 24px rgba(0, 0, 0, 0.3);
     background-color: rgba(231, 161, 48, 0.8);
-    align-self: flex-end;
+    @include respond-to("small") {
+      width: 100px;
+      align-self: flex-end;
+    }
 
     &:hover {
       color: #e5a036;

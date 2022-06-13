@@ -1,7 +1,15 @@
+@use "../../assets/util/" as *;
+
 .contactInformation {
   width: 100%;
-  flex-direction: column !important ;
-  align-items: flex-start !important;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  @include respond-to("small") {
+    flex-direction: column !important ;
+    align-items: flex-start !important;
+  }
 
   a {
     display: flex;
@@ -38,7 +46,12 @@
     color: #800000;
   }
 
-  img {
-    width: 65%;
+  .img {
+    display: none;
+    @include respond-to("small") {
+      display: block !important;
+      width: 65%;
+      margin: 0;
+    }
   }
 }

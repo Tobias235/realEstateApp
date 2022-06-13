@@ -15,11 +15,7 @@ const ContactInformationComponent = () => {
         <FiPhone />
         <span>Call us at +123456789</span>
       </a>
-      {/* <span>companyemail@yourdomain.com</span>
-      <p>Phone:</p>
-      <span>123456789</span> */}
-
-      <img src={contactUs} alt="Contact us" />
+      <img src={contactUs} alt="Contact us" className={styles.img} />
     </div>
   );
 };
