@@ -11,7 +11,7 @@ function App() {
     <>
       <NavbarContainer />
       <HomeContainer />
-      <PropertiesContainer />
+      {/* <PropertiesContainer /> */}
       <AboutContainer />
       <ContactContainer />
       <Footer />
