@@ -1,9 +1,10 @@
+@use "../assets/util/" as *;
+
 .contact {
   display: flex;
   align-items: center;
   flex-direction: column;
-  width: 100%;
-  height: 80vh;
+  height: auto;
   padding-top: 10vh;
   padding-bottom: 5vh;
 
@@ -14,18 +15,25 @@
   }
 
   p {
+    width: 95%;
     font-size: 17px;
+    text-align: center;
   }
 
   div {
-    display: flex;
     width: 100%;
-    height: auto;
+    @include respond-to("small") {
+      display: flex;
+    }
   }
 
   .middle {
-    width: 5%;
-    height: 100%;
+    display: none;
+    @include respond-to("small") {
+      display: block;
+      height: 100%;
+      width: 5%;
+    }
   }
 
   .contactInfo {
@@ -33,8 +41,21 @@
   }
 
   .formContainer {
-    width: 100%;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
+    margin-bottom: 20px;
+    @include respond-to("small") {
+      justify-content: flex-end;
+      margin: 0;
+    }
+  }
+
+  img {
+    width: 95%;
+    display: block;
+    margin: auto;
+    @include respond-to("small") {
+      display: none;
+    }
   }
 }

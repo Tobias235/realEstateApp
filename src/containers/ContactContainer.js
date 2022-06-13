@@ -1,6 +1,7 @@
 import styles from "./ContactContainer.module.scss";
 import ContactFormComponent from "../components/ContactComponent/ContactFormComponent";
 import ContactInformationComponent from "../components/ContactComponent/ContactInformationComponent";
+import contactUs from "../assets/images/contactUs.webp";
 
 const ContactContainer = () => {
   return (
@@ -13,6 +14,7 @@ const ContactContainer = () => {
         </div>
         <div className={styles.middle}></div>
         <ContactInformationComponent />
+        <img src={contactUs} alt="Contact us" />
       </div>
     </div>
   );
