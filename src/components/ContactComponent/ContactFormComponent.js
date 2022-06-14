@@ -9,10 +9,11 @@ const ContactFormComponent = () => {
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
 
-  const [nameError, setNameError] = useState(false);
-  const [emailError, setEmailError] = useState(false);
-  const [subjectError, setSubjectError] = useState(false);
-  const [messageError, setMessageError] = useState(false);
+  const [nameError, setNameError] = useState(true);
+  const [emailError, setEmailError] = useState(true);
+  const [subjectError, setSubjectError] = useState(true);
+  const [messageError, setMessageError] = useState(true);
+  const [disabledButton, setDisabledButton] = useState(true);
 
   const form = useRef();
   const to_name = "PRESMIY";
@@ -24,6 +25,7 @@ const ContactFormComponent = () => {
       setNameError(false);
     }
     setName(e.target.value);
+    checkErrorHandler();
   };
 
   const checkEmailHandler = (e) => {
@@ -34,6 +36,7 @@ const ContactFormComponent = () => {
       setEmailError(true);
     }
     setEmail(e.target.value);
+    checkErrorHandler();
   };
 
   const checkSubjectHandler = (e) => {
@@ -43,23 +46,21 @@ const ContactFormComponent = () => {
       setSubjectError(false);
     }
     setSubject(e.target.value);
+    checkErrorHandler();
   };
 
   const checkMessageHandler = (e) => {
-    if (e.target.value.length < 20) {
+    if (e.target.value.length < 19) {
       setMessageError(true);
     } else {
       setMessageError(false);
     }
     setMessage(e.target.value);
+    checkErrorHandler();
   };
 
   const sendEmail = (e) => {
     e.preventDefault();
-    if (nameError || emailError || subjectError || messageError) {
-      return;
-    }
-
     emailjs.sendForm(
       "service_c414x4w",
       "template_db8af1h",
@@ -73,12 +74,13 @@ const ContactFormComponent = () => {
     setMessage("");
   };
 
-  const nameHasError = nameError ? styles.error : "";
-  const emailHasError = emailError ? styles.error : "";
-  const subjectHasError = subjectError ? styles.error : "";
-  const messageHasError = messageError ? styles.error : "";
-  const isButtonDisabled =
-    name === "" || email === "" || subject === "" || message === "";
+  const checkErrorHandler = () => {
+    if (nameError || emailError || subjectError || messageError) {
+      setDisabledButton(true);
+    } else {
+      setDisabledButton(false);
+    }
+  };
 
   return (
     <form ref={form} onSubmit={sendEmail} className={styles.form}>
@@ -89,15 +91,17 @@ const ContactFormComponent = () => {
         placeholder="Full Name"
         name="from_name"
         value={name}
-        className={nameHasError}
+        className={nameError ? styles.error : null}
         onChange={checkNameHandler}
-        onBlur={checkNameHandler}
+        onBlur={checkErrorHandler}
       />
-      {nameHasError && (
+
+      {nameError && (
         <span className={styles.errorText}>
           Please enter your full name (first and last name).
         </span>
       )}
+
       <label>Enter Your E-Mail</label>
       <input
         type="email"
@@ -105,15 +109,16 @@ const ContactFormComponent = () => {
         name="reply_to"
         id="email"
         value={email}
-        className={emailHasError}
+        className={emailError ? styles.error : null}
         onChange={checkEmailHandler}
-        onBlur={checkEmailHandler}
+        onBlur={checkErrorHandler}
       />
-      {emailHasError && (
+      {emailError && (
         <span className={styles.errorText}>
           Please enter a valid e-mail address.
         </span>
       )}
+
       <label>Subject</label>
       <input
         type="text"
@@ -121,13 +126,15 @@ const ContactFormComponent = () => {
         placeholder="Subject"
         name="email_subject"
         value={subject}
-        className={subjectHasError}
+        className={subjectError ? styles.error : null}
         onChange={checkSubjectHandler}
-        onBlur={checkSubjectHandler}
+        onBlur={checkErrorHandler}
       />
-      {subjectHasError && (
+
+      {subjectError && (
         <span className={styles.errorText}>Please enter a subject.</span>
       )}
+
       <label>Enter Your Message</label>
       <textarea
         row="10"
@@ -135,16 +142,18 @@ const ContactFormComponent = () => {
         name="message"
         id="message"
         value={message}
-        className={messageHasError}
+        className={messageError ? styles.error : null}
         onChange={checkMessageHandler}
-        onBlur={checkMessageHandler}
+        onBlur={checkErrorHandler}
       ></textarea>
-      {messageHasError && (
+
+      {messageError && (
         <span className={styles.errorText}>
           Please enter a message of atleast 20 characters.
         </span>
       )}
-      <button disabled={isButtonDisabled} type="submit" value="send">
+
+      <button disabled={disabledButton} type="submit" value="send">
         Send
       </button>
     </form>
