@@ -153,7 +153,12 @@ const ContactFormComponent = () => {
         </span>
       )}
 
-      <button disabled={disabledButton} type="submit" value="send">
+      <button
+        className={disabledButton ? styles.disabled : styles.active}
+        disabled={disabledButton}
+        type="submit"
+        value="send"
+      >
         Send
       </button>
     </form>
