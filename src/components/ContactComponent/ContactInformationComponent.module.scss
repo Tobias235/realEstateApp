@@ -15,6 +15,7 @@
     display: flex;
     align-items: center;
     width: 36%;
+    min-width: 200px;
     height: 60px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
     margin: 15px;
@@ -51,6 +52,7 @@
     @include respond-to("small") {
       display: block !important;
       width: 65%;
+      min-width: 300px;
       margin: 0;
     }
   }
