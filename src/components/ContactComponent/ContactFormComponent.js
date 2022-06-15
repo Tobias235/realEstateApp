@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 
 import styles from "./ContactFormComponent.module.scss";
@@ -9,10 +9,10 @@ const ContactFormComponent = () => {
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
 
-  const [nameError, setNameError] = useState(true);
-  const [emailError, setEmailError] = useState(true);
-  const [subjectError, setSubjectError] = useState(true);
-  const [messageError, setMessageError] = useState(true);
+  const [nameError, setNameError] = useState(false);
+  const [emailError, setEmailError] = useState(false);
+  const [subjectError, setSubjectError] = useState(false);
+  const [messageError, setMessageError] = useState(false);
   const [disabledButton, setDisabledButton] = useState(true);
 
   const form = useRef();
@@ -25,7 +25,6 @@ const ContactFormComponent = () => {
       setNameError(false);
     }
     setName(e.target.value);
-    checkErrorHandler();
   };
 
   const checkEmailHandler = (e) => {
@@ -36,7 +35,6 @@ const ContactFormComponent = () => {
       setEmailError(true);
     }
     setEmail(e.target.value);
-    checkErrorHandler();
   };
 
   const checkSubjectHandler = (e) => {
@@ -46,7 +44,6 @@ const ContactFormComponent = () => {
       setSubjectError(false);
     }
     setSubject(e.target.value);
-    checkErrorHandler();
   };
 
   const checkMessageHandler = (e) => {
@@ -56,7 +53,6 @@ const ContactFormComponent = () => {
       setMessageError(false);
     }
     setMessage(e.target.value);
-    checkErrorHandler();
   };
 
   const sendEmail = (e) => {
@@ -74,13 +70,31 @@ const ContactFormComponent = () => {
     setMessage("");
   };
 
-  const checkErrorHandler = () => {
-    if (nameError || emailError || subjectError || messageError) {
+  useEffect(() => {
+    if (
+      nameError ||
+      emailError ||
+      subjectError ||
+      messageError ||
+      name === "" ||
+      email === "" ||
+      subject === "" ||
+      message === ""
+    ) {
       setDisabledButton(true);
-    } else {
-      setDisabledButton(false);
+      return;
     }
-  };
+    setDisabledButton(false);
+  }, [
+    name,
+    email,
+    subject,
+    message,
+    nameError,
+    emailError,
+    subjectError,
+    messageError,
+  ]);
 
   return (
     <form ref={form} onSubmit={sendEmail} className={styles.form}>
@@ -93,7 +107,6 @@ const ContactFormComponent = () => {
         value={name}
         className={nameError ? styles.error : null}
         onChange={checkNameHandler}
-        onBlur={checkErrorHandler}
       />
 
       {nameError && (
@@ -111,7 +124,6 @@ const ContactFormComponent = () => {
         value={email}
         className={emailError ? styles.error : null}
         onChange={checkEmailHandler}
-        onBlur={checkErrorHandler}
       />
       {emailError && (
         <span className={styles.errorText}>
@@ -128,7 +140,6 @@ const ContactFormComponent = () => {
         value={subject}
         className={subjectError ? styles.error : null}
         onChange={checkSubjectHandler}
-        onBlur={checkErrorHandler}
       />
 
       {subjectError && (
@@ -144,7 +155,6 @@ const ContactFormComponent = () => {
         value={message}
         className={messageError ? styles.error : null}
         onChange={checkMessageHandler}
-        onBlur={checkErrorHandler}
       ></textarea>
 
       {messageError && (
