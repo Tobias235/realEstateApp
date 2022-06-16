@@ -26,6 +26,7 @@
 
     &:hover {
       transform: translateY(-0.25em);
+      transition: all 200ms;
     }
 
     span {
