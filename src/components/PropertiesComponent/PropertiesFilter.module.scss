@@ -4,10 +4,30 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: whitesmoke;
-  box-shadow: 0 5px 24px rgba(0, 0, 0, 0.3);
 
   select {
     margin: 10px;
+    border-radius: 5px;
+    height: 35px;
+    width: 120px;
+    box-shadow: 0 5px 24px rgba(0, 0, 0, 0.3);
+    border: none;
+    border: 10px solid transparent;
+  }
+
+  button {
+    margin: 10px;
+    height: 35px;
+    border-radius: 5px;
+    border: 2px solid transparent;
+    box-shadow: 0 5px 24px rgba(0, 0, 0, 0.3);
+    background-color: rgba(231, 161, 48, 0.8);
+
+    &:hover {
+      color: #e5a036;
+      background-color: white;
+      transition: all 500ms;
+      border: 2px solid #e5a036;
+    }
   }
 }
