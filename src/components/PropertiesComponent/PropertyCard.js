@@ -5,14 +5,18 @@ const PropertyCard = () => {
   return (
     <div className={styles.properties}>
       <img src={placeholder} alt="Placeholder for properties" />
-      <div>
-        <h1>Property Area</h1>
-        <span>Location</span>
+      <h1>Metro Manila</h1>
+      <div className={styles.location}>
+        <span>Location: Pasig</span>
       </div>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
-      </p>
+      <div className={styles.detailContainer}>
+        <span>Bedroom: 3</span>
+        <span>Bathroom: 2</span>
+        <span>sqm: 100</span>
+      </div>
+      <div className={styles.buttonContainer}>
+        <button>More Details</button>
+      </div>
     </div>
   );
 };
