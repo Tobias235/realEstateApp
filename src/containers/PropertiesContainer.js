@@ -14,6 +14,8 @@ const PropertiesContainer = () => {
         <PropertyCard />
         <PropertyCard />
         <PropertyCard />
+        <PropertyCard />
+        <PropertyCard />
       </div>
     </div>
   );

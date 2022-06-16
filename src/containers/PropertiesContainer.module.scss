@@ -1,14 +1,16 @@
 .properties {
   width: 100%;
-  padding-bottom: 30px;
+  padding: 60px 0;
+  background-color: rgba(231, 161, 48, 0.2);
 
   h1 {
-    margin-top: 100px;
     text-align: center;
   }
 
   .grid {
+    width: 80%;
+    margin: auto;
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: auto auto auto auto;
   }
 }
