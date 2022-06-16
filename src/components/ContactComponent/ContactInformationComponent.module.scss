@@ -6,7 +6,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  @include respond-to("small") {
+  @include respond-to("tablet") {
     flex-direction: column !important ;
     align-items: flex-start !important;
   }
@@ -23,7 +23,7 @@
     border-radius: 5px;
     font-size: 15px;
     font-weight: 500;
-    @include respond-to("small") {
+    @include respond-to("tablet") {
       min-width: 200px;
     }
 
@@ -53,7 +53,7 @@
 
   .img {
     display: none;
-    @include respond-to("small") {
+    @include respond-to("tablet") {
       display: block !important;
       width: 65%;
       min-width: 300px;

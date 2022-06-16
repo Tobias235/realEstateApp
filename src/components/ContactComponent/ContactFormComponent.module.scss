@@ -5,7 +5,7 @@
   flex-direction: column;
   width: 90%;
   margin: auto;
-  @include respond-to("small") {
+  @include respond-to("tablet") {
     width: auto;
     margin: 0;
   }
@@ -23,7 +23,7 @@
     font-family: "Montserrat", sans-serif;
     margin-bottom: 10px;
     outline: none;
-    @include respond-to("small") {
+    @include respond-to("tablet") {
       width: 350px;
     }
   }
@@ -36,7 +36,7 @@
     font-family: "Montserrat", sans-serif;
     resize: none;
     outline: none;
-    @include respond-to("small") {
+    @include respond-to("tablet") {
       width: 350px;
     }
   }
@@ -49,7 +49,7 @@
     border: none;
     box-shadow: 0 5px 24px rgba(0, 0, 0, 0.3);
     background-color: rgba(231, 161, 48, 0.8);
-    @include respond-to("small") {
+    @include respond-to("tablet") {
       width: 100px;
       align-self: flex-end;
       margin: 15px 0;
@@ -71,7 +71,7 @@
     border: none;
     box-shadow: 0 5px 24px rgba(0, 0, 0, 0.3);
     background-color: rgba(231, 161, 48, 0.8);
-    @include respond-to("small") {
+    @include respond-to("tablet") {
       width: 100px;
       align-self: flex-end;
       margin: 15px 0;

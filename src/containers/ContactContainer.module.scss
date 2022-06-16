@@ -22,7 +22,7 @@
 
   div {
     width: 100%;
-    @include respond-to("small") {
+    @include respond-to("tablet") {
       display: flex;
       width: 85%;
     }
@@ -30,7 +30,7 @@
 
   .middle {
     display: none;
-    @include respond-to("small") {
+    @include respond-to("tablet") {
       display: block;
       height: 100%;
       width: 5%;
@@ -45,7 +45,7 @@
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
-    @include respond-to("small") {
+    @include respond-to("tablet") {
       justify-content: flex-end;
       margin: 0;
     }
@@ -55,7 +55,7 @@
     width: 95%;
     display: block;
     margin: auto;
-    @include respond-to("small") {
+    @include respond-to("tablet") {
       display: none;
     }
   }

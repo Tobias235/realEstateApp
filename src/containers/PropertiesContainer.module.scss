@@ -1,3 +1,5 @@
+@use "../assets/util/" as *;
+
 .properties {
   width: 100%;
   padding: 60px 0;
@@ -8,9 +10,19 @@
   }
 
   .grid {
-    width: 80%;
+    width: 90%;
     margin: auto;
     display: grid;
-    grid-template-columns: auto auto auto auto;
+    grid-template-columns: auto;
+    @include respond-to("tablet") {
+      width: 90%;
+      grid-template-columns: auto auto;
+    }
+    @include respond-to("laptop") {
+      grid-template-columns: auto auto auto;
+    }
+    @include respond-to("desktop") {
+      grid-template-columns: auto auto auto auto;
+    }
   }
 }

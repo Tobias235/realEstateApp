@@ -1,13 +1,9 @@
 $breakpoints: (
-  "small": 749px,
-  "medium": 992px,
-  "large": 1200px,
+  "tablet": 749px,
+  "laptop": 992px,
+  "desktop": 1200px,
 ) !default;
 
-/// Mixin to manage responsive breakpoints
-/// @author Kitty Giraudel
-/// @param {String} $breakpoint - Breakpoint name
-/// @require $breakpoints
 @mixin respond-to($breakpoint) {
   // If the key exists in the map
   @if map-has-key($breakpoints, $breakpoint) {
