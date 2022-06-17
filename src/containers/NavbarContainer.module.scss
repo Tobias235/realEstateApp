@@ -1,29 +1,34 @@
+@use "../assets/util/" as *;
+
 .nav {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  height: 80px;
-  background-color: rgba(255, 255, 255, 1);
-  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
-  color: black;
-  position: fixed;
-  z-index: 2;
-
-  .rightNav {
+  display: none;
+  @include respond-to("tablet") {
     display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    height: 100%;
-    width: 35%;
-  }
+    justify-content: space-between;
+    width: 100%;
+    height: 80px;
+    background-color: rgba(255, 255, 255, 1);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+    color: black;
+    position: fixed;
+    z-index: 2;
 
-  .logo {
-    margin-left: 50px;
-  }
+    .rightNav {
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      height: 100%;
+      width: 35%;
+    }
 
-  img {
-    margin-top: 2px;
-    width: auto;
-    height: 78px;
+    .logo {
+      margin-left: 50px;
+    }
+
+    img {
+      margin-top: 2px;
+      width: auto;
+      height: 78px;
+    }
   }
 }
