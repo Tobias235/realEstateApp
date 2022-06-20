@@ -1,15 +1,36 @@
 import styles from "./PropertiesModal.module.scss";
 import placeholder from "../../assets/images/placeholderProperties.webp";
+import "react-bnb-gallery/dist/style.css";
+import ReactBnbGallery from "react-bnb-gallery";
+import ImageGallery from "react-image-gallery";
+import "react-image-gallery/styles/scss/image-gallery.scss";
 
 const PropertiesModal = () => {
+  const PHOTOS = [placeholder, placeholder, placeholder, placeholder];
+
+  const images = [
+    {
+      original: "https://picsum.photos/id/1018/1000/600/",
+    },
+    {
+      original: "https://picsum.photos/id/1015/1000/600/",
+    },
+    {
+      original: "https://picsum.photos/id/1019/1000/600/",
+    },
+  ];
   return (
     <div className={styles.modalBackground}>
       <div className={styles.modal}>
         <div className={styles.leftModal}>
-          <img src={placeholder} alt="placeholder" />
+          <div className={styles.gallery}>
+            <ImageGallery items={images} />
+          </div>
+          {/* <img src={placeholder} alt="random text" /> */}
           <span>Location: Pasig</span>
           <span>Bedrooms: 3</span>
           <span>Bathrooms: 2</span>
+          <span>Size: 100sqm</span>
           <span>Price: 2.000.000</span>
         </div>
         <div className={styles.rightModal}>

@@ -26,10 +26,9 @@
       display: flex;
       flex-direction: column;
 
-      img {
-        width: 100%;
-        border-bottom: 2px solid rgb(231, 161, 48);
-        border-right: 2px solid rgb(231, 161, 48);
+      .gallery {
+        margin: 10px;
+        border: 2px solid rgba(231, 161, 48, 1);
       }
       span {
         margin: 5px;
@@ -43,7 +42,7 @@
       flex-direction: column;
 
       p {
-        margin: 10px;
+        margin-left: 15px;
       }
 
       .closeButton {
