@@ -22,7 +22,6 @@ const PropertiesModal = () => {
           <div className={styles.gallery}>
             <ImageGallery items={images} />
           </div>
-          {/* <img src={placeholder} alt="random text" /> */}
           <span>Location: Pasig</span>
           <span>Bedrooms: 3</span>
           <span>Bathrooms: 2</span>
