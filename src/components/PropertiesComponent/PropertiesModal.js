@@ -1,22 +1,18 @@
 import styles from "./PropertiesModal.module.scss";
 import placeholder from "../../assets/images/placeholderProperties.webp";
-import "react-bnb-gallery/dist/style.css";
-import ReactBnbGallery from "react-bnb-gallery";
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/scss/image-gallery.scss";
 
 const PropertiesModal = () => {
-  const PHOTOS = [placeholder, placeholder, placeholder, placeholder];
-
   const images = [
     {
-      original: "https://picsum.photos/id/1018/1000/600/",
+      original: placeholder,
     },
     {
-      original: "https://picsum.photos/id/1015/1000/600/",
+      original: placeholder,
     },
     {
-      original: "https://picsum.photos/id/1019/1000/600/",
+      original: placeholder,
     },
   ];
   return (

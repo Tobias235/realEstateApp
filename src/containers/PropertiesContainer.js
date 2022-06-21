@@ -6,7 +6,7 @@ import styles from "./PropertiesContainer.module.scss";
 const PropertiesContainer = () => {
   return (
     <div className={styles.properties}>
-      {/* <PropertiesModal /> */}
+      <PropertiesModal />
       <h1>Our Properties</h1>
       <PropertiesFilter />
       <div className={styles.grid}>
