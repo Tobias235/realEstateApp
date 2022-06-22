@@ -7,13 +7,15 @@ const NavbarComponent = () => {
   return (
     <div className={styles.nav}>
       <div className={styles.logo}>
-        <img src={logo} alt="logo" />
+        <a href="#home">
+          <img src={logo} alt="logo" />
+        </a>
       </div>
       <div className={styles.rightNav}>
         <DropDownComponent></DropDownComponent>
-        <NavButtonComponent>About</NavButtonComponent>
-        <NavButtonComponent>Contact</NavButtonComponent>
-        <NavButtonComponent>Sign In</NavButtonComponent>
+        <NavButtonComponent href="#about">About</NavButtonComponent>
+        <NavButtonComponent href="#contact">Contact</NavButtonComponent>
+        <NavButtonComponent href="">Sign In</NavButtonComponent>
       </div>
     </div>
   );

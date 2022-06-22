@@ -4,7 +4,7 @@ import styles from "./AboutContainer.module.scss";
 
 const AboutContainer = () => {
   return (
-    <div className={styles.about}>
+    <div id="about" className={styles.about}>
       <AboutTitleComponent />
       <AboutUsComponent />
     </div>
