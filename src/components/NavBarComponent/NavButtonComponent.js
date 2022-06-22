@@ -1,7 +1,11 @@
 import styles from "./NavButtonComponent.module.scss";
 
 const NavButtonComponent = (props) => {
-  return <button className={styles.navButton}>{props.children}</button>;
+  return (
+    <a href={props.href} className={styles.navLink}>
+      {props.children}
+    </a>
+  );
 };
 
 export default NavButtonComponent;
