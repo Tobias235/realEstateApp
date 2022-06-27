@@ -7,13 +7,13 @@ const Hamburger = ({ onClose }) => {
         <h1>Commerce</h1>
         <ul>
           <li onClick={onClose}>
-            <a to="/">Home</a>
+            <a href="#home">Home</a>
           </li>
           <li onClick={onClose}>
-            <a to="/contacts">Contacts</a>
+            <a href="#contact">Contacts</a>
           </li>
           <li onClick={onClose}>
-            <a to="/products">Products</a>
+            <a href="#properties">Properties</a>
           </li>
         </ul>
       </div>
