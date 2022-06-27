@@ -1,11 +1,16 @@
 .homeButtons {
-  button {
+  margin-top: 15px;
+  a {
     margin: 10px;
     height: 40px;
+    padding: 10px;
     border-radius: 5px;
     border: 2px solid transparent;
     box-shadow: 0 5px 24px rgba(0, 0, 0, 0.3);
     background-color: rgba(231, 161, 48, 0.8);
+    text-decoration: none;
+    text-shadow: none;
+    color: black;
 
     &:hover {
       color: #e5a036;
