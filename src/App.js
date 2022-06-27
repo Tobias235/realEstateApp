@@ -1,15 +1,15 @@
 import { useState } from "react";
 
-import styles from "./App.module.scss";
+// import styles from "./App.module.scss";
 import PropertiesContainer from "./containers/PropertiesContainer";
 import AboutContainer from "./containers/AboutContainer";
 import ContactContainer from "./containers/ContactContainer";
 import HomeContainer from "./containers/HomeContainer";
 import NavbarContainer from "./containers/NavbarContainer";
 import Footer from "./components/Footer";
-import PropertiesModal from "./components/PropertiesComponent/PropertiesModal";
 import MobileNav from "./components/NavBarComponent/MobileNavbarComponents/MobileNav";
 import MobileNavbar from "./components/NavBarComponent/MobileNavbarComponents/MobileNavbar";
+import LoginModalContainer from "./containers/LoginModalContainer";
 
 function App() {
   const [showMenu, setShowMenu] = useState(false);
@@ -30,6 +30,7 @@ function App() {
       <NavbarContainer />
       <MobileNavbar onShow={handleShowMenu} onClose={handleCloseMenu} />
       {showMenu && <MobileNav onClose={handleCloseMenu} />}
+      <LoginModalContainer />
       <HomeContainer />
       <PropertiesContainer />
       <AboutContainer />
