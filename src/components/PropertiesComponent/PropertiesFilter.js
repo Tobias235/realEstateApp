@@ -2,7 +2,7 @@ import styles from "./PropertiesFilter.module.scss";
 
 const PropertiesFilter = () => {
   return (
-    <div className={styles.filter}>
+    <form className={styles.filter}>
       <select>
         <option>All Locations</option>
         <option>Metro Manila</option>
@@ -16,9 +16,8 @@ const PropertiesFilter = () => {
         <option>House</option>
         <option>Beach House</option>
       </select>
-
       <button>Search</button>
-    </div>
+    </form>
   );
 };
 
