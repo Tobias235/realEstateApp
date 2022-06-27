@@ -3,7 +3,7 @@
 .contactInformation {
   width: 100%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   @include respond-to("tablet") {
@@ -45,10 +45,12 @@
 
   .email {
     color: #2a8e4b;
+    background-color: white;
   }
 
   .phone {
     color: #800000;
+    background-color: white;
   }
 
   .img {

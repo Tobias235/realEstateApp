@@ -3,7 +3,7 @@
 .form {
   display: flex;
   flex-direction: column;
-  width: 90%;
+  width: 60%;
   margin: auto;
   @include respond-to("tablet") {
     width: auto;
@@ -23,6 +23,7 @@
     font-family: "Montserrat", sans-serif;
     margin-bottom: 10px;
     outline: none;
+    box-shadow: 0 0 7px rgb(0 0 0 / 60%);
     @include respond-to("tablet") {
       width: 350px;
     }
@@ -36,6 +37,7 @@
     font-family: "Montserrat", sans-serif;
     resize: none;
     outline: none;
+    box-shadow: 0 0 7px rgb(0 0 0 / 60%);
     @include respond-to("tablet") {
       width: 350px;
     }
