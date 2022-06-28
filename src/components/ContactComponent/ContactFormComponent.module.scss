@@ -19,11 +19,11 @@
     height: 35px;
     width: 100%;
     border-radius: 5px;
-    border: 1px solid black;
+    border: 2px solid rgb(231, 161, 48);
     font-family: "Montserrat", sans-serif;
     margin-bottom: 10px;
     outline: none;
-    box-shadow: 0 0 7px rgb(0 0 0 / 60%);
+    box-shadow: 0 5px 24px rgba(231, 161, 48, 0.7);
     @include respond-to("tablet") {
       width: 350px;
     }
@@ -33,11 +33,11 @@
     height: 100px;
     width: 100%;
     border-radius: 5px;
-    border: 1px solid black;
+    border: 2px solid rgb(231, 161, 48);
     font-family: "Montserrat", sans-serif;
     resize: none;
     outline: none;
-    box-shadow: 0 0 7px rgb(0 0 0 / 60%);
+    box-shadow: 0 5px 24px rgba(231, 161, 48, 0.7);
     @include respond-to("tablet") {
       width: 350px;
     }
