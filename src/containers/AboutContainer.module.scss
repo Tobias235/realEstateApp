@@ -1,9 +1,16 @@
+@use "../assets/util/" as *;
+
 .about {
   width: 100%;
   height: auto;
   display: flex;
   align-items: center;
   flex-direction: column;
+  padding-bottom: 50px;
+
+  @include respond-to("tablet") {
+    padding-bottom: 0;
+  }
 }
 
 .spaceTop {
