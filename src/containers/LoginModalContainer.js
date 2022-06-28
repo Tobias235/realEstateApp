@@ -1,13 +1,12 @@
 import { useState } from "react";
+import { FaWindowClose } from "react-icons/fa";
 
 import LoginFormModal from "../components/LoginComponent/LoginFormModal";
 import RegisterComponent from "../components/LoginComponent/RegisterComponent";
 import SignUpFormComponent from "../components/LoginComponent/SignUpFormComponent";
 import styles from "./LoginModalContainer.module.scss";
 
-const LoginModalContainer = () => {
-  const [showLogin, setShowLogin] = useState(true);
-
+const LoginModalContainer = ({ onCloseLogin, showLogin }) => {
   const showLoginForm = showLogin ? (
     <LoginFormModal />
   ) : (
@@ -20,6 +19,9 @@ const LoginModalContainer = () => {
 
   return (
     <div className={styles.loginModal}>
+      <div className={styles.closingIcon}>
+        <FaWindowClose className={styles.closeIcon} onClick={onCloseLogin} />
+      </div>
       <h1>{formTitle}</h1>
       {showLoginForm}
       {showLogin && <div className={styles.notRegisteredBorder}></div>}

@@ -6,7 +6,7 @@
   align-items: center;
   position: fixed;
   background-color: white;
-  width: 90%;
+  width: 85%;
   height: auto;
   padding: 10px;
   padding-bottom: 40px;
@@ -15,6 +15,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   box-shadow: 0 5px 24px rgba(231, 161, 48, 1);
+  z-index: 2;
   @include respond-to("tablet") {
     width: 50%;
   }
@@ -25,9 +26,20 @@
     width: 30%;
   }
 
+  .closingIcon {
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    .closeIcon {
+      align-self: flex-end;
+      color: rgba(231, 161, 48, 1);
+    }
+  }
+
   h1 {
     font-size: 26px;
-    margin-top: 40px;
+    margin-top: 20px;
   }
 
   form {

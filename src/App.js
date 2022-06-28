@@ -10,14 +10,15 @@ import Footer from "./components/Footer";
 import MobileNav from "./components/NavBarComponent/MobileNavbarComponents/MobileNav";
 import MobileNavbar from "./components/NavBarComponent/MobileNavbarComponents/MobileNavbar";
 import LoginModalContainer from "./containers/LoginModalContainer";
+import Background from "./components/Background";
 
 function App() {
   const [showMenu, setShowMenu] = useState(false);
+  const [showLoginMenu, setShowLoginMenu] = useState(false);
 
   const handleShowMenu = () => {
     if (showMenu) {
       setShowMenu(false);
-      return;
     }
     setShowMenu(true);
   };
@@ -25,12 +26,31 @@ function App() {
   const handleCloseMenu = () => {
     setShowMenu(false);
   };
+
+  const handleShowLogin = () => {
+    if (showLoginMenu) {
+      setShowLoginMenu(false);
+    }
+    setShowLoginMenu(true);
+  };
+
+  const handleCloseLogin = () => {
+    setShowLoginMenu(false);
+  };
   return (
     <>
-      <NavbarContainer />
+      {showLoginMenu && <Background onClose={handleCloseLogin} />}
+      <NavbarContainer onSignIn={handleShowLogin} />
       <MobileNavbar onShow={handleShowMenu} onClose={handleCloseMenu} />
-      {showMenu && <MobileNav onClose={handleCloseMenu} />}
-      <LoginModalContainer />
+      {showMenu && (
+        <MobileNav onClose={handleCloseMenu} onSignIn={handleShowLogin} />
+      )}
+      {showLoginMenu && (
+        <LoginModalContainer
+          showLogin={showLoginMenu}
+          onCloseLogin={handleCloseLogin}
+        />
+      )}
       <HomeContainer />
       <PropertiesContainer />
       <AboutContainer />

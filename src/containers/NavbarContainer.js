@@ -3,7 +3,7 @@ import NavButtonComponent from "../components/NavBarComponent/NavButtonComponent
 import styles from "./NavbarContainer.module.scss";
 import logo from "../assets/images/roomrental.webp";
 
-const NavbarComponent = () => {
+const NavbarComponent = ({ onSignIn }) => {
   return (
     <div className={styles.nav}>
       <div className={styles.logo}>
@@ -15,7 +15,9 @@ const NavbarComponent = () => {
         <DropDownComponent></DropDownComponent>
         <NavButtonComponent href="#about">About</NavButtonComponent>
         <NavButtonComponent href="#contact">Contact</NavButtonComponent>
-        <NavButtonComponent href="">Sign In</NavButtonComponent>
+        <span className={styles.signIn} onClick={onSignIn}>
+          Sign In
+        </span>
       </div>
     </div>
   );

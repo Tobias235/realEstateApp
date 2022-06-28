@@ -19,6 +19,19 @@
       justify-content: space-evenly;
       height: 100%;
       width: 35%;
+
+      .signIn {
+        height: 100%;
+        border-radius: 10px;
+        border: none;
+        background-color: transparent;
+        font-weight: bold;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: black;
+      }
     }
 
     .logo {
