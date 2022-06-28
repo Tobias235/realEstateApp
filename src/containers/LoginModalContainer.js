@@ -7,13 +7,24 @@ import SignUpFormComponent from "../components/LoginComponent/SignUpFormComponen
 import styles from "./LoginModalContainer.module.scss";
 
 const LoginModalContainer = ({ onCloseLogin, showLogin }) => {
-  const showLoginForm = showLogin ? (
+  const [showRegister, setShowRegister] = useState(false);
+
+  const handleShowRegister = () => {
+    console.log("test");
+    if (showRegister) {
+      setShowRegister(false);
+    } else {
+      setShowRegister(true);
+    }
+  };
+
+  const showLoginForm = !showRegister ? (
     <LoginFormModal />
   ) : (
     <SignUpFormComponent />
   );
 
-  const formTitle = showLogin
+  const formTitle = !showRegister
     ? "Login to your account"
     : "Register Your Account";
 
@@ -24,8 +35,10 @@ const LoginModalContainer = ({ onCloseLogin, showLogin }) => {
       </div>
       <h1>{formTitle}</h1>
       {showLoginForm}
-      {showLogin && <div className={styles.notRegisteredBorder}></div>}
-      {showLogin && <RegisterComponent />}
+      {!showRegister && <div className={styles.notRegisteredBorder}></div>}
+      {!showRegister && (
+        <RegisterComponent onShowRegister={handleShowRegister} />
+      )}
     </div>
   );
 };

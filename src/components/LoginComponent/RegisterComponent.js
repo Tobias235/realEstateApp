@@ -1,10 +1,10 @@
 import styles from "./RegisterComponent.module.scss";
 
-const RegisterComponent = () => {
+const RegisterComponent = ({ onShowRegister }) => {
   return (
     <div className={styles.notRegistered}>
-      <h2>Not yet Registered?</h2>
-      <button>Sign Up</button>
+      <h2>Not yet registered?</h2>
+      <button onClick={onShowRegister}>Sign Up</button>
     </div>
   );
 };
