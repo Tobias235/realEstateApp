@@ -1,7 +1,7 @@
 import styles from "./PropertyCard.module.scss";
 import placeholder from "../../assets/images/placeholderProperties.webp";
 
-const PropertyCard = () => {
+const PropertyCard = ({ onShowDetails }) => {
   return (
     <div className={styles.properties}>
       <img src={placeholder} alt="Placeholder for properties" />
@@ -15,7 +15,7 @@ const PropertyCard = () => {
         <span>sqm: 100</span>
       </div>
       <div className={styles.buttonContainer}>
-        <button>More Details</button>
+        <button onClick={onShowDetails}>More Details</button>
       </div>
     </div>
   );

@@ -1,72 +1,63 @@
-.modalBackground {
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
+.modal {
+  width: 800px;
+  height: 500px;
+  display: flex;
+  flex-direction: row;
+  background-color: white;
   position: fixed;
-  top: 50%;
+  border-radius: 5px;
+  top: 55%;
   left: 50%;
   transform: translate(-50%, -50%);
+  box-shadow: 0 5px 24px rgba(231, 161, 48, 1);
+  z-index: 1;
 
-  .modal {
-    width: 800px;
-    height: 500px;
+  .leftModal {
+    width: 50%;
+    height: 100%;
     display: flex;
-    flex-direction: row;
-    background-color: white;
-    position: fixed;
-    border-radius: 5px;
-    top: 55%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    box-shadow: 0 5px 24px rgba(231, 161, 48, 1);
+    flex-direction: column;
 
-    .leftModal {
-      width: 50%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
+    .gallery {
+      margin: 10px;
+      border: 2px solid rgba(231, 161, 48, 1);
+    }
+    span {
+      margin: 5px;
+    }
+  }
 
-      .gallery {
-        margin: 10px;
-        border: 2px solid rgba(231, 161, 48, 1);
-      }
-      span {
-        margin: 5px;
-      }
+  .rightModal {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    p {
+      margin-left: 15px;
     }
 
-    .rightModal {
-      width: 50%;
+    .closeButton {
       height: 100%;
       display: flex;
-      flex-direction: column;
-
-      p {
-        margin-left: 15px;
-      }
-
-      .closeButton {
-        height: 100%;
-        display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+      button {
+        margin: 10px;
+        height: 40px;
+        width: 30%;
+        border-radius: 5px;
+        border: 2px solid transparent;
+        box-shadow: 0 5px 24px rgba(0, 0, 0, 0.3);
+        background-color: rgba(231, 161, 48, 0.8);
         align-items: flex-end;
         justify-content: flex-end;
-        button {
-          margin: 10px;
-          height: 40px;
-          width: 30%;
-          border-radius: 5px;
-          border: 2px solid transparent;
-          box-shadow: 0 5px 24px rgba(0, 0, 0, 0.3);
-          background-color: rgba(231, 161, 48, 0.8);
-          align-items: flex-end;
-          justify-content: flex-end;
 
-          &:hover {
-            color: #e5a036;
-            background-color: white;
-            transition: all 500ms;
-            border: 2px solid #e5a036;
-          }
+        &:hover {
+          color: #e5a036;
+          background-color: white;
+          transition: all 500ms;
+          border: 2px solid #e5a036;
         }
       }
     }
