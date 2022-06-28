@@ -48,7 +48,7 @@ function App() {
       {showLoginMenu && (
         <LoginModalContainer
           showLogin={showLoginMenu}
-          onCloseLogin={handleCloseLogin}
+          onClose={handleCloseLogin}
         />
       )}
       <HomeContainer />

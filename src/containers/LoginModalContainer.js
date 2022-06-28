@@ -6,11 +6,10 @@ import RegisterComponent from "../components/LoginComponent/RegisterComponent";
 import SignUpFormComponent from "../components/LoginComponent/SignUpFormComponent";
 import styles from "./LoginModalContainer.module.scss";
 
-const LoginModalContainer = ({ onCloseLogin, showLogin }) => {
+const LoginModalContainer = ({ onClose }) => {
   const [showRegister, setShowRegister] = useState(false);
 
   const handleShowRegister = () => {
-    console.log("test");
     if (showRegister) {
       setShowRegister(false);
     } else {
@@ -31,7 +30,7 @@ const LoginModalContainer = ({ onCloseLogin, showLogin }) => {
   return (
     <div className={styles.loginModal}>
       <div className={styles.closingIcon}>
-        <FaWindowClose className={styles.closeIcon} onClick={onCloseLogin} />
+        <FaWindowClose className={styles.closeIcon} onClick={onClose} />
       </div>
       <h1>{formTitle}</h1>
       {showLoginForm}
