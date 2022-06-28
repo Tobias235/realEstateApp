@@ -1,8 +1,6 @@
-import styles from "./SignUpFormComponent.module.scss";
-
 const SignUpFormComponent = () => {
   return (
-    <form className={styles.signUpModal}>
+    <form>
       <label>Enter Your Full Name:</label>
       <input type="text" placeholder="Enter Your Full Name:" />
       <label>Enter Your email:</label>
