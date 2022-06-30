@@ -1,6 +1,6 @@
 .navButton {
   height: 100%;
-  width: 20%;
+  width: 100%;
   border-radius: 10px;
   border: none;
   background-color: transparent;
@@ -10,13 +10,6 @@
   &:hover {
     color: #e5a036;
     transition: all 500ms ease;
-  }
-
-  div {
-    padding: 500px;
-    ul {
-      margin: 0;
-    }
   }
 }
 
