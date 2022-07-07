@@ -28,6 +28,7 @@ const PropertiesModal = ({ onClose }) => {
         <span>Price: 2.000.000</span>
       </div>
       <div className={styles.rightModal}>
+        <h1>Description</h1>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
           vehicula auctor erat vitae elementum. Morbi dapibus risus et augue
