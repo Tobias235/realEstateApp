@@ -4,6 +4,7 @@ const InitialState = {
   login_modal: false,
   mobile_menu: false,
   show_background: false,
+  show_details: false,
 };
 
 //reducer takes the initial state and depending on which case it
@@ -19,6 +20,8 @@ const Reducer = (state = InitialState, action) => {
       return { ...state, mobile_menu: action.payload };
     case "SET_SHOW_BACKGROUND":
       return { ...state, show_background: action.payload };
+    case "SET_SHOW_DETAILS":
+      return { ...state, show_details: action.payload };
     default:
       return state;
   }

@@ -29,3 +29,10 @@ export const setBackground = (show_background) => {
     payload: show_background,
   };
 };
+
+export const setShowDetails = (show_details) => {
+  return {
+    type: "SET_SHOW_DETAILS",
+    payload: show_details,
+  };
+};

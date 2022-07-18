@@ -1,30 +1,27 @@
-import { useState } from "react";
-
 import PropertiesFilter from "../components/PropertiesComponent/PropertiesFilter";
 import PropertyCard from "../components/PropertiesComponent/PropertyCard";
 import PropertiesModal from "../components/PropertiesComponent/PropertiesModal";
-import Background from "../components/Background";
 import styles from "./PropertiesContainer.module.scss";
+import { useDispatch, useSelector } from "react-redux";
+import { setBackground, setShowDetails } from "../actions/Actions";
 
 const PropertiesContainer = () => {
-  const [showDetails, setShowDetails] = useState(false);
+  const showModal = useSelector((state) => state.show_details);
+  const dispatch = useDispatch();
 
   const handleShowDetails = () => {
-    if (showDetails) {
-      setShowDetails(false);
-    } else {
-      setShowDetails(true);
-    }
+    dispatch(setBackground(true));
+    dispatch(setShowDetails(true));
   };
 
   const handleCloseDetails = () => {
-    setShowDetails(false);
+    dispatch(setBackground(false));
+    dispatch(setShowDetails(false));
   };
 
   return (
     <div id="properties" className={styles.properties}>
-      {showDetails && <Background onClose={handleCloseDetails} />}
-      {showDetails && <PropertiesModal onClose={handleCloseDetails} />}
+      {showModal && <PropertiesModal onClose={handleCloseDetails} />}
       <h1>Our Properties</h1>
       <PropertiesFilter />
       <div className={styles.grid}>
