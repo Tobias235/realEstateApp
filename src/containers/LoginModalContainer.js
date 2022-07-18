@@ -1,13 +1,16 @@
 import { useState } from "react";
 import { FaWindowClose } from "react-icons/fa";
+import { useDispatch } from "react-redux";
+import { setBackground } from "../actions/Actions";
 
 import LoginFormModal from "../components/LoginComponent/LoginFormModal";
 import RegisterComponent from "../components/LoginComponent/RegisterComponent";
 import SignUpFormComponent from "../components/LoginComponent/SignUpFormComponent";
 import styles from "./LoginModalContainer.module.scss";
 
-const LoginModalContainer = ({ onClose }) => {
+const LoginModalContainer = () => {
   const [showRegister, setShowRegister] = useState(false);
+  const dispatch = useDispatch();
 
   const handleShowRegister = () => {
     if (showRegister) {
@@ -15,6 +18,10 @@ const LoginModalContainer = ({ onClose }) => {
     } else {
       setShowRegister(true);
     }
+  };
+
+  const onClose = () => {
+    dispatch(setBackground(false));
   };
 
   const showLoginForm = !showRegister ? (

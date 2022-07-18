@@ -11,20 +11,19 @@ import MobileNav from "./components/NavBarComponent/MobileNavbarComponents/Mobil
 import MobileNavbar from "./components/NavBarComponent/MobileNavbarComponents/MobileNavbar";
 import LoginModalContainer from "./containers/LoginModalContainer";
 import Background from "./components/Background";
+import { useDispatch, useSelector } from "react-redux";
+import { setMobileMenu, setShowLoginModal } from "./actions/Actions";
 
 function App() {
-  const [showMenu, setShowMenu] = useState(false);
   const [showLoginMenu, setShowLoginMenu] = useState(false);
 
-  const handleShowMenu = () => {
-    if (showMenu) {
-      setShowMenu(false);
-    }
-    setShowMenu(true);
-  };
+  const login_modal = useSelector((state) => state.login_modal);
+  const mobile_menu = useSelector((state) => state.mobile_menu);
+  const show_background = useSelector((state) => state.show_background);
+  const dispatch = useDispatch();
 
   const handleCloseMenu = () => {
-    setShowMenu(false);
+    dispatch(setShowLoginModal(false));
   };
 
   const handleShowLogin = () => {
@@ -34,23 +33,15 @@ function App() {
     setShowLoginMenu(true);
   };
 
-  const handleCloseLogin = () => {
-    setShowLoginMenu(false);
-  };
   return (
     <>
-      {showLoginMenu && <Background onClose={handleCloseLogin} />}
-      <NavbarContainer onSignIn={handleShowLogin} />
-      <MobileNavbar onShow={handleShowMenu} onClose={handleCloseMenu} />
-      {showMenu && (
+      {show_background && <Background />}
+      <NavbarContainer />
+      <MobileNavbar onClose={handleCloseMenu} />
+      {mobile_menu && (
         <MobileNav onClose={handleCloseMenu} onSignIn={handleShowLogin} />
       )}
-      {showLoginMenu && (
-        <LoginModalContainer
-          showLogin={showLoginMenu}
-          onClose={handleCloseLogin}
-        />
-      )}
+      {login_modal && <LoginModalContainer />}
       <HomeContainer />
       <PropertiesContainer />
       <AboutContainer />
