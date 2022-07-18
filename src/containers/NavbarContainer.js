@@ -10,7 +10,6 @@ import {
 } from "../actions/Actions";
 const NavbarComponent = () => {
   const login_status = useSelector((state) => state.login_status);
-  const login_modal = useSelector((state) => state.login_modal);
 
   const dispatch = useDispatch();
 
