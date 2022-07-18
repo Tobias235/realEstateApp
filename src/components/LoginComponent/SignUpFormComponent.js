@@ -1,43 +1,65 @@
-import { auth } from "../../Firebase";
+import { useState } from "react";
+
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  onAuthStateChanged,
   signOut,
 } from "firebase/auth";
-
-import { useState } from "react";
+import { auth } from "../../Firebase";
 
 const SignUpFormComponent = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [registerEmail, setRegisterEmail] = useState("");
+  const [registerPassword, setRegisterPassword] = useState("");
 
-  const handleRegisterUser = (e) => {
+  const [user, setUser] = useState({});
+
+  const handleUserRegister = async (e) => {
     e.preventDefault();
-    const authentiation = auth;
-    createUserWithEmailAndPassword(authentiation, email, password)
-      .then((userCredential) => {
-        // Signed in
-        // const user = userCredential.user;
-        // ...
-        console.log(userCredential);
-      })
-      .catch((error) => {
-        // const errorCode = error.code;
-        // const errorMessage = error.message;
-        // ..
-        console.log(error.message);
-      });
+    try {
+      const user = await createUserWithEmailAndPassword(
+        auth,
+        registerEmail,
+        registerPassword
+      );
+      console.log(user);
+      console.log("success");
+    } catch (error) {
+      console.log("fail");
+      console.log(error.message);
+    }
   };
 
-  console.log(email);
+  const logout = async () => {
+    // await signOut(auth);
+  };
+
   return (
-    <form onSubmit={handleRegisterUser}>
-      <label>Enter Your Full Name:</label>
-      <input type="text" placeholder="Enter Your Full Name:" />
+    <form onSubmit={handleUserRegister}>
+      {/* <label>Enter Your Full Name:</label>
+      <input
+        type="text"
+        placeholder="Enter Your Full Name:"
+        onChange={(e) => {
+          setRegisterName(e.target.value);
+        }}
+      /> */}
       <label>Enter Your email:</label>
-      <input type="email" placeholder="Enter Your email:" />
+      <input
+        type="email"
+        placeholder="Enter Your email:"
+        onChange={(e) => {
+          setRegisterEmail(e.target.value);
+        }}
+      />
       <label>Enter Your Password:</label>
-      <input type="password" placeholder="Enter Your Password:" />
+      <input
+        type="password"
+        placeholder="Enter Your Password:"
+        onChange={(e) => {
+          setRegisterPassword(e.target.value);
+        }}
+      />
       <button type="submit">Register</button>
     </form>
   );
