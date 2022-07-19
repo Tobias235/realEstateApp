@@ -1,18 +1,11 @@
 import { useState } from "react";
 
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  onAuthStateChanged,
-  signOut,
-} from "firebase/auth";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../Firebase";
 
 const SignUpFormComponent = () => {
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
-
-  const [user, setUser] = useState({});
 
   const handleUserRegister = async (e) => {
     e.preventDefault();
@@ -28,10 +21,6 @@ const SignUpFormComponent = () => {
       console.log("fail");
       console.log(error.message);
     }
-  };
-
-  const logout = async () => {
-    // await signOut(auth);
   };
 
   return (
