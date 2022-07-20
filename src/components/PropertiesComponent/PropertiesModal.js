@@ -21,11 +21,32 @@ const PropertiesModal = ({ onClose }) => {
         <div className={styles.gallery}>
           <ImageGallery items={images} />
         </div>
-        <span>Location: Pasig</span>
-        <span>Bedrooms: 3</span>
-        <span>Bathrooms: 2</span>
-        <span>Size: 100sqm</span>
-        <span>Price: 2.000.000</span>
+        <div className={styles.commentBox}>
+          <div className={styles.commentCard}>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
+              vehicula auctor erat vitae elementum. Morbi dapibus risus et augue
+              posuere, vel lacinia lectus placerat. Vestibulum eu turpis neque.
+              <span>By: Tobias</span>
+            </p>
+          </div>
+          <div className={styles.commentCard}>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
+              vehicula auctor erat vitae elementum. Morbi dapibus risus et augue
+              posuere, vel lacinia lectus placerat. Vestibulum eu turpis neque.
+              <span>By: Tobias</span>
+            </p>
+          </div>
+          <div className={styles.commentCard}>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
+              vehicula auctor erat vitae elementum. Morbi dapibus risus et augue
+              posuere, vel lacinia lectus placerat. Vestibulum eu turpis neque.
+              <span>By: Tobias</span>
+            </p>
+          </div>
+        </div>
       </div>
       <div className={styles.rightModal}>
         <h1>Description</h1>
@@ -38,6 +59,11 @@ const PropertiesModal = ({ onClose }) => {
           ante. Cras at cursus quam. Mauris euismod felis lectus, vel fermentum
           ex luctus lobortis. Mauris nec volutpat augue. Ut eu dapibus odio.
         </p>
+        <span>Location: Pasig</span>
+        <span>Bedrooms: 3</span>
+        <span>Bathrooms: 2</span>
+        <span>Size: 100sqm</span>
+        <span>Price: 2.000.000</span>
         <div className={styles.closeButton}>
           <button type="button" onClick={onClose}>
             Close Details
