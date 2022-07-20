@@ -19,36 +19,25 @@
     flex-direction: column;
 
     .gallery {
-      margin: 10px;
+      width: 95%;
+      margin: 8px;
       border: 2px solid rgba(231, 161, 48, 1);
       box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
     }
 
     .commentBox {
       width: 95%;
-      margin: auto;
+      margin: 8px;
+      margin-bottom: 0;
       display: flex;
       align-items: center;
       flex-direction: column;
       overflow: scroll;
       overflow-x: hidden;
       border: 2px solid rgba(231, 161, 48, 0.6);
-      margin-bottom: 10px;
-      scrollbar-color: #d4aa70 #e4e4e4;
-      scrollbar-width: thin;
-
-      .commentBox::-webkit-scrollbar {
-        width: 20px;
-      }
-
-      .commentBox::-webkit-scrollbar-track {
-        background-color: #e4e4e4;
-        border-radius: 100px;
-      }
 
       .commentCard {
         width: 90%;
-        height: auto;
         margin-top: 10px;
         background-color: rgba(255, 255, 255, 0.7);
         border-radius: 5px;
@@ -67,6 +56,17 @@
           }
         }
       }
+    }
+    .commentButton {
+      width: 30%;
+      height: 30px;
+      margin: 7px;
+      padding: 5px;
+      align-self: flex-end;
+      border-radius: 5px;
+      border: 2px solid transparent;
+      box-shadow: 0 5px 24px rgba(0, 0, 0, 0.3);
+      background-color: rgba(231, 161, 48, 0.8);
     }
   }
 
