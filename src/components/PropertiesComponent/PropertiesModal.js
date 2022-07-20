@@ -47,6 +47,7 @@ const PropertiesModal = ({ onClose }) => {
             </p>
           </div>
         </div>
+        <button className={styles.commentButton}>Add Comment</button>
       </div>
       <div className={styles.rightModal}>
         <h1>Description</h1>
