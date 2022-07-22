@@ -1,6 +1,7 @@
 import PropertiesFilter from "../components/PropertiesComponent/PropertiesFilter";
 import PropertyCard from "../components/PropertiesComponent/PropertyCard";
-import PropertiesModal from "../components/PropertiesComponent/PropertiesModal";
+import PropertiesModalContainer from "./PropertiesModalContainer";
+
 import styles from "./PropertiesContainer.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { setBackground, setShowDetails } from "../actions/Actions";
@@ -21,7 +22,7 @@ const PropertiesContainer = () => {
 
   return (
     <div id="properties" className={styles.properties}>
-      {showModal && <PropertiesModal onClose={handleCloseDetails} />}
+      {showModal && <PropertiesModalContainer onClose={handleCloseDetails} />}
       <h1>Our Properties</h1>
       <PropertiesFilter />
       <div className={styles.grid}>

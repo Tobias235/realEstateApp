@@ -1,0 +1,25 @@
+.leftModal {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .commentBox {
+    width: 95%;
+    margin: 8px;
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    overflow: scroll;
+    overflow-x: hidden;
+    border: 2px solid rgba(231, 161, 48, 0.6);
+  }
+  .commentButton {
+    width: 30%;
+    height: 30px;
+    margin: 7px;
+    padding: 5px;
+    align-self: flex-end;
+  }
+}

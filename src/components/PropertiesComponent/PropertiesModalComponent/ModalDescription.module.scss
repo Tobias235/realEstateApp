@@ -1,0 +1,14 @@
+.modalDescription {
+  display: flex;
+  flex-direction: column;
+  p {
+    margin-left: 10px;
+    font-size: 14px;
+  }
+
+  span {
+    margin: 3px;
+    margin-left: 10px;
+    font-size: 14px;
+  }
+}

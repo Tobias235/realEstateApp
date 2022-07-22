@@ -1,0 +1,28 @@
+.rightModal {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border-left: 2px solid rgba(231, 161, 48, 0.2);
+  h1 {
+    margin-left: 15px !important;
+    margin-top: 10px !important;
+    margin: 0;
+    text-align: start;
+    font-size: 20px;
+  }
+
+  .buttonContainer {
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    .closeButton {
+      margin: 10px;
+      height: 40px;
+      width: 30%;
+      align-items: flex-end;
+      justify-content: flex-end;
+    }
+  }
+}
