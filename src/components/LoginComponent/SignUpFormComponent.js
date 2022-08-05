@@ -1,11 +1,13 @@
 import { useState } from "react";
-
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../Firebase";
+import { setBackground, setShowLoginModal } from "../../actions/Actions";
+import { useDispatch } from "react-redux";
 
 const SignUpFormComponent = () => {
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
+  const dispatch = useDispatch();
 
   const handleUserRegister = async (e) => {
     e.preventDefault();
@@ -15,8 +17,11 @@ const SignUpFormComponent = () => {
         registerEmail,
         registerPassword
       );
+
       console.log(user);
       console.log("success");
+      dispatch(setShowLoginModal(false));
+      dispatch(setBackground(false));
     } catch (error) {
       console.log("fail");
       console.log(error.message);
