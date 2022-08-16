@@ -7,14 +7,17 @@ import {
   setBackground,
   setLoginStatus,
   setShowLoginModal,
+  setCurrentUser,
 } from "../actions/Actions";
 const NavbarComponent = () => {
   const login_status = useSelector((state) => state.login_status);
+  const currentUser = useSelector((state) => state.current_user);
 
   const dispatch = useDispatch();
 
   const onSignOut = () => {
     dispatch(setLoginStatus(false));
+    dispatch(setCurrentUser(null));
   };
 
   const onSignIn = () => {
@@ -24,7 +27,7 @@ const NavbarComponent = () => {
 
   const signIn = login_status ? (
     <span className={styles.signIn} onClick={onSignOut}>
-      Sign Out
+      {currentUser}
     </span>
   ) : (
     <span className={styles.signIn} onClick={onSignIn}>

@@ -3,13 +3,16 @@ import {
   setBackground,
   setMobileMenu,
   setShowLoginModal,
+  setLoginStatus,
+  setCurrentUser,
 } from "../../../actions/Actions";
 import styles from "./MobileNav.module.scss";
 
 const Hamburger = () => {
   const dispatch = useDispatch();
 
-  const login_modal = useSelector((state) => state.login_modal);
+  const login_status = useSelector((state) => state.login_status);
+  const currentUser = useSelector((state) => state.current_user);
 
   const onSignIn = () => {
     dispatch(setShowLoginModal(true));
@@ -17,10 +20,27 @@ const Hamburger = () => {
     dispatch(setBackground(true));
   };
 
+  const onSignOut = () => {
+    dispatch(setLoginStatus(false));
+    dispatch(setCurrentUser(null));
+    dispatch(setMobileMenu(false));
+    dispatch(setBackground(false));
+  };
+
   const onClose = () => {
     dispatch(setMobileMenu(false));
     dispatch(setBackground(false));
   };
+
+  const signIn = login_status ? (
+    <li className={styles.signIn} onClick={onSignOut}>
+      {currentUser}
+    </li>
+  ) : (
+    <li className={styles.signIn} onClick={onSignIn}>
+      Sign In
+    </li>
+  );
 
   return (
     <div className={styles.hamburger}>
@@ -35,7 +55,7 @@ const Hamburger = () => {
         <li onClick={onClose}>
           <a href="#properties">Properties</a>
         </li>
-        <li onClick={onSignIn}>Sign In</li>
+        {signIn}
       </ul>
     </div>
   );

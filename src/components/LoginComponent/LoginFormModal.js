@@ -9,15 +9,15 @@ import { auth } from "../../Firebase";
 import {
   setBackground,
   setLoginStatus,
+  setCurrentUser,
   setShowLoginModal,
 } from "../../actions/Actions";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 const LoginFormModal = () => {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
 
-  const login_modal = useSelector((state) => state.login_modal);
   const dispatch = useDispatch();
 
   const handleUserLogin = async (e) => {
@@ -28,7 +28,7 @@ const LoginFormModal = () => {
         loginEmail,
         loginPassword
       );
-      console.log(user);
+      dispatch(setCurrentUser(user.user.displayName));
       dispatch(setLoginStatus(true));
       dispatch(setShowLoginModal(false));
       dispatch(setBackground(false));
