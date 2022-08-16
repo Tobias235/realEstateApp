@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../../Firebase";
 import { setBackground, setShowLoginModal } from "../../actions/Actions";
 import { useDispatch } from "react-redux";
@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 const SignUpFormComponent = () => {
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
+  const [registerName, setRegisterName] = useState("");
   const dispatch = useDispatch();
 
   const handleUserRegister = async (e) => {
@@ -17,7 +18,9 @@ const SignUpFormComponent = () => {
         registerEmail,
         registerPassword
       );
-
+      updateProfile(auth.currentUser, {
+        displayName: registerName,
+      });
       console.log(user);
       console.log("success");
       dispatch(setShowLoginModal(false));
@@ -30,14 +33,14 @@ const SignUpFormComponent = () => {
 
   return (
     <form onSubmit={handleUserRegister}>
-      {/* <label>Enter Your Full Name:</label>
+      <label>Enter Your Full Name:</label>
       <input
         type="text"
         placeholder="Enter Your Full Name:"
         onChange={(e) => {
           setRegisterName(e.target.value);
         }}
-      /> */}
+      />
       <label>Enter Your email:</label>
       <input
         type="email"
