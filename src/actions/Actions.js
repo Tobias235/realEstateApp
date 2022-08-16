@@ -1,11 +1,17 @@
 //Different actions that will dispatch from the file it gets used
 //and tell the reducer what to do and change the state accordingly.
 
-//Switches between the different marks (Astronaut and Rocket)
 export const setLoginStatus = (login_status) => {
   return {
     type: "SET_LOGIN_STATUS",
     payload: login_status,
+  };
+};
+
+export const setCurrentUser = (current_user) => {
+  return {
+    type: "SET_CURRENT_USER",
+    payload: current_user,
   };
 };
 
