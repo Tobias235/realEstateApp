@@ -1,10 +1,6 @@
 import { useState } from "react";
 
-import {
-  signInWithEmailAndPassword,
-  onAuthStateChanged,
-  signOut,
-} from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../Firebase";
 import {
   setBackground,
