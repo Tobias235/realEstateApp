@@ -1,3 +1,6 @@
+import { signOut } from "firebase/auth";
+import { auth } from "../Firebase";
+
 import DropDownComponent from "../components/NavBarComponent/DropDownComponent";
 import NavButtonComponent from "../components/NavBarComponent/NavButtonComponent";
 import styles from "./NavbarContainer.module.scss";
@@ -15,9 +18,15 @@ const NavbarComponent = () => {
 
   const dispatch = useDispatch();
 
-  const onSignOut = () => {
-    dispatch(setLoginStatus(false));
-    dispatch(setCurrentUser(null));
+  const onSignOut = async () => {
+    try {
+      const user = await signOut(auth);
+      console.log(auth);
+      dispatch(setLoginStatus(false));
+      dispatch(setCurrentUser(null));
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
   const onSignIn = () => {
@@ -26,9 +35,13 @@ const NavbarComponent = () => {
   };
 
   const signIn = login_status ? (
-    <span className={styles.signIn} onClick={onSignOut}>
+    <div className={styles.signIn}>
       {currentUser}
-    </span>
+      <ul>
+        <li>Previous Comments</li>
+        <li onClick={onSignOut}>Sign Out</li>
+      </ul>
+    </div>
   ) : (
     <span className={styles.signIn} onClick={onSignIn}>
       Sign In
