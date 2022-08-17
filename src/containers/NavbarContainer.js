@@ -18,13 +18,14 @@ const NavbarComponent = () => {
 
   const dispatch = useDispatch();
 
-  const onSignOut = async () => {
+  const onSignOut = () => {
     try {
-      const user = await signOut(auth);
-      console.log(auth);
+      signOut(auth);
+      console.log("logged out");
       dispatch(setLoginStatus(false));
       dispatch(setCurrentUser(null));
     } catch (error) {
+      console.log("error");
       console.log(error.message);
     }
   };
