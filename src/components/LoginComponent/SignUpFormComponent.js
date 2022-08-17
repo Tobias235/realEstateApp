@@ -22,11 +22,9 @@ const SignUpFormComponent = () => {
         displayName: registerName,
       });
       console.log(user);
-      console.log("success");
       dispatch(setShowLoginModal(false));
       dispatch(setBackground(false));
     } catch (error) {
-      console.log("fail");
       console.log(error.message);
     }
   };
