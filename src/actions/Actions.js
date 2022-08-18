@@ -42,3 +42,10 @@ export const setShowDetails = (show_details) => {
     payload: show_details,
   };
 };
+
+export const setShowMobileNavOptions = (show_options) => {
+  return {
+    type: "SET_SHOW_MOBILE_NAV_OPTIONS",
+    payload: show_options,
+  };
+};

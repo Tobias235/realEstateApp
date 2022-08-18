@@ -6,6 +6,7 @@ const InitialState = {
   mobile_menu: false,
   show_background: false,
   show_details: false,
+  show_options: false,
 };
 
 //reducer takes the initial state and depending on which case it
@@ -25,6 +26,8 @@ const Reducer = (state = InitialState, action) => {
       return { ...state, show_background: action.payload };
     case "SET_SHOW_DETAILS":
       return { ...state, show_details: action.payload };
+    case "SET_SHOW_MOBILE_NAV_OPTIONS":
+      return { ...state, show_options: action.payload };
     default:
       return state;
   }
