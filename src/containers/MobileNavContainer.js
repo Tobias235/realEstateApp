@@ -12,12 +12,7 @@ const MobileNavContainer = () => {
     <MobileNav />
   );
 
-  return (
-    <>
-      <h1 className={styles.presmiy}>PRESMIY</h1>
-      {showLoggedinOptions}
-    </>
-  );
+  return <>{showLoggedinOptions}</>;
 };
 
 export default MobileNavContainer;

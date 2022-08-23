@@ -42,6 +42,7 @@ const MobileNav = () => {
 
   return (
     <div className={styles.hamburger}>
+      <h1>PRESMIY</h1>
       <ul>
         <li onClick={onClose}>
           <a href="#home">Home</a>

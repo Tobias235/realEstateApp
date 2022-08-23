@@ -4,6 +4,7 @@ import {
   setBackground,
   setCurrentUser,
   setLoginStatus,
+  setMobileMenu,
   setShowMobileNavOptions,
 } from "../../../actions/Actions";
 import { auth } from "../../../Firebase";
@@ -22,6 +23,7 @@ const MobileNavLoggedIn = () => {
       dispatch(setShowMobileNavOptions(false));
       dispatch(setLoginStatus(false));
       dispatch(setBackground(false));
+      dispatch(setMobileMenu(false));
     } catch (error) {
       console.log("error");
       console.log(error.message);
@@ -30,6 +32,7 @@ const MobileNavLoggedIn = () => {
 
   return (
     <ul className={styles.mobileNav}>
+      <h1>PRESMIY</h1>
       <li>
         <a href="#">Previous Comments</a>
       </li>

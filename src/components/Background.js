@@ -4,6 +4,7 @@ import {
   setMobileMenu,
   setShowDetails,
   setShowLoginModal,
+  setShowMobileNavOptions,
 } from "../actions/Actions";
 import styles from "./Background.module.scss";
 
@@ -15,6 +16,7 @@ const Background = () => {
     dispatch(setMobileMenu(false));
     dispatch(setShowLoginModal(false));
     dispatch(setShowDetails(false));
+    dispatch(setShowMobileNavOptions(false));
   };
 
   return <div className={styles.background} onClick={onClose}></div>;
