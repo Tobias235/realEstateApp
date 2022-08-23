@@ -36,51 +36,6 @@
           color: #e5a036;
           transition: all 500ms ease;
         }
-
-        ul {
-          position: absolute;
-          top: 60px;
-          left: 750%;
-          background-color: white;
-          box-shadow: 0 5px 24px rgb(0 0 0 / 30%);
-          border-radius: 5px;
-          margin: 0;
-          padding: 0;
-          height: auto;
-          font-size: 14px;
-          font-weight: 400;
-
-          &:hover {
-            color: black;
-          }
-          @include respond-to("tablet") {
-            left: 78%;
-          }
-          @include respond-to("laptop") {
-            left: 82%;
-          }
-          @include respond-to("desktop") {
-            left: 85%;
-          }
-
-          li {
-            padding: 9px;
-            list-style-type: none;
-            text-align: center;
-
-            &:hover {
-              color: #e5a036;
-              transition: all 500ms ease;
-            }
-            @include respond-to("laptop") {
-              padding: 15px;
-            }
-          }
-
-          li:first-of-type {
-            border-bottom: 2px solid gray;
-          }
-        }
       }
     }
 
@@ -93,5 +48,37 @@
       width: auto;
       height: 78px;
     }
+  }
+}
+
+.navButton {
+  height: 100%;
+  width: 100%;
+  border-radius: 10px;
+  border: none;
+  background-color: transparent;
+  font-weight: 800;
+  font-size: 14px;
+
+  &:hover {
+    color: #e5a036;
+    transition: all 500ms ease;
+  }
+}
+
+.subMenu {
+  width: 86.5%;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+  top: 0 !important;
+  color: black !important;
+
+  li {
+    border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+    top: 0;
+    color: black;
+  }
+
+  :last-of-type {
+    border: none;
   }
 }

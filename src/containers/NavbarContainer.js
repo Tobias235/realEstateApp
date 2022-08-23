@@ -1,5 +1,6 @@
 import { signOut } from "firebase/auth";
 import { auth } from "../Firebase";
+import Dropdown from "react-multilevel-dropdown";
 
 import DropDownComponent from "../components/NavBarComponent/DropDownComponent";
 import NavButtonComponent from "../components/NavBarComponent/NavButtonComponent";
@@ -12,6 +13,7 @@ import {
   setShowLoginModal,
   setCurrentUser,
 } from "../actions/Actions";
+
 const NavbarComponent = () => {
   const login_status = useSelector((state) => state.login_status);
   const currentUser = useSelector((state) => state.current_user);
@@ -36,13 +38,14 @@ const NavbarComponent = () => {
   };
 
   const signIn = login_status ? (
-    <div className={styles.signIn}>
-      {currentUser}
-      <ul>
-        <li>Previous Comments</li>
-        <li onClick={onSignOut}>Sign Out</li>
-      </ul>
-    </div>
+    <Dropdown className={styles.navButton} position="left" title={currentUser}>
+      <Dropdown.Item className={styles.subMenu}>
+        Previous Comments
+      </Dropdown.Item>
+      <Dropdown.Item className={styles.subMenu} onClick={onSignOut}>
+        Sign Out
+      </Dropdown.Item>
+    </Dropdown>
   ) : (
     <span className={styles.signIn} onClick={onSignIn}>
       Sign In
