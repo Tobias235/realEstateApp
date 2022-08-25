@@ -23,7 +23,7 @@ const PropertiesContainer = () => {
   return (
     <div id="properties" className={styles.properties}>
       {showModal && <PropertiesModalContainer onClose={handleCloseDetails} />}
-      <h1>Our Properties</h1>
+      <h1 className={styles.propertyHeader}>Our Properties</h1>
       <PropertiesFilter />
       <div className={styles.grid}>
         <PropertyCard onShowDetails={handleShowDetails} />
