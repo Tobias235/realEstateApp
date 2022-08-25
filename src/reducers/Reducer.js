@@ -1,4 +1,3 @@
-//The initial state of the app. 9 squares, Astronaut will be first image.
 const InitialState = {
   login_status: false,
   current_user: null,
@@ -7,6 +6,7 @@ const InitialState = {
   show_background: false,
   show_details: false,
   show_options: false,
+  show_comment: false,
 };
 
 //reducer takes the initial state and depending on which case it
@@ -28,6 +28,8 @@ const Reducer = (state = InitialState, action) => {
       return { ...state, show_details: action.payload };
     case "SET_SHOW_MOBILE_NAV_OPTIONS":
       return { ...state, show_options: action.payload };
+    case "SET_SHOW_ADD_COMMENT":
+      return { ...state, show_comment: action.payload };
     default:
       return state;
   }
