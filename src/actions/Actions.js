@@ -49,3 +49,10 @@ export const setShowMobileNavOptions = (show_options) => {
     payload: show_options,
   };
 };
+
+export const setShowAddComment = (show_comment) => {
+  return {
+    type: "SET_SHOW_ADD_COMMENT",
+    payload: show_comment,
+  };
+};
