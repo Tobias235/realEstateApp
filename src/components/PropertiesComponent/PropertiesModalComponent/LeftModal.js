@@ -1,22 +1,25 @@
+import { useDispatch } from "react-redux";
+import { setShowAddComment } from "../../../actions/Actions";
 import ModalGallery from "../../PropertiesComponent/PropertiesModalComponent/ModalGallery";
-import ModalCommentCard from "../../PropertiesComponent/PropertiesModalComponent/PropertiesCommentModal/ModalCommentCard";
 import Button from "../../utils/Button";
-
 import styles from "./LeftModal.module.scss";
+import CommentBox from "./PropertiesCommentModal/CommentBox";
 
 const LeftModal = () => {
+  const dispatch = useDispatch();
+
+  const handleComment = () => {
+    dispatch(setShowAddComment(true));
+  };
   return (
     <div className={styles.leftModal}>
       <ModalGallery />
-      <div className={styles.commentBox}>
-        <ModalCommentCard />
-        <ModalCommentCard />
-        <ModalCommentCard />
-      </div>
+      <CommentBox />
       <Button
         type="button"
         text="Add Comment"
         className={styles.commentButton}
+        onClick={handleComment}
       />
     </div>
   );
