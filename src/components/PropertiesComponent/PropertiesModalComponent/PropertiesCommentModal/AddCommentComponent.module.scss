@@ -1,0 +1,31 @@
+.addComment {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+
+  h1 {
+    color: rgb(231, 161, 48);
+    font-size: 28px;
+    text-shadow: 0 5px 5px rgb(231 161 48 / 50%);
+  }
+
+  .comments {
+    width: 70%;
+    height: 40%;
+    margin: 30px;
+  }
+
+  textarea {
+    width: 70%;
+    outline: none;
+    border: 1px solid rgb(231, 161, 48);
+    border-radius: 5px;
+  }
+
+  .closeButton {
+    width: 80px;
+    height: 40px;
+    margin: 15px;
+  }
+}
