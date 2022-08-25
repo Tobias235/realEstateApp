@@ -1,5 +1,5 @@
 import ModalGallery from "../../PropertiesComponent/PropertiesModalComponent/ModalGallery";
-import ModalCommentCard from "../../PropertiesComponent/PropertiesModalComponent/ModalCommentCard";
+import ModalCommentCard from "../../PropertiesComponent/PropertiesModalComponent/PropertiesCommentModal/ModalCommentCard";
 import Button from "../../utils/Button";
 
 import styles from "./LeftModal.module.scss";
