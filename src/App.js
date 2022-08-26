@@ -7,13 +7,13 @@ import ContactContainer from "./containers/ContactContainer";
 import HomeContainer from "./containers/HomeContainer";
 import NavbarContainer from "./containers/NavbarContainer";
 import Footer from "./components/Footer";
-import MobileNav from "./components/NavBarComponent/MobileNavbarComponents/MobileNav";
 import MobileNavbar from "./components/NavBarComponent/MobileNavbarComponents/MobileNavbar";
 import LoginModalContainer from "./containers/LoginModalContainer";
 import Background from "./components/Background";
 import { useDispatch, useSelector } from "react-redux";
-import { setMobileMenu, setShowLoginModal } from "./actions/Actions";
+import { setShowLoginModal } from "./actions/Actions";
 import MobileNavContainer from "./containers/MobileNavContainer";
+import PopupNotifications from "./components/utils/PopupNotification";
 
 function App() {
   const [showLoginMenu, setShowLoginMenu] = useState(false);
@@ -45,6 +45,7 @@ function App() {
           onSignIn={handleShowLogin}
         />
       )}
+      <PopupNotifications />
       {login_modal && <LoginModalContainer />}
       <HomeContainer />
       <PropertiesContainer />
