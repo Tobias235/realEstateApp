@@ -17,11 +17,26 @@
     border-radius: 5px;
     outline: none;
   }
+
+  span {
+    width: 72%;
+    font-size: 12px;
+  }
   .signInButton {
     margin-top: 15px;
     width: 70%;
     height: 40px;
     padding: 10px;
     box-shadow: 0 5px 24px rgba(0, 0, 0, 0.3);
+  }
+
+  .error {
+    border: 2px solid red !important;
+    margin-bottom: 0;
+  }
+
+  .errorText {
+    font-size: 10px;
+    color: red;
   }
 }
