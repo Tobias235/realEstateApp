@@ -23,11 +23,9 @@ const NavbarComponent = () => {
   const onSignOut = () => {
     try {
       signOut(auth);
-      console.log("logged out");
       dispatch(setLoginStatus(false));
       dispatch(setCurrentUser(null));
     } catch (error) {
-      console.log("error");
       console.log(error.message);
     }
   };

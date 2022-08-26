@@ -1,4 +1,3 @@
-import styles from "./MobileNavContainer.module.scss";
 import { useSelector } from "react-redux";
 import MobileNav from "../components/NavBarComponent/MobileNavbarComponents/MobileNav";
 import MobileNavLoggedIn from "../components/NavBarComponent/MobileNavbarComponents/MobileNavLoggedIn";
