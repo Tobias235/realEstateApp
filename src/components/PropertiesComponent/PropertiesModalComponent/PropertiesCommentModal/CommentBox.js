@@ -1,6 +1,5 @@
-import styles from "./CommentBox.module.scss";
-
 import ModalCommentCard from "./ModalCommentCard";
+import styles from "./CommentBox.module.scss";
 
 const CommentBox = (props) => {
   return (

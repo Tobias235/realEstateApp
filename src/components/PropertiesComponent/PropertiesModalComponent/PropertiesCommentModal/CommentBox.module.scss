@@ -1,6 +1,7 @@
 .commentBox {
   width: 95%;
   margin: 8px;
+  padding-bottom: 10px;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -8,4 +9,20 @@
   overflow-x: hidden;
   border: 2px solid rgba(231, 161, 48, 0.6);
   border-radius: 5px;
+
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(231, 161, 48, 0.7);
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: rgba(231, 161, 48, 1);
+  }
 }
