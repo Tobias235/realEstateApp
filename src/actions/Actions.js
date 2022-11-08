@@ -1,6 +1,3 @@
-//Different actions that will dispatch from the file it gets used
-//and tell the reducer what to do and change the state accordingly.
-
 export const setLoginStatus = (login_status) => {
   return {
     type: "SET_LOGIN_STATUS",
