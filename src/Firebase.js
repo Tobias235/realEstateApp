@@ -1,11 +1,12 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
+import { getDatabase } from "firebase/database";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
-const firebaseConfig = {
+const firebaseAuthConfig = {
   apiKey: `${process.env.REACT_APP_FIREBASE_API_KEY}`,
   authDomain: `${process.env.REACT_APP_FIREBASE_AUTH_DOMAIN}`,
   projectId: `${process.env.REACT_APP_FIREBASE_PROJECT_ID}`,
@@ -15,6 +16,12 @@ const firebaseConfig = {
   measurementId: `${process.env.REACT_APP_FIREBASE_MEASUREMENT_ID}`,
 };
 
-const app = initializeApp(firebaseConfig);
+const firebaseDatabaseConfig = {
+  databaseURL:
+    "https://realestate-c158b-default-rtdb.asia-southeast1.firebasedatabase.app/",
+};
 
-export const auth = getAuth(app);
+const App = initializeApp(firebaseAuthConfig, firebaseDatabaseConfig);
+
+export const auth = getAuth(App);
+export const database = getDatabase(App);
