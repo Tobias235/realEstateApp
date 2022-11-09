@@ -3,6 +3,8 @@ import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../../../Firebase";
 import { setBackground, setShowLoginModal } from "../../../actions/Actions";
 import { useDispatch } from "react-redux";
+import styles from "./SignUpFormComponent.module.scss";
+import Button from "../../utils/Button/Button";
 
 const SignUpFormComponent = () => {
   const [registerEmail, setRegisterEmail] = useState("");
@@ -30,7 +32,7 @@ const SignUpFormComponent = () => {
   };
 
   return (
-    <form onSubmit={handleUserRegister}>
+    <form onSubmit={handleUserRegister} className={styles.signUpForm}>
       <label>Enter Your Full Name:</label>
       <input
         type="text"
@@ -55,7 +57,7 @@ const SignUpFormComponent = () => {
           setRegisterPassword(e.target.value);
         }}
       />
-      <button type="submit">Register</button>
+      <Button type="submit" className={styles.registerButton} text="Register" />
     </form>
   );
 };
