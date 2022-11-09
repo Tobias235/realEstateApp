@@ -1,6 +1,4 @@
 import { useState } from "react";
-
-// import styles from "./App.module.scss";
 import PropertiesContainer from "./containers/PropertiesContainer/PropertiesContainer";
 import AboutContainer from "./containers/AboutContainer/AboutContainer";
 import ContactContainer from "./containers/ContactContainer/ContactContainer";
@@ -14,6 +12,7 @@ import MobileNavContainer from "./containers/NavbarContainer/MobileNavContainer"
 import Background from "./components/Background/Background";
 import { useDispatch, useSelector } from "react-redux";
 import { setShowLoginModal } from "./actions/Actions";
+// import styles from "./App.module.scss";
 
 function App() {
   const [showLoginMenu, setShowLoginMenu] = useState(false);
