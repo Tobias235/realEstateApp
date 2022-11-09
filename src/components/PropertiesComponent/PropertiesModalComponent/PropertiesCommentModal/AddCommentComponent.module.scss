@@ -16,16 +16,24 @@
     margin: 30px;
   }
 
-  textarea {
+  .textForm {
     width: 70%;
-    outline: none;
-    border: 1px solid rgb(231, 161, 48);
-    border-radius: 5px;
+    textarea {
+      width: 100%;
+      outline: none;
+      border: 1px solid rgb(231, 161, 48);
+      border-radius: 5px;
+      resize: none;
+    }
   }
 
-  .closeButton {
-    width: 80px;
-    height: 40px;
-    margin: 15px;
+  .buttonContainer {
+    display: flex;
+
+    .closeButton {
+      width: 80px;
+      height: 40px;
+      margin: 15px;
+    }
   }
 }
