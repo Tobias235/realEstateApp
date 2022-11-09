@@ -1,0 +1,25 @@
+@use "../../assets/util/" as *;
+
+.home {
+  width: 100%;
+  height: 100vh;
+  background: url(../../assets/images/realestatebackground.webp) no-repeat
+    center center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
+
+  .componentContainer {
+    height: 45%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @include respond-to("tablet") {
+      height: 20%;
+    }
+  }
+}

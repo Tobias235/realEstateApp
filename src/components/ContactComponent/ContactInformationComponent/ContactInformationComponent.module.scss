@@ -1,0 +1,65 @@
+@use "../../../assets/util/" as *;
+
+.contactInformation {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  @include respond-to("tablet") {
+    flex-direction: column !important ;
+    align-items: flex-start !important;
+  }
+
+  a {
+    display: flex;
+    align-items: center;
+    width: 36%;
+    min-width: 170px;
+    height: 60px;
+    box-shadow: 0 5px 24px rgba(231, 161, 48, 0.7);
+    margin: 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: 500;
+    @include respond-to("tablet") {
+      min-width: 200px;
+    }
+
+    &:hover {
+      transform: translateY(-0.25em);
+      transition: all 200ms;
+    }
+
+    span {
+      margin-left: 10px;
+    }
+
+    svg {
+      width: 25px;
+      height: auto;
+      margin-left: 10px;
+    }
+  }
+
+  .email {
+    color: #2a8e4b;
+    background-color: white;
+  }
+
+  .phone {
+    color: #800000;
+    background-color: white;
+  }
+
+  .img {
+    display: none;
+    @include respond-to("tablet") {
+      display: block !important;
+      width: 65%;
+      min-width: 300px;
+      margin: 0;
+    }
+  }
+}

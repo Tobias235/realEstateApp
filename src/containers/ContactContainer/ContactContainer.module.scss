@@ -1,0 +1,63 @@
+@use "../../assets/util/" as *;
+
+.contact {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: auto;
+  padding-top: 10vh;
+  padding-bottom: 5vh;
+  background-color: rgba(231, 161, 48, 0.2);
+  box-shadow: -1px -7px 7px 0px rgb(0 0 0 / 30%);
+  h1 {
+    font-size: 40px;
+    font-weight: 800;
+    text-shadow: 0 5px 5px rgb(0 0 0 / 50%);
+  }
+
+  p {
+    width: 95%;
+    font-size: 17px;
+    text-align: center;
+  }
+
+  div {
+    width: 100%;
+    @include respond-to("tablet") {
+      display: flex;
+      width: 85%;
+    }
+  }
+
+  .middle {
+    display: none;
+    @include respond-to("tablet") {
+      display: block;
+      height: 100%;
+      width: 5%;
+    }
+  }
+
+  .contactInfo {
+    margin-top: 35px;
+  }
+
+  .formContainer {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    @include respond-to("tablet") {
+      justify-content: flex-end;
+      margin: 0;
+    }
+  }
+
+  img {
+    width: 95%;
+    display: block;
+    margin: auto;
+    @include respond-to("tablet") {
+      display: none;
+    }
+  }
+}

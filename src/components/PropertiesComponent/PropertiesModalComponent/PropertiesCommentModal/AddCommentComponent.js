@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { setShowAddComment } from "../../../../actions/Actions";
-import Button from "../../../utils/Button";
+import Button from "../../../utils/Button/Button";
 import styles from "./AddCommentComponent.module.scss";
 import CommentBox from "./CommentBox";
 const AddCommentComponent = () => {
