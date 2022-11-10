@@ -1,0 +1,38 @@
+.adminModalContainer {
+  width: 100%;
+  height: 80vh;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .adminPropertiesModal {
+    width: auto;
+    height: 500px;
+    background-color: white;
+    position: fixed;
+    z-index: 3;
+
+    h1 {
+      font-size: 32px;
+      margin: 15px;
+    }
+
+    .inputContainer {
+      display: flex;
+      flex-direction: column;
+      width: 70%;
+      margin: auto;
+
+      input {
+        margin-bottom: 10px;
+      }
+      textarea {
+        resize: none;
+      }
+      .adminPropertiesButton {
+        margin-top: 10px;
+        height: 40px;
+      }
+    }
+  }
+}
