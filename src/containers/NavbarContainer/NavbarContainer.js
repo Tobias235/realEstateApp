@@ -12,6 +12,7 @@ import {
   setLoginStatus,
   setShowLoginModal,
   setCurrentUser,
+  setShowPropertiesModal,
 } from "../../actions/Actions";
 
 const NavbarComponent = () => {
@@ -35,8 +36,16 @@ const NavbarComponent = () => {
     dispatch(setBackground(true));
   };
 
+  const propertiesHandler = () => {
+    dispatch(setBackground(true));
+    dispatch(setShowPropertiesModal(true));
+  };
+
   const signIn = login_status ? (
     <Dropdown className={styles.navButton} position="left" title={currentUser}>
+      <Dropdown.Item className={styles.subMenu} onClick={propertiesHandler}>
+        Properties
+      </Dropdown.Item>
       <Dropdown.Item className={styles.subMenu}>
         Previous Comments
       </Dropdown.Item>
