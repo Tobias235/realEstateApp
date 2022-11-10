@@ -12,6 +12,7 @@ import MobileNavContainer from "./containers/NavbarContainer/MobileNavContainer"
 import Background from "./components/Background/Background";
 import { useDispatch, useSelector } from "react-redux";
 import { setShowLoginModal } from "./actions/Actions";
+import AdminPropertiesModal from "./components/PropertiesComponent/AdminPropertiesModal/AdminPropertiesModal";
 // import styles from "./App.module.scss";
 
 function App() {
@@ -20,6 +21,9 @@ function App() {
   const login_modal = useSelector((state) => state.login_modal);
   const mobile_menu = useSelector((state) => state.mobile_menu);
   const show_background = useSelector((state) => state.show_background);
+  const show_properties_modal = useSelector(
+    (state) => state.show_properties_modal
+  );
   const dispatch = useDispatch();
 
   const handleCloseMenu = () => {
@@ -46,6 +50,7 @@ function App() {
       )}
       <PopupNotifications />
       {login_modal && <LoginModalContainer />}
+      {show_properties_modal && <AdminPropertiesModal />}
       <HomeContainer />
       <PropertiesContainer />
       <AboutContainer />
