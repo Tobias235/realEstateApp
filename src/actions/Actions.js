@@ -53,3 +53,10 @@ export const setShowAddComment = (show_comment) => {
     payload: show_comment,
   };
 };
+
+export const setShowPropertiesModal = (show_properties_modal) => {
+  return {
+    type: "SET_SHOW_PROPERTIES_MODAL",
+    payload: show_properties_modal,
+  };
+};

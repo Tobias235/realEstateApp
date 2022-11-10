@@ -27,6 +27,9 @@ const Reducer = (state = InitialState, action) => {
       return { ...state, show_options: action.payload };
     case "SET_SHOW_ADD_COMMENT":
       return { ...state, show_comment: action.payload };
+    case "SET_SHOW_PROPERTIES_MODAL":
+      return { ...state, show_properties_modal: action.payload };
+
     default:
       return state;
   }
