@@ -20,7 +20,7 @@ const PopupNotifications = () => {
     return () => {
       clearTimeout(timeout);
     };
-  }, [loginStatus]);
+  }, [loginStatus, currentUser]);
 
   const style = showMessage ? styles.notification : styles.hidden;
   return <span className={style}>{message}</span>;
