@@ -1,10 +1,9 @@
 import PropertiesFilter from "../../components/PropertiesComponent/PropertiesFilter/PropertiesFilter";
 import PropertyCard from "../../components/PropertiesComponent/PropertyCard/PropertyCard";
 import PropertiesModalContainer from "./../PropertiesModalContainer/PropertiesModalContainer";
-
-import styles from "./PropertiesContainer.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { setBackground, setShowDetails } from "../../actions/Actions";
+import styles from "./PropertiesContainer.module.scss";
 
 const PropertiesContainer = () => {
   const showModal = useSelector((state) => state.show_details);

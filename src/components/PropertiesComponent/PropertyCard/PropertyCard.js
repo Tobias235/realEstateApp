@@ -1,5 +1,5 @@
-import styles from "./PropertyCard.module.scss";
 import placeholder from "../../../assets/images/placeholderProperties.webp";
+import styles from "./PropertyCard.module.scss";
 
 const PropertyCard = ({ onShowDetails }) => {
   return (

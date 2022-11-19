@@ -3,8 +3,6 @@ import {
   setBackground,
   setMobileMenu,
   setShowLoginModal,
-  setLoginStatus,
-  setCurrentUser,
   setShowMobileNavOptions,
 } from "../../../../actions/Actions";
 import styles from "./MobileNav.module.scss";

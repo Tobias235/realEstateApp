@@ -44,7 +44,7 @@ const NavbarComponent = () => {
   const signIn = login_status ? (
     <Dropdown className={styles.navButton} position="left" title={currentUser}>
       <Dropdown.Item className={styles.subMenu} onClick={propertiesHandler}>
-        Properties
+        Upload Properties
       </Dropdown.Item>
       <Dropdown.Item className={styles.subMenu}>
         Previous Comments
