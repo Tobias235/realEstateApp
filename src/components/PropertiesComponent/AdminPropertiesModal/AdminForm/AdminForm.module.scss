@@ -1,8 +1,13 @@
 .inputContainer {
   display: flex;
   flex-direction: column;
-  width: 70%;
+  width: 80%;
   margin: auto;
+
+  label {
+    margin-bottom: 2px;
+    font-size: 12px;
+  }
 
   input {
     margin-bottom: 10px;

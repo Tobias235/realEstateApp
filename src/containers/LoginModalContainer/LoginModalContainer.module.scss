@@ -4,27 +4,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: fixed;
-  background-color: white;
-  width: 85%;
-  height: auto;
-  padding: 10px;
-  padding-bottom: 40px;
-  border-radius: 5px;
-  top: 55%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  box-shadow: 0 5px 24px rgba(231, 161, 48, 1);
-  z-index: 2;
-  @include respond-to("tablet") {
-    width: 50%;
-  }
-  @include respond-to("laptop") {
-    width: 40%;
-  }
-  @include respond-to("desktop") {
-    width: 30%;
-  }
+  padding: 20px;
 
   .closingIcon {
     width: 100%;
@@ -39,12 +19,12 @@
 
   h1 {
     font-size: 26px;
-    margin-top: 20px;
+    margin-top: 10px;
   }
 
   .notRegisteredBorder {
     border-top: 2px solid gray;
     width: 95%;
-    margin: 40px;
+    margin: 30px;
   }
 }
