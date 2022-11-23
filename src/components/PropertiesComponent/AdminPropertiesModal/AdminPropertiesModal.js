@@ -3,11 +3,9 @@ import AdminForm from "./AdminForm/AdminForm";
 
 const AdminPropertiesModal = () => {
   return (
-    <div className={styles.adminModalContainer}>
-      <div className={styles.adminPropertiesModal}>
-        <h1>Add/Update Properties</h1>
-        <AdminForm />
-      </div>
+    <div className={styles.adminPropertiesModal}>
+      <h1>Add/Update Properties</h1>
+      <AdminForm />
     </div>
   );
 };

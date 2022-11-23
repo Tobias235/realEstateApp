@@ -74,7 +74,7 @@ const AdminForm = () => {
       {isLoading && <p>Page is loading, please wait.</p>}
       {property && (
         <form className={styles.inputContainer} onSubmit={handleUploadImages}>
-          <label>Bedrooms</label>
+          <label>Bedrooms:</label>
           <input
             type="number"
             placeholder="Bedrooms"
@@ -86,7 +86,7 @@ const AdminForm = () => {
               })
             }
           />
-          <label>Bathrooms</label>
+          <label>Bathrooms:</label>
           <input
             type="number"
             placeholder="Bathrooms"
@@ -98,7 +98,7 @@ const AdminForm = () => {
               })
             }
           />
-          <label>Size</label>
+          <label>Size:</label>
           <input
             type="number"
             placeholder="Size"
@@ -110,7 +110,7 @@ const AdminForm = () => {
               })
             }
           />
-          <label>Price</label>
+          <label>Price:</label>
           <input
             type="number"
             placeholder="Price"
@@ -122,7 +122,7 @@ const AdminForm = () => {
               })
             }
           />
-          <label>Location</label>
+          <label>Location:</label>
           <input
             type="text"
             placeholder="Location"
@@ -134,7 +134,7 @@ const AdminForm = () => {
               })
             }
           />
-          <label>Description</label>
+          <label>Description:</label>
           <textarea
             type="text"
             rows="5"
@@ -148,7 +148,7 @@ const AdminForm = () => {
             }
           />
           <label htmlFor="file-upload" className={styles.uploadImage}>
-            Choose Images
+            Choose Images:
           </label>
           <input
             id="file-upload"
