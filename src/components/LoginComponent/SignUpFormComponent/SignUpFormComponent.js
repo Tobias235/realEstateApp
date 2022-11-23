@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../../../Firebase";
-import { setBackground, setShowLoginModal } from "../../../actions/Actions";
+import { setShowLoginModal } from "../../../actions/Actions";
 import { useDispatch } from "react-redux";
 import styles from "./SignUpFormComponent.module.scss";
 import Button from "../../utils/Button/Button";
@@ -25,7 +25,6 @@ const SignUpFormComponent = () => {
       });
       console.log(user);
       dispatch(setShowLoginModal(false));
-      dispatch(setBackground(false));
     } catch (error) {
       console.log(error.message);
     }

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { FaWindowClose } from "react-icons/fa";
 import { useDispatch } from "react-redux";
-import { setBackground, setShowLoginModal } from "../../actions/Actions";
+import { setShowLoginModal } from "../../actions/Actions";
 
 import LoginFormModal from "../../components/LoginComponent/LoginFormModal/LoginFormModal";
 import RegisterComponent from "../../components/LoginComponent/RegisterComponent/RegisterComponent";
@@ -21,7 +21,6 @@ const LoginModalContainer = () => {
   };
 
   const onClose = () => {
-    dispatch(setBackground(false));
     dispatch(setShowLoginModal(false));
   };
 

@@ -8,7 +8,6 @@ import styles from "./NavbarContainer.module.scss";
 import logo from "../../assets/images/roomrental.webp";
 import { useSelector, useDispatch } from "react-redux";
 import {
-  setBackground,
   setLoginStatus,
   setShowLoginModal,
   setCurrentUser,
@@ -33,17 +32,15 @@ const NavbarComponent = () => {
 
   const onSignIn = () => {
     dispatch(setShowLoginModal(true));
-    dispatch(setBackground(true));
   };
 
-  const propertiesHandler = () => {
-    dispatch(setBackground(true));
+  const AdminPropertiesModal = () => {
     dispatch(setShowPropertiesModal(true));
   };
 
   const signIn = login_status ? (
     <Dropdown className={styles.navButton} position="left" title={currentUser}>
-      <Dropdown.Item className={styles.subMenu} onClick={propertiesHandler}>
+      <Dropdown.Item className={styles.subMenu} onClick={AdminPropertiesModal}>
         Upload Properties
       </Dropdown.Item>
       <Dropdown.Item className={styles.subMenu}>

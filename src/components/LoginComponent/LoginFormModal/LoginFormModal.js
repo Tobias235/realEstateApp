@@ -1,10 +1,8 @@
 import { useState, useEffect } from "react";
-
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../../Firebase";
 
 import {
-  setBackground,
   setLoginStatus,
   setCurrentUser,
   setShowLoginModal,
@@ -34,7 +32,6 @@ const LoginFormModal = () => {
       dispatch(setCurrentUser(user.user.displayName));
       dispatch(setLoginStatus(true));
       dispatch(setShowLoginModal(false));
-      dispatch(setBackground(false));
     } catch (error) {
       setCurrentErrorMessage(error);
     }

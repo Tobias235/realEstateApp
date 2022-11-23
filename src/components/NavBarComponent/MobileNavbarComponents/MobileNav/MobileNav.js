@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
 import {
-  setBackground,
   setMobileMenu,
   setShowLoginModal,
   setShowMobileNavOptions,
@@ -16,12 +15,10 @@ const MobileNav = () => {
   const onSignIn = () => {
     dispatch(setShowLoginModal(true));
     dispatch(setMobileMenu(false));
-    dispatch(setBackground(true));
   };
 
   const onClose = () => {
     dispatch(setMobileMenu(false));
-    dispatch(setBackground(false));
   };
 
   const showOptions = () => {
