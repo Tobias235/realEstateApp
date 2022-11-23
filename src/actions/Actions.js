@@ -26,13 +26,6 @@ export const setMobileMenu = (mobile_menu) => {
   };
 };
 
-export const setBackground = (show_background) => {
-  return {
-    type: "SET_SHOW_BACKGROUND",
-    payload: show_background,
-  };
-};
-
 export const setShowDetails = (show_details) => {
   return {
     type: "SET_SHOW_DETAILS",

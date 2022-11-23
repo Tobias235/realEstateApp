@@ -3,10 +3,10 @@ const InitialState = {
   current_user: null,
   login_modal: false,
   mobile_menu: false,
-  show_background: false,
   show_details: false,
   show_options: false,
   show_comment: false,
+  show_properties_modal: false,
 };
 
 const Reducer = (state = InitialState, action) => {
@@ -19,8 +19,6 @@ const Reducer = (state = InitialState, action) => {
       return { ...state, login_modal: action.payload };
     case "SET_MOBILE_MENU":
       return { ...state, mobile_menu: action.payload };
-    case "SET_SHOW_BACKGROUND":
-      return { ...state, show_background: action.payload };
     case "SET_SHOW_DETAILS":
       return { ...state, show_details: action.payload };
     case "SET_SHOW_MOBILE_NAV_OPTIONS":
