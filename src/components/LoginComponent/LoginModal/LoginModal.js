@@ -12,11 +12,7 @@ const LoginModal = () => {
   const dispatch = useDispatch();
 
   const handleShowRegister = () => {
-    if (showRegister) {
-      setShowRegister(false);
-    } else {
-      setShowRegister(true);
-    }
+    showRegister ? setShowRegister(false) : setShowRegister(true);
   };
 
   const onCloseLoginModal = () => {
