@@ -1,14 +1,13 @@
 import { useState } from "react";
 import { FaWindowClose } from "react-icons/fa";
 import { useDispatch } from "react-redux";
-import { setShowLoginModal } from "../../actions/Actions";
+import { setShowLoginModal } from "../../../actions/Actions";
+import LoginForm from "./LoginForm/LoginForm";
+import RegisterComponent from "../RegisterComponent/RegisterComponent";
+import SignUpFormComponent from "../SignUpFormComponent/SignUpFormComponent";
+import styles from "./LoginModal.module.scss";
 
-import LoginFormModal from "../../components/LoginComponent/LoginFormModal/LoginFormModal";
-import RegisterComponent from "../../components/LoginComponent/RegisterComponent/RegisterComponent";
-import SignUpFormComponent from "../../components/LoginComponent/SignUpFormComponent/SignUpFormComponent";
-import styles from "./LoginModalContainer.module.scss";
-
-const LoginModalContainer = () => {
+const LoginModal = () => {
   const [showRegister, setShowRegister] = useState(false);
   const dispatch = useDispatch();
 
@@ -20,15 +19,11 @@ const LoginModalContainer = () => {
     }
   };
 
-  const onClose = () => {
+  const onCloseLoginModal = () => {
     dispatch(setShowLoginModal(false));
   };
 
-  const showLoginForm = !showRegister ? (
-    <LoginFormModal />
-  ) : (
-    <SignUpFormComponent />
-  );
+  const showLoginForm = !showRegister ? <LoginForm /> : <SignUpFormComponent />;
 
   const formTitle = !showRegister
     ? "Login to your account"
@@ -37,7 +32,10 @@ const LoginModalContainer = () => {
   return (
     <div className={styles.loginModal}>
       <div className={styles.closingIcon}>
-        <FaWindowClose className={styles.closeIcon} onClick={onClose} />
+        <FaWindowClose
+          className={styles.closeIcon}
+          onClick={onCloseLoginModal}
+        />
       </div>
       <h1>{formTitle}</h1>
       {showLoginForm}
@@ -49,4 +47,4 @@ const LoginModalContainer = () => {
   );
 };
 
-export default LoginModalContainer;
+export default LoginModal;

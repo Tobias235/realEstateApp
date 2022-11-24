@@ -19,7 +19,7 @@
   }
 
   span {
-    width: 72%;
+    width: 82%;
     font-size: 12px;
   }
   .signInButton {
@@ -38,5 +38,6 @@
   .errorText {
     font-size: 10px;
     color: red;
+    text-transform: capitalize;
   }
 }

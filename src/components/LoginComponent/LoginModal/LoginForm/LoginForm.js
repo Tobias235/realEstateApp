@@ -1,23 +1,22 @@
 import { useState, useEffect } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../../Firebase";
+import { auth } from "../../../../Firebase";
 
 import {
   setLoginStatus,
   setCurrentUser,
   setShowLoginModal,
-} from "../../../actions/Actions";
+} from "../../../../actions/Actions";
 import { useDispatch } from "react-redux";
-import Button from "../../utils/Button/Button";
-import styles from "./LoginFormModal.module.scss";
+import Button from "../../../utils/Button/Button";
+import styles from "./LoginForm.module.scss";
 
-const LoginFormModal = () => {
+const LoginForm = () => {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const [currentErrorMessage, setCurrentErrorMessage] = useState(null);
   const [emailError, setEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
-  const [userNotFound, setUserNotFound] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -41,19 +40,20 @@ const LoginFormModal = () => {
     if (currentErrorMessage === null) {
       return;
     }
-    const errorString = currentErrorMessage.toString().split("/");
-    const error = errorString[1].replace(/[^a-zA-Z0-9 ]/g, " ").trim();
-    console.log(error);
+    const error = currentErrorMessage
+      .toString()
+      .split("/")[1]
+      .replace(/[^a-zA-Z0-9 ]/g, " ")
+      .trim();
     setEmailError(
       error === "invalid email" ||
         error === "user not found" ||
         error === "internal error"
-        ? true
-        : false
+        ? error
+        : null
     );
-    setUserNotFound(error === "user not found" ? true : false);
     setPasswordError(
-      error === "wrong password" || error === "internal error" ? true : false
+      error === "wrong password" || error === "internal error" ? error : null
     );
   }, [currentErrorMessage]);
 
@@ -61,15 +61,11 @@ const LoginFormModal = () => {
   const mailText = emailError ? styles.errorText : null;
 
   const errorEmail = emailError && (
-    <span className={mailText}>
-      {userNotFound
-        ? "User Not Found, sign up below"
-        : "Please enter a valid e-mail"}
-    </span>
+    <span className={mailText}>{emailError}</span>
   );
 
   const errorPassword = passwordError && (
-    <span className={passwordText}>Please enter correct password</span>
+    <span className={passwordText}>{passwordError}</span>
   );
 
   return (
@@ -99,4 +95,4 @@ const LoginFormModal = () => {
   );
 };
 
-export default LoginFormModal;
+export default LoginForm;
