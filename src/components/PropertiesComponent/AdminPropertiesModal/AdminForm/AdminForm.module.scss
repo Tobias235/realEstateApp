@@ -11,10 +11,12 @@
 
   input {
     margin-bottom: 10px;
+    outline: none;
   }
   textarea {
     resize: none;
     margin-bottom: 10px;
+    outline: none;
   }
 
   .uploadImage {
@@ -36,6 +38,11 @@
   }
   input[type="file"] {
     display: none;
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
   }
 
   .adminPropertiesButton {

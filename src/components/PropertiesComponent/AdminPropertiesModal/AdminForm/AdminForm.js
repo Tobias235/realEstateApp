@@ -148,7 +148,7 @@ const AdminForm = () => {
             }
           />
           <label htmlFor="file-upload" className={styles.uploadImage}>
-            Choose Images:
+            Choose Images
           </label>
           <input
             id="file-upload"
