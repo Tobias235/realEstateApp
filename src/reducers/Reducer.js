@@ -1,4 +1,5 @@
 const InitialState = {
+  properties: [],
   login_status: false,
   current_user: null,
   login_modal: false,
@@ -11,6 +12,8 @@ const InitialState = {
 
 const Reducer = (state = InitialState, action) => {
   switch (action.type) {
+    case "SET_PROPERTIES":
+      return { ...state, properties: action.payload };
     case "SET_LOGIN_STATUS":
       return { ...state, login_status: action.payload };
     case "SET_CURRENT_USER":

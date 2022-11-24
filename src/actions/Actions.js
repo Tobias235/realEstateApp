@@ -1,3 +1,10 @@
+export const setProperties = (properties) => {
+  return {
+    type: "SET_PROPERTIES",
+    payload: properties,
+  };
+};
+
 export const setLoginStatus = (login_status) => {
   return {
     type: "SET_LOGIN_STATUS",
