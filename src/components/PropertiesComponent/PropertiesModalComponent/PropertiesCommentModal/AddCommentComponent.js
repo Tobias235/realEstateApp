@@ -14,7 +14,6 @@ const AddCommentComponent = () => {
   };
 
   const handleAddComment = (e) => {
-    console.log(e.target.reset);
     console.log(textRef.current.value);
     textRef.current.value = "";
   };
@@ -23,7 +22,7 @@ const AddCommentComponent = () => {
     <div className={styles.addComment}>
       <h1>Add your comment</h1>
       <CommentBox className={styles.comments} />
-      <form className={styles.textForm}>
+      <div className={styles.commentBox}>
         <label>Your comment:</label>
         <textarea
           type="text"
@@ -31,17 +30,18 @@ const AddCommentComponent = () => {
           placeholder="Write your comment..."
           ref={textRef}
         ></textarea>
-      </form>
+      </div>
       <div className={styles.buttonContainer}>
         <Button
+          type="button"
           text="Close"
-          className={styles.closeButton}
+          className={styles.commentButton}
           onClick={handleCloseComment}
         />
         <Button
           type="Submit"
           text="Add Comment"
-          className={styles.closeButton}
+          className={styles.commentButton}
           onClick={handleAddComment}
         />
       </div>

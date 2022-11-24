@@ -16,7 +16,7 @@
     margin: 30px;
   }
 
-  .textForm {
+  .commentBox {
     width: 70%;
     textarea {
       width: 100%;
@@ -30,8 +30,8 @@
   .buttonContainer {
     display: flex;
 
-    .closeButton {
-      width: 80px;
+    .commentButton {
+      width: 120px;
       height: 40px;
       margin: 15px;
     }
