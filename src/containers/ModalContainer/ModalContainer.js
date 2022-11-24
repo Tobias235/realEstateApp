@@ -2,8 +2,8 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import Backdrop from "../../components/utils/Backdrop/Backdrop";
-import LoginModalContainer from "../LoginModalContainer/LoginModalContainer";
 import Modal from "../../components/utils/Modal/Modal";
+import LoginModal from "../../components/LoginComponent/LoginModal/LoginModal";
 import PropertiesModal from "../../components/PropertiesModal/PropertiesModal";
 import AdminPropertiesModal from "../../components/PropertiesComponent/AdminPropertiesModal/AdminPropertiesModal";
 // import styles from "./ModalContainer.module.scss";
@@ -27,7 +27,7 @@ const ModalContainer = () => {
       {modal && <Backdrop />}
       {modal && (
         <Modal>
-          {login_modal && <LoginModalContainer />}
+          {login_modal && <LoginModal />}
           {show_details && <PropertiesModal />}
           {show_properties_modal && <AdminPropertiesModal />}
         </Modal>
