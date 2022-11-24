@@ -20,18 +20,14 @@
     margin-top: 7px;
   }
 
-  h1 {
-    margin: 10px;
-    font-size: 20px;
-  }
-
   .location {
     width: 100%;
     display: flex;
     align-items: flex-start !important;
     span {
       font-size: 14px;
-      margin-left: 5px;
+      font-weight: bold;
+      margin: 5px;
     }
   }
   .detailContainer {
@@ -40,8 +36,8 @@
     align-items: flex-start !important;
 
     span {
-      font-size: 12px;
-      margin: 7px 4px 0 4px;
+      font-size: 13px;
+      margin-left: 5px;
     }
   }
 
