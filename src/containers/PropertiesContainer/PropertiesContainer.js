@@ -10,13 +10,6 @@ const PropertiesContainer = () => {
       <PropertiesFilter />
       <div className={styles.grid}>
         <PropertyCard />
-        <PropertyCard />
-        <PropertyCard />
-        <PropertyCard />
-        <PropertyCard />
-        <PropertyCard />
-        <PropertyCard />
-        <PropertyCard />
       </div>
     </div>
   );
