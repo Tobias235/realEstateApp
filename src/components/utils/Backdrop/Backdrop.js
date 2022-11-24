@@ -2,6 +2,7 @@ import { useDispatch } from "react-redux";
 import ReactDOM from "react-dom";
 import {
   setMobileMenu,
+  setShowAddComment,
   setShowDetails,
   setShowLoginModal,
   setShowMobileNavOptions,
@@ -16,6 +17,7 @@ const Backdrop = () => {
   const onClose = () => {
     dispatch(setShowLoginModal(false));
     dispatch(setShowDetails(false));
+    dispatch(setShowAddComment(false));
     dispatch(setShowPropertiesModal(false));
     dispatch(setMobileMenu(false));
     dispatch(setShowMobileNavOptions(false));
