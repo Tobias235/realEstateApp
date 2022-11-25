@@ -1,35 +1,41 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { storage } from "../../../../Firebase";
+import { resizeFile } from "../../../utils/ImageConverter";
 import Button from "../../../utils/Button/Button";
 import styles from "./AdminForm.module.scss";
+
+const initialState = {
+  bedrooms: "",
+  bathrooms: "",
+  size: "",
+  price: "",
+  location: "",
+  description: "",
+};
+
 const AdminForm = () => {
   const [images, setImages] = useState([]);
-  const [property, setProperty] = useState();
+  const [property, setProperty] = useState(initialState);
   const [isLoading, setIsLoading] = useState(false);
 
-  const initialState = {
-    bedrooms: "",
-    bathrooms: "",
-    size: "",
-    price: "",
-    location: "",
-    description: "",
-  };
-
-  const handleImageSelect = (e) => {
+  const handleImageSelect = async (e) => {
+    setIsLoading(true);
     for (let i = 0; i < e.target.files.length; i++) {
       const newImage = e.target.files[i];
       newImage["id"] = Math.random();
-      setImages((prevState) => [...prevState, newImage]);
+      const image = await resizeFile(newImage);
+      console.log(image);
+      setImages((prevState) => [...prevState, image]);
     }
+    setIsLoading(false);
   };
 
   const handleUploadImages = (e) => {
     e.preventDefault();
+    setIsLoading(true);
     let urls = [];
     let propertyObj = {};
-    setIsLoading(true);
     images.forEach((image) => {
       const storageRef = ref(storage, image.name);
       uploadBytes(storageRef, image).then(() => {
@@ -46,7 +52,7 @@ const AdminForm = () => {
 
   const uploadData = async (propertyObj) => {
     const response = await fetch(
-      "https://realestate-c158b-default-rtdb.asia-southeast1.firebasedatabase.app/test.json",
+      "https://realestate-c158b-default-rtdb.asia-southeast1.firebasedatabase.app/properties.json",
       {
         method: "POST",
         body: JSON.stringify(propertyObj),
@@ -57,17 +63,11 @@ const AdminForm = () => {
     );
     const data = await response.json();
     if (data) {
-      console.log(data);
       setIsLoading(false);
       setProperty(initialState);
       setImages([]);
-      console.log("Done Uploading");
     }
   };
-
-  useEffect(() => {
-    setProperty(initialState);
-  }, []);
 
   return (
     <>
