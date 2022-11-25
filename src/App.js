@@ -6,7 +6,7 @@ import HomeContainer from "./containers/HomeContainer/HomeContainer";
 import NavbarContainer from "./containers/NavbarContainer/NavbarContainer";
 import Footer from "./components/Footer/Footer";
 import MobileNavbar from "./components/NavBarComponent/MobileNavbarComponents/MobileNavbar/MobileNavbar";
-import PopupNotifications from "./components/utils/PopupNotifcation/PopupNotification";
+import PopupNotifications from "./components/UI/PopupNotifcation/PopupNotification";
 import MobileNavContainer from "./containers/NavbarContainer/MobileNavContainer";
 import { useDispatch, useSelector } from "react-redux";
 import { setShowLoginModal } from "./actions/Actions";
