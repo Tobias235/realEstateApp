@@ -8,7 +8,7 @@ import {
   setShowLoginModal,
 } from "../../../../actions/Actions";
 import { useDispatch } from "react-redux";
-import Button from "../../../utils/Button/Button";
+import Button from "../../../UI/Button/Button";
 import styles from "./LoginForm.module.scss";
 
 const LoginForm = () => {

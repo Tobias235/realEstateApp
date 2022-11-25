@@ -2,7 +2,7 @@ import { useState } from "react";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { storage } from "../../../../Firebase";
 import { resizeFile } from "../../../utils/ImageConverter";
-import Button from "../../../utils/Button/Button";
+import Button from "../../../UI/Button/Button";
 import styles from "./AdminForm.module.scss";
 
 const initialState = {

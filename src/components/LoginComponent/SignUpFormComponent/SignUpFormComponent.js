@@ -4,7 +4,7 @@ import { auth } from "../../../Firebase";
 import { setShowLoginModal } from "../../../actions/Actions";
 import { useDispatch } from "react-redux";
 import styles from "./SignUpFormComponent.module.scss";
-import Button from "../../utils/Button/Button";
+import Button from "../../UI/Button/Button";
 
 const SignUpFormComponent = () => {
   const [registerEmail, setRegisterEmail] = useState("");
