@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import Backdrop from "../../components/utils/Backdrop/Backdrop";
-import Modal from "../../components/utils/Modal/Modal";
+import Backdrop from "../../components/UI/Backdrop/Backdrop";
+import Modal from "./../../components/UI/Modal/Modal";
 import LoginModal from "../../components/LoginComponent/LoginModal/LoginModal";
 import PropertiesModal from "../../components/PropertiesModal/PropertiesModal";
 import AdminPropertiesModal from "../../components/PropertiesComponent/AdminPropertiesModal/AdminPropertiesModal";
