@@ -1,22 +1,24 @@
+import { useState } from "react";
+import { useSelector } from "react-redux";
 import styles from "./ModalDescription.module.scss";
 
 const ModalDescription = () => {
+  const [property, setProperty] = useState([]);
+  const properties = useSelector((state) => state.properties);
+  const current_property = useSelector((state) => state.current_property);
+
+  const currentProperty = Object.entries(properties).filter(
+    (property) => property[0] === current_property
+  );
+
   return (
     <div className={styles.modalDescription}>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-        vehicula auctor erat vitae elementum. Morbi dapibus risus et augue
-        posuere, vel lacinia lectus placerat. Vestibulum eu turpis neque.
-        Phasellus porttitor purus eget elit egestas, eget tincidunt mauris
-        porta. Integer diam dolor, pharetra egestas porta dictum, sodales sed
-        ante. Cras at cursus quam. Mauris euismod felis lectus, vel fermentum ex
-        luctus lobortis. Mauris nec volutpat augue. Ut eu dapibus odio.
-      </p>
-      <span>Location: Pasig</span>
-      <span>Bedrooms: 3</span>
-      <span>Bathrooms: 2</span>
-      <span>Size: 100sqm</span>
-      <span>Price: 2.000.000</span>
+      <p>{currentProperty[0][1].description}</p>
+      <span>Location: {currentProperty[0][1].location}</span>
+      <span>Bedrooms: {currentProperty[0][1].bedrooms}</span>
+      <span>Bathrooms: {currentProperty[0][1].bathrooms}</span>
+      <span>Size: {currentProperty[0][1].size} sqm</span>
+      <span>Price: {currentProperty[0][1].price}</span>
     </div>
   );
 };
