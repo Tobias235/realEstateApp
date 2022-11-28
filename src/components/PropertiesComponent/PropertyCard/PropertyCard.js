@@ -1,13 +1,18 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setProperties, setShowDetails } from "../../../actions/Actions";
+import {
+  setCurrentProperty,
+  setProperties,
+  setShowDetails,
+} from "../../../actions/Actions";
 import styles from "./PropertyCard.module.scss";
 
 const PropertyCard = () => {
   const dispatch = useDispatch();
   const properties = useSelector((state) => state.properties);
 
-  const handleShowDetails = () => {
+  const handleShowDetails = (key) => {
+    dispatch(setCurrentProperty(key));
     dispatch(setShowDetails(true));
   };
 
@@ -37,7 +42,9 @@ const PropertyCard = () => {
               <span>Size: {property.size} SQM</span>
             </div>
             <div className={styles.buttonContainer}>
-              <button onClick={handleShowDetails}>More Details</button>
+              <button onClick={() => handleShowDetails(key)}>
+                More Details
+              </button>
             </div>
           </div>
         );
