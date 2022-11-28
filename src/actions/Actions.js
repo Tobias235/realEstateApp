@@ -5,6 +5,13 @@ export const setProperties = (properties) => {
   };
 };
 
+export const setCurrentProperty = (id) => {
+  return {
+    type: "SET_CURRENT_PROPERTY",
+    payload: id,
+  };
+};
+
 export const setLoginStatus = (login_status) => {
   return {
     type: "SET_LOGIN_STATUS",
