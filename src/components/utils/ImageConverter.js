@@ -4,8 +4,8 @@ export const resizeFile = (file) =>
   new Promise((resolve) => {
     Resizer.imageFileResizer(
       file,
-      300,
-      300,
+      800,
+      800,
       "WEBP",
       100,
       0,
