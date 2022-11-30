@@ -19,7 +19,7 @@ const PropertyCard = () => {
   useEffect(() => {
     const fetchProperties = async () => {
       const response = await fetch(
-        "https://realestate-c158b-default-rtdb.asia-southeast1.firebasedatabase.app/properties.json"
+        "https://realestate-38717-default-rtdb.europe-west1.firebasedatabase.app/properties.json"
       );
       const data = await response.json();
       dispatch(setProperties(data));

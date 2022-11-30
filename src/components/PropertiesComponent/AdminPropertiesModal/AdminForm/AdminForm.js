@@ -52,7 +52,7 @@ const AdminForm = () => {
 
   const uploadData = async (propertyObj) => {
     const response = await fetch(
-      "https://realestate-c158b-default-rtdb.asia-southeast1.firebasedatabase.app/properties.json",
+      "https://realestate-38717-default-rtdb.europe-west1.firebasedatabase.app/properties.json",
       {
         method: "POST",
         body: JSON.stringify(propertyObj),
