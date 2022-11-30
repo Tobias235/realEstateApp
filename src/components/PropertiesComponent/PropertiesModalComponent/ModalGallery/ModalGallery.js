@@ -6,7 +6,7 @@ import { ReactComponent as ArrowRight } from "../../../../assets/images/arrowRig
 
 const ModalGallery = () => {
   const [propertyImages, setPropertyImages] = useState();
-  const [currentPicture, setCurrentPicture] = useState(6);
+  const [currentPicture, setCurrentPicture] = useState(0);
 
   const properties = useSelector((state) => state.properties);
   const current_property = useSelector((state) => state.current_property);
