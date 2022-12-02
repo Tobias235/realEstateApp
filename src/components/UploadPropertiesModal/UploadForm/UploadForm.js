@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { storage } from "../../../../Firebase";
-import { resizeFile } from "../../../utils/ImageConverter";
-import Button from "../../../UI/Button/Button";
-import styles from "./AdminForm.module.scss";
+import { storage } from "../../../Firebase";
+import { resizeFile } from "../../utils/ImageConverter";
+import Button from "../../UI/Button/Button";
+import styles from "./UploadForm.module.scss";
 
 const initialState = {
   bedrooms: "",
@@ -14,7 +14,7 @@ const initialState = {
   description: "",
 };
 
-const AdminForm = () => {
+const UploadForm = () => {
   const [images, setImages] = useState([]);
   const [property, setProperty] = useState(initialState);
   const [isLoading, setIsLoading] = useState(false);
@@ -170,4 +170,4 @@ const AdminForm = () => {
   );
 };
 
-export default AdminForm;
+export default UploadForm;

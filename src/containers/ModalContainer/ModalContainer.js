@@ -5,7 +5,7 @@ import Backdrop from "../../components/UI/Backdrop/Backdrop";
 import Modal from "./../../components/UI/Modal/Modal";
 import LoginModal from "../../components/LoginComponent/LoginModal/LoginModal";
 import PropertiesModal from "../../components/PropertiesModal/PropertiesModal";
-import AdminPropertiesModal from "../../components/PropertiesComponent/AdminPropertiesModal/AdminPropertiesModal";
+import UploadPropertiesModal from "../../components/UploadPropertiesModal/UploadPropertiesModal";
 // import styles from "./ModalContainer.module.scss";
 
 const ModalContainer = () => {
@@ -29,7 +29,7 @@ const ModalContainer = () => {
         <Modal>
           {login_modal && <LoginModal />}
           {show_details && <PropertiesModal />}
-          {show_properties_modal && <AdminPropertiesModal />}
+          {show_properties_modal && <UploadPropertiesModal />}
         </Modal>
       )}
     </>
