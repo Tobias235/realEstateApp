@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import ReactDOM from "react-dom";
 import {
   setMobileMenu,
@@ -10,11 +10,14 @@ import {
 } from "../../../actions/Actions";
 import styles from "./Backdrop.module.scss";
 
-const Backdrop = () => {
+const Backdrop = (props) => {
   const dispatch = useDispatch();
+  const loading = useSelector((state) => state.loading);
   const portalElement = document.getElementById("overlays");
 
   const onClose = () => {
+    if (loading) return;
+
     dispatch(setShowLoginModal(false));
     dispatch(setShowDetails(false));
     dispatch(setShowAddComment(false));
@@ -26,7 +29,12 @@ const Backdrop = () => {
   return (
     <>
       {ReactDOM.createPortal(
-        <div className={styles.background} onClick={onClose}></div>,
+        <div
+          className={`${styles.background} ${props.className}`}
+          onClick={onClose}
+        >
+          {props.children}
+        </div>,
         portalElement
       )}
     </>
