@@ -4,6 +4,8 @@ import { storage } from "../../../Firebase";
 import { resizeFile } from "../../utils/ImageConverter";
 import Button from "../../UI/Button/Button";
 import styles from "./UploadForm.module.scss";
+import { setLoading, setUploadingStatus } from "../../../actions/Actions";
+import { useDispatch } from "react-redux";
 
 const initialState = {
   bedrooms: "",
@@ -17,23 +19,29 @@ const initialState = {
 const UploadForm = () => {
   const [images, setImages] = useState([]);
   const [property, setProperty] = useState(initialState);
-  const [isLoading, setIsLoading] = useState(false);
+  const dispatch = useDispatch();
 
   const handleImageSelect = async (e) => {
-    setIsLoading(true);
+    dispatch(setLoading(true));
+    let imageArray = [];
     for (let i = 0; i < e.target.files.length; i++) {
       const newImage = e.target.files[i];
       newImage["id"] = Math.random();
-      const image = await resizeFile(newImage);
-      console.log(image);
-      setImages((prevState) => [...prevState, image]);
+      imageArray.push(await resizeFile(newImage));
+      setImages(imageArray);
+      dispatch(
+        setUploadingStatus(
+          `${imageArray.length} out of ${e.target.files.length} images done`
+        )
+      );
+      if (imageArray.length === e.target.files.length)
+        dispatch(setLoading(false));
     }
-    setIsLoading(false);
   };
 
   const handleUploadImages = (e) => {
     e.preventDefault();
-    setIsLoading(true);
+    dispatch(setLoading(true));
     let urls = [];
     let propertyObj = {};
     images.forEach((image) => {
@@ -63,21 +71,24 @@ const UploadForm = () => {
     );
     const data = await response.json();
     if (data) {
-      setIsLoading(false);
       setProperty(initialState);
       setImages([]);
+      dispatch(setLoading(false));
     }
   };
 
+  const selectedImages =
+    images.length > 0 ? `${images.length} Images Selected` : "Choose Images";
+
   return (
     <>
-      {isLoading && <p>Page is loading, please wait.</p>}
       {property && (
         <form className={styles.inputContainer} onSubmit={handleUploadImages}>
           <label>Bedrooms:</label>
           <input
             type="number"
             placeholder="Bedrooms"
+            min="0"
             value={property.bedrooms}
             onChange={(e) =>
               setProperty({
@@ -90,6 +101,7 @@ const UploadForm = () => {
           <input
             type="number"
             placeholder="Bathrooms"
+            min="0"
             value={property.bathrooms}
             onChange={(e) =>
               setProperty({
@@ -102,6 +114,7 @@ const UploadForm = () => {
           <input
             type="number"
             placeholder="Size"
+            min="0"
             value={property.size}
             onChange={(e) =>
               setProperty({
@@ -114,6 +127,7 @@ const UploadForm = () => {
           <input
             type="number"
             placeholder="Price"
+            min="0"
             value={property.price}
             onChange={(e) =>
               setProperty({
@@ -148,7 +162,7 @@ const UploadForm = () => {
             }
           />
           <label htmlFor="file-upload" className={styles.uploadImage}>
-            Choose Images
+            {selectedImages}
           </label>
           <input
             id="file-upload"
