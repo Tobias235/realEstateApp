@@ -1,6 +1,7 @@
 const InitialState = {
   properties: [],
   current_property: null,
+  loading: false,
   login_status: false,
   current_user: null,
   login_modal: false,
@@ -17,6 +18,10 @@ const Reducer = (state = InitialState, action) => {
       return { ...state, properties: action.payload };
     case "SET_CURRENT_PROPERTY":
       return { ...state, current_property: action.payload };
+    case "SET_LOADING":
+      return { ...state, loading: action.payload };
+    case "SET_UPLOADING_STATUS":
+      return { ...state, uploading_status: action.payload };
     case "SET_LOGIN_STATUS":
       return { ...state, login_status: action.payload };
     case "SET_CURRENT_USER":
