@@ -42,6 +42,7 @@ const UploadForm = () => {
   const handleUploadImages = (e) => {
     e.preventDefault();
     dispatch(setLoading(true));
+    dispatch(setUploadingStatus(`Uploading Property To Database`));
     let urls = [];
     let propertyObj = {};
     images.forEach((image) => {
