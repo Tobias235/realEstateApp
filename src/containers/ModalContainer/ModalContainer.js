@@ -6,7 +6,8 @@ import Modal from "./../../components/UI/Modal/Modal";
 import LoginModal from "../../components/LoginComponent/LoginModal/LoginModal";
 import PropertiesModal from "../../components/PropertiesModal/PropertiesModal";
 import UploadPropertiesModal from "../../components/UploadPropertiesModal/UploadPropertiesModal";
-// import styles from "./ModalContainer.module.scss";
+import Loader from "../../components/UI/Loader/Loader";
+import styles from "./ModalContainer.module.scss";
 
 const ModalContainer = () => {
   const [modal, setModal] = useState([]);
@@ -15,6 +16,8 @@ const ModalContainer = () => {
     (state) => state.show_properties_modal
   );
   const show_details = useSelector((state) => state.show_details);
+  const loading = useSelector((state) => state.loading);
+  const upload_status = useSelector((state) => state.uploading_status);
 
   useEffect(() => {
     let stateArray = [];
@@ -24,7 +27,12 @@ const ModalContainer = () => {
 
   return (
     <>
-      {modal && <Backdrop />}
+      {modal && !loading && <Backdrop />}
+      {modal && loading && (
+        <Backdrop className={styles.backdropLoader}>
+          <Loader>{upload_status}</Loader>
+        </Backdrop>
+      )}
       {modal && (
         <Modal>
           {login_modal && <LoginModal />}
