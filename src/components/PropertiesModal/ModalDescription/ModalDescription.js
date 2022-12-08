@@ -1,9 +1,7 @@
-import { useState } from "react";
 import { useSelector } from "react-redux";
 import styles from "./ModalDescription.module.scss";
 
 const ModalDescription = () => {
-  const [property, setProperty] = useState([]);
   const properties = useSelector((state) => state.properties);
   const current_property = useSelector((state) => state.current_property);
 

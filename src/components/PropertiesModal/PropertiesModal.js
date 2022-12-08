@@ -1,6 +1,6 @@
-import LeftModal from "../PropertiesComponent/PropertiesModalComponent/LeftModal/LeftModal";
-import RightModal from "../PropertiesComponent/PropertiesModalComponent/RightModal/RightModal";
-import AddCommentComponent from "../PropertiesComponent/PropertiesModalComponent/PropertiesCommentModal/AddCommentComponent";
+import LeftModal from "./LeftModal/LeftModal";
+import RightModal from "./RightModal/RightModal";
+import AddCommentComponent from "../PropertiesModal/PropertiesCommentModal/AddCommentComponent";
 import { useSelector } from "react-redux";
 import styles from "./PropertiesModal.module.scss";
 

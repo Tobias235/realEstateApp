@@ -1,4 +1,4 @@
-import styles from "./HomeTextComponent.module.scss";
+// import styles from "./HomeTextComponent.module.scss";
 
 const HomeTextComponent = () => {
   return (

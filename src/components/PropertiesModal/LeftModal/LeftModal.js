@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
-import { setShowAddComment } from "../../../../actions/Actions";
+import { setShowAddComment } from "../../../actions/Actions";
 import ModalGallery from "../ModalGallery/ModalGallery";
-import Button from "../../../UI/Button/Button";
+import Button from "../../UI/Button/Button";
 import CommentBox from "../PropertiesCommentModal/CommentBox";
 import styles from "./LeftModal.module.scss";
 

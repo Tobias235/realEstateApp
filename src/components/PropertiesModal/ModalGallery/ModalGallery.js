@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import styles from "./ModalGallery.module.scss";
-import { ReactComponent as ArrowLeft } from "../../../../assets/images/arrowLeft.svg";
-import { ReactComponent as ArrowRight } from "../../../../assets/images/arrowRight.svg";
+import { ReactComponent as ArrowLeft } from "../../../assets/images/arrowLeft.svg";
+import { ReactComponent as ArrowRight } from "../../../assets/images/arrowRight.svg";
 
 const ModalGallery = () => {
   const [propertyImages, setPropertyImages] = useState();
