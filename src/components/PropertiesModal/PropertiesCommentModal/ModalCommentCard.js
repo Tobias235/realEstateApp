@@ -1,15 +1,25 @@
+import { useSelector } from "react-redux";
 import styles from "./ModalCommentCard.module.scss";
 
 const ModalCommentCard = () => {
+  const currentPropertyData = useSelector(
+    (state) => state.current_property_data
+  );
+
   return (
-    <div className={styles.commentCard}>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-        vehicula auctor erat vitae elementum. Morbi dapibus risus et augue
-        posuere, vel lacinia lectus placerat. Vestibulum eu turpis neque.
-        <span>By: Tobias</span>
-      </p>
-    </div>
+    <>
+      {currentPropertyData.comments &&
+        Object.entries(currentPropertyData.comments).map(([key, comment]) => {
+          return (
+            <div className={styles.commentCard} key={key}>
+              <p>
+                {comment.text}
+                <span>By: {comment.user}</span>
+              </p>
+            </div>
+          );
+        })}
+    </>
   );
 };
 

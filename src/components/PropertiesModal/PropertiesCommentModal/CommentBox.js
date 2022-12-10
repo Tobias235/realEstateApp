@@ -5,8 +5,6 @@ const CommentBox = (props) => {
   return (
     <div className={`${styles.commentBox} ${props.className}`}>
       <ModalCommentCard />
-      <ModalCommentCard />
-      <ModalCommentCard />
     </div>
   );
 };

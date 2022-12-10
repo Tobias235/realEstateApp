@@ -61,7 +61,7 @@ const UploadForm = () => {
 
   const uploadData = async (propertyObj) => {
     const response = await fetch(
-      "https://realestate-38717-default-rtdb.europe-west1.firebasedatabase.app/properties.json",
+      `${process.env.REACT_APP_FIREBASE_DATABASE_URL}properties.json`,
       {
         method: "POST",
         body: JSON.stringify(propertyObj),
