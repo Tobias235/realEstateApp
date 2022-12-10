@@ -1,6 +1,7 @@
 const InitialState = {
   properties: [],
   current_property: null,
+  current_property_data: null,
   loading: false,
   login_status: false,
   current_user: null,
@@ -10,6 +11,7 @@ const InitialState = {
   show_options: false,
   show_comment: false,
   show_properties_modal: false,
+  properties_update: false,
 };
 
 const Reducer = (state = InitialState, action) => {
@@ -18,10 +20,16 @@ const Reducer = (state = InitialState, action) => {
       return { ...state, properties: action.payload };
     case "SET_CURRENT_PROPERTY":
       return { ...state, current_property: action.payload };
+    case "SET_CURRENT_PROPERTY_DATA":
+      return { ...state, current_property_data: action.payload };
+    case "SET_PROPERTIES_UPDATE":
+      return { ...state, properties_update: action.payload };
     case "SET_LOADING":
       return { ...state, loading: action.payload };
     case "SET_UPLOADING_STATUS":
       return { ...state, uploading_status: action.payload };
+    case "SET_ERROR":
+      return { ...state, error: action.payload };
     case "SET_LOGIN_STATUS":
       return { ...state, login_status: action.payload };
     case "SET_CURRENT_USER":

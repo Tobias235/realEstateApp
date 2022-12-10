@@ -12,6 +12,27 @@ export const setCurrentProperty = (id) => {
   };
 };
 
+export const setCurrentPropertyData = (data) => {
+  return {
+    type: "SET_CURRENT_PROPERTY_DATA",
+    payload: data,
+  };
+};
+
+export const setPropertiesUpdated = (update) => {
+  return {
+    type: "SET_PROPERTIES_UPDATE",
+    payload: update,
+  };
+};
+
+export const setError = (error) => {
+  return {
+    type: "SET_ERROR",
+    payload: error,
+  };
+};
+
 export const setLoading = (loading) => {
   return {
     type: "SET_LOADING",
