@@ -1,24 +1,14 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useSelector } from "react-redux";
 import styles from "./ModalGallery.module.scss";
 import { ReactComponent as ArrowLeft } from "../../../assets/images/arrowLeft.svg";
 import { ReactComponent as ArrowRight } from "../../../assets/images/arrowRight.svg";
 
 const ModalGallery = () => {
-  const [propertyImages, setPropertyImages] = useState();
   const [currentPicture, setCurrentPicture] = useState(0);
 
-  const properties = useSelector((state) => state.properties);
-  const current_property = useSelector((state) => state.current_property);
-
-  const propertyImagesLength = propertyImages?.length - 1;
-
-  useEffect(() => {
-    const currentProperty = Object.entries(properties).filter(
-      (property) => property[0] === current_property
-    );
-    setPropertyImages(currentProperty[0][1].images);
-  }, [properties, current_property]);
+  const currentProperty = useSelector((state) => state.current_property_data);
+  const propertyImagesLength = currentProperty.length - 1;
 
   const handleIncrement = (e) => {
     if (
@@ -46,8 +36,8 @@ const ModalGallery = () => {
           <ArrowRight id="increment" onClick={handleIncrement} />
         </div>
       </div>
-      {propertyImages && (
-        <img src={propertyImages[currentPicture]} alt="property" />
+      {currentProperty.images && (
+        <img src={currentProperty.images[currentPicture]} alt="property" />
       )}
     </div>
   );

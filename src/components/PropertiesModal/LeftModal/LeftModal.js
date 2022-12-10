@@ -9,9 +9,6 @@ const LeftModal = () => {
   const dispatch = useDispatch();
   const login_status = useSelector((state) => state.login_status);
 
-  const handleComment = () => {
-    dispatch(setShowAddComment(true));
-  };
   return (
     <div className={styles.leftModal}>
       <ModalGallery />
@@ -21,7 +18,7 @@ const LeftModal = () => {
           type="button"
           text="Add Comment"
           className={styles.commentButton}
-          onClick={handleComment}
+          onClick={() => dispatch(setShowAddComment(true))}
         />
       )}
     </div>
