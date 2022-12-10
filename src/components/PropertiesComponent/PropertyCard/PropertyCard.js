@@ -1,31 +1,27 @@
-import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   setCurrentProperty,
-  setProperties,
+  setCurrentPropertyData,
   setShowDetails,
 } from "../../../actions/Actions";
+import useFetchProperties from "../../../hooks/useFetchProperties";
 import styles from "./PropertyCard.module.scss";
 
 const PropertyCard = () => {
   const dispatch = useDispatch();
   const properties = useSelector((state) => state.properties);
+  useFetchProperties(
+    `${process.env.REACT_APP_FIREBASE_DATABASE_URL}properties.json`
+  );
 
   const handleShowDetails = (key) => {
-    dispatch(setCurrentProperty(key));
+    const currentProperty = Object.entries(properties).filter(
+      (property) => property[0] === key
+    );
+    dispatch(setCurrentProperty(currentProperty[0][0]));
+    dispatch(setCurrentPropertyData(currentProperty[0][1]));
     dispatch(setShowDetails(true));
   };
-
-  useEffect(() => {
-    const fetchProperties = async () => {
-      const response = await fetch(
-        "https://realestate-38717-default-rtdb.europe-west1.firebasedatabase.app/properties.json"
-      );
-      const data = await response.json();
-      dispatch(setProperties(data));
-    };
-    fetchProperties().catch(console.error);
-  }, [dispatch]);
 
   return (
     <>
@@ -43,7 +39,7 @@ const PropertyCard = () => {
             </div>
             <div className={styles.buttonContainer}>
               <button onClick={() => handleShowDetails(key)}>
-                More Details
+                Show Details
               </button>
             </div>
           </div>
