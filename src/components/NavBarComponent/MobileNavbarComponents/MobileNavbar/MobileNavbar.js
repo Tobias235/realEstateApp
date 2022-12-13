@@ -1,4 +1,4 @@
-import { FaBars } from "react-icons/fa";
+import { ReactComponent as BurgerIcon } from "../../../../assets/images/burgerIcon.svg";
 import { useDispatch } from "react-redux";
 import { setMobileMenu } from "../../../../actions/Actions";
 import styles from "./MobileNavbar.module.scss";
@@ -11,9 +11,7 @@ const MobileNavbar = () => {
   };
   return (
     <div className={styles.mobileNav} onClick={handleShowMobileNav}>
-      <span>
-        <FaBars />
-      </span>
+      <BurgerIcon />
     </div>
   );
 };

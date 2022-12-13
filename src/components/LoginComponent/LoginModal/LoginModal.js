@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { FaWindowClose } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { setShowLoginModal } from "../../../actions/Actions";
 import LoginForm from "./LoginForm/LoginForm";
 import RegisterComponent from "../RegisterComponent/RegisterComponent";
 import SignUpFormComponent from "../SignUpFormComponent/SignUpFormComponent";
+import { ReactComponent as CloseIcon } from "../../../assets/images/closeIcon.svg";
 import styles from "./LoginModal.module.scss";
 
 const LoginModal = () => {
@@ -28,10 +28,7 @@ const LoginModal = () => {
   return (
     <div className={styles.loginModal}>
       <div className={styles.closingIcon}>
-        <FaWindowClose
-          className={styles.closeIcon}
-          onClick={onCloseLoginModal}
-        />
+        <CloseIcon onClick={onCloseLoginModal} />
       </div>
       <h1>{formTitle}</h1>
       {showLoginForm}
