@@ -10,8 +10,8 @@
   cursor: pointer;
   margin: 0;
 
-  .propertiesButton {
-    &:hover {
+  &:hover {
+    .propertiesButton {
       color: #e5a036;
       transition: all 500ms ease;
     }
