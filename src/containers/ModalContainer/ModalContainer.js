@@ -1,6 +1,14 @@
 import { useState } from "react";
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  setMobileMenu,
+  setShowAddComment,
+  setShowDetails,
+  setShowLoginModal,
+  setShowMobileNavOptions,
+  setShowPropertiesModal,
+} from "../../actions/Actions";
 import Backdrop from "../../components/UI/Backdrop/Backdrop";
 import Modal from "./../../components/UI/Modal/Modal";
 import LoginModal from "../../components/LoginComponent/LoginModal/LoginModal";
@@ -11,6 +19,7 @@ import styles from "./ModalContainer.module.scss";
 
 const ModalContainer = () => {
   const [modal, setModal] = useState([]);
+  const dispatch = useDispatch();
   const login_modal = useSelector((state) => state.login_modal);
   const show_properties_modal = useSelector(
     (state) => state.show_properties_modal
@@ -25,11 +34,22 @@ const ModalContainer = () => {
     setModal(stateArray.some((val) => val === true));
   }, [login_modal, show_properties_modal, show_details]);
 
+  const onClose = () => {
+    if (loading) return;
+
+    dispatch(setShowLoginModal(false));
+    dispatch(setShowDetails(false));
+    dispatch(setShowAddComment(false));
+    dispatch(setShowPropertiesModal(false));
+    dispatch(setMobileMenu(false));
+    dispatch(setShowMobileNavOptions(false));
+  };
+
   return (
     <>
       {modal && !loading && <Backdrop />}
       {modal && loading && (
-        <Backdrop className={styles.backdropLoader}>
+        <Backdrop className={styles.backdropLoader} onClick={onClose}>
           <Loader>{upload_status}</Loader>
         </Backdrop>
       )}
