@@ -47,7 +47,7 @@ const ModalContainer = () => {
 
   return (
     <>
-      {modal && !loading && <Backdrop />}
+      {modal && !loading && <Backdrop onClick={onClose} />}
       {modal && loading && (
         <Backdrop className={styles.backdropLoader} onClick={onClose}>
           <Loader>{upload_status}</Loader>
