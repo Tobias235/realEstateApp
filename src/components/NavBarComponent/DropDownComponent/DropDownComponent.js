@@ -1,27 +1,53 @@
+import { useState, useRef } from "react";
 import styles from "./DropDownComponent.module.scss";
-import Dropdown from "react-multilevel-dropdown";
 
 const DropDownComponent = () => {
+  const [showDropdown, setShowDropdown] = useState(false);
+  const dropdown = useRef(null);
+
+  const closeOpenMenus = (e) => {
+    if (
+      dropdown.current &&
+      showDropdown &&
+      !dropdown.current.contains(e.target)
+    ) {
+      setShowDropdown(false);
+    }
+  };
+
+  document.addEventListener("mousedown", closeOpenMenus);
+
   return (
-    <Dropdown className={styles.navButton} position="right" title="Properties">
-      <Dropdown.Item className={styles.subMenu}>
-        Location
-        <Dropdown.Submenu position="right">
-          <Dropdown.Item>Metro Manila</Dropdown.Item>
-          <Dropdown.Item>Cebu</Dropdown.Item>
-          <Dropdown.Item>Siargao</Dropdown.Item>
-        </Dropdown.Submenu>
-      </Dropdown.Item>
-      <Dropdown.Item>
-        Property Type
-        <Dropdown.Submenu className={styles.subMenu} position="right">
-          <Dropdown.Item>Apartment</Dropdown.Item>
-          <Dropdown.Item>Condominium</Dropdown.Item>
-          <Dropdown.Item>House</Dropdown.Item>
-          <Dropdown.Item>Beach House</Dropdown.Item>
-        </Dropdown.Submenu>
-      </Dropdown.Item>
-    </Dropdown>
+    <ul
+      className={styles.dropDownComponent}
+      onClick={() =>
+        showDropdown ? setShowDropdown(false) : setShowDropdown(true)
+      }
+      ref={dropdown}
+    >
+      <li className={styles.propertiesButton}>Properties</li>
+      {showDropdown && (
+        <ul className={styles.dropDownList}>
+          <li className={styles.locationList}>
+            Location
+            <ul className={styles.secondList}>
+              <li>Metro Manila</li>
+              <li>Cebu</li>
+              <li>Siargao</li>
+            </ul>
+          </li>
+          <li className={styles.propertyList}>
+            Property Type
+            <ul className={styles.secondList}>
+              <li>Apartment</li>
+              <li>Condominum</li>
+              <li>House</li>
+              <li>Beach House</li>
+            </ul>
+          </li>
+        </ul>
+      )}
+    </ul>
   );
 };
 
