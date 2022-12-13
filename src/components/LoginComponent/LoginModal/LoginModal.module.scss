@@ -9,12 +9,7 @@
   .closingIcon {
     width: 100%;
     display: flex;
-    align-items: flex-end;
     justify-content: flex-end;
-    .closeIcon {
-      align-self: flex-end;
-      color: rgba(231, 161, 48, 1);
-    }
   }
 
   h1 {
