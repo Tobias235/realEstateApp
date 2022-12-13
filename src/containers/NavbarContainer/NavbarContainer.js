@@ -1,7 +1,6 @@
+import { useState, useRef } from "react";
 import { signOut } from "firebase/auth";
 import { auth } from "../../Firebase";
-import Dropdown from "react-multilevel-dropdown";
-
 import DropDownComponent from "../../components/NavBarComponent/DropDownComponent/DropDownComponent";
 import NavButtonComponent from "../../components/NavBarComponent/NavButtonComponent/NavButtonComponent";
 import styles from "./NavbarContainer.module.scss";
@@ -15,6 +14,8 @@ import {
 } from "../../actions/Actions";
 
 const NavbarComponent = () => {
+  const [showDropdown, setShowDropdown] = useState(false);
+  const dropdown = useRef(null);
   const login_status = useSelector((state) => state.login_status);
   const currentUser = useSelector((state) => state.current_user);
 
@@ -38,18 +39,35 @@ const NavbarComponent = () => {
     dispatch(setShowPropertiesModal(true));
   };
 
+  const closeOpenMenus = (e) => {
+    if (
+      dropdown.current &&
+      showDropdown &&
+      !dropdown.current.contains(e.target)
+    ) {
+      setShowDropdown(false);
+    }
+  };
+
+  document.addEventListener("mousedown", closeOpenMenus);
+
   const signIn = login_status ? (
-    <Dropdown className={styles.navButton} position="left" title={currentUser}>
-      <Dropdown.Item className={styles.subMenu} onClick={AdminPropertiesModal}>
-        Upload Properties
-      </Dropdown.Item>
-      <Dropdown.Item className={styles.subMenu}>
-        Previous Comments
-      </Dropdown.Item>
-      <Dropdown.Item className={styles.subMenu} onClick={onSignOut}>
-        Sign Out
-      </Dropdown.Item>
-    </Dropdown>
+    <div
+      className={styles.signInDropdown}
+      onClick={() =>
+        showDropdown ? setShowDropdown(false) : setShowDropdown(true)
+      }
+      ref={dropdown}
+    >
+      <span>{currentUser}</span>
+      {showDropdown && (
+        <ul className={styles.dropDown}>
+          <li onClick={AdminPropertiesModal}>Upload Properties</li>
+          <li>Previous Comments</li>
+          <li onClick={onSignOut}>Sign Out</li>
+        </ul>
+      )}
+    </div>
   ) : (
     <span className={styles.signIn} onClick={onSignIn}>
       Sign In
@@ -64,7 +82,7 @@ const NavbarComponent = () => {
         </a>
       </div>
       <div className={styles.rightNav}>
-        <DropDownComponent></DropDownComponent>
+        <DropDownComponent />
         <NavButtonComponent href="#about">About</NavButtonComponent>
         <NavButtonComponent href="#contact">Contact</NavButtonComponent>
         {signIn}

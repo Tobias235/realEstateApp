@@ -11,7 +11,6 @@
     border-bottom: 2px solid rgba(0, 0, 0, 0.1);
     color: black;
     position: fixed;
-    z-index: 1;
 
     .rightNav {
       display: flex;
@@ -51,34 +50,49 @@
   }
 }
 
-.navButton {
-  height: 100%;
-  width: 100%;
-  border-radius: 10px;
-  border: none;
-  background-color: transparent;
+.signInDropdown {
   font-weight: 800;
   font-size: 14px;
+  cursor: pointer;
+  height: 100%;
 
-  &:hover {
-    color: #e5a036;
-    transition: all 500ms ease;
-  }
-}
-
-.subMenu {
-  width: 86.5%;
-  border-bottom: 2px solid rgba(0, 0, 0, 0.2);
-  top: 0 !important;
-  color: black !important;
-
-  li {
-    border-bottom: 2px solid rgba(0, 0, 0, 0.2);
-    top: 0;
-    color: black;
+  span {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    &:hover {
+      color: #e5a036;
+      transition: all 500ms ease;
+    }
   }
 
-  :last-of-type {
-    border: none;
+  .dropDown {
+    width: 150px;
+    position: fixed;
+    list-style: none;
+    font-weight: 500;
+    font-size: 14px;
+    background-color: white;
+    box-shadow: 2px 6px 21px -2px rgba(0, 0, 0, 0.75);
+    top: 68px;
+    right: 3%;
+    padding: 0;
+    border-radius: 3px;
+
+    li {
+      padding: 10px;
+      text-align: center;
+      border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+
+      &:last-child {
+        border: 0;
+      }
+      &:hover {
+        background-color: #e5a036;
+        border-radius: 3px;
+        transition: all 500ms ease;
+      }
+    }
   }
 }
