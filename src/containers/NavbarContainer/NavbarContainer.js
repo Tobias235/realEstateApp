@@ -3,7 +3,6 @@ import { signOut } from "firebase/auth";
 import { auth } from "../../Firebase";
 import DropDownComponent from "../../components/NavBarComponent/DropDownComponent/DropDownComponent";
 import NavButtonComponent from "../../components/NavBarComponent/NavButtonComponent/NavButtonComponent";
-import styles from "./NavbarContainer.module.scss";
 import logo from "../../assets/images/roomrental.webp";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -12,6 +11,7 @@ import {
   setCurrentUser,
   setShowPropertiesModal,
 } from "../../actions/Actions";
+import styles from "./NavbarContainer.module.scss";
 
 const NavbarComponent = () => {
   const [showDropdown, setShowDropdown] = useState(false);
@@ -52,14 +52,14 @@ const NavbarComponent = () => {
   document.addEventListener("mousedown", closeOpenMenus);
 
   const signIn = login_status ? (
-    <div
-      className={styles.signInDropdown}
+    <ul
+      className={styles.signInDropdownContainer}
       onClick={() =>
         showDropdown ? setShowDropdown(false) : setShowDropdown(true)
       }
       ref={dropdown}
     >
-      <span>{currentUser}</span>
+      <li className={styles.signInDropdown}>{currentUser}</li>
       {showDropdown && (
         <ul className={styles.dropDown}>
           <li onClick={AdminPropertiesModal}>Upload Properties</li>
@@ -67,7 +67,7 @@ const NavbarComponent = () => {
           <li onClick={onSignOut}>Sign Out</li>
         </ul>
       )}
-    </div>
+    </ul>
   ) : (
     <span className={styles.signIn} onClick={onSignIn}>
       Sign In

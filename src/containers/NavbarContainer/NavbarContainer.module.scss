@@ -50,17 +50,18 @@
   }
 }
 
-.signInDropdown {
+.signInDropdownContainer {
+  height: 100%;
+  display: flex;
+  align-items: center;
   font-weight: 800;
   font-size: 14px;
   cursor: pointer;
-  height: 100%;
+  padding: 0;
+  list-style: none;
 
-  span {
-    display: flex;
-    align-items: center;
-    height: 100%;
-    &:hover {
+  &:hover {
+    .signInDropdown {
       color: #e5a036;
       transition: all 500ms ease;
     }
@@ -68,16 +69,16 @@
 
   .dropDown {
     width: 150px;
-    position: fixed;
-    list-style: none;
+    position: absolute;
     font-weight: 500;
     font-size: 14px;
     background-color: white;
     box-shadow: 2px 6px 21px -2px rgba(0, 0, 0, 0.75);
-    top: 68px;
+    top: 82px;
     right: 3%;
     padding: 0;
     border-radius: 3px;
+    list-style: none;
 
     li {
       padding: 10px;
