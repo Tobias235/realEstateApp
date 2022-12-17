@@ -4,7 +4,7 @@ import UploadForm from "./UploadForm/UploadForm";
 const UploadPropertiesModal = () => {
   return (
     <div className={styles.adminPropertiesModal}>
-      <h1>Add/Update Properties</h1>
+      <h1>Add Properties</h1>
       <UploadForm />
     </div>
   );
