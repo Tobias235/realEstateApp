@@ -1,11 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { storage } from "../../../Firebase";
 import { resizeFile } from "../../utils/ImageConverter";
 import Button from "../../UI/Button/Button";
 import styles from "./UploadForm.module.scss";
-import { setLoading, setUploadingStatus } from "../../../actions/Actions";
-import { useDispatch } from "react-redux";
+import {
+  setCurrentProperty,
+  setCurrentPropertyData,
+  setLoading,
+  setShowUploadPropertiesModal,
+  setUploadingStatus,
+} from "../../../actions/Actions";
+import { useDispatch, useSelector } from "react-redux";
 
 const initialState = {
   bedrooms: "",
@@ -14,12 +20,21 @@ const initialState = {
   price: "",
   location: "",
   description: "",
+  images: [],
 };
 
 const UploadForm = () => {
   const [images, setImages] = useState([]);
   const [property, setProperty] = useState(initialState);
+  const currentPropertyId = useSelector((state) => state.current_property);
+  const currentProperty = useSelector((state) => state.current_property_data);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (currentProperty) return setProperty(currentProperty);
+
+    setProperty(initialState);
+  }, [currentProperty]);
 
   const handleImageSelect = async (e) => {
     dispatch(setLoading(true));
@@ -39,32 +54,45 @@ const UploadForm = () => {
     }
   };
 
-  const handleUploadImages = (e) => {
+  const handleUploadProperty = async (e) => {
     e.preventDefault();
     dispatch(setLoading(true));
     dispatch(setUploadingStatus(`Uploading Property To Database`));
-    let urls = [];
     let propertyObj = {};
-    images.forEach((image) => {
+
+    if (images.length === 0) return uploadData(property);
+
+    const urls = [];
+    for (const image of images) {
       const storageRef = ref(storage, image.name);
-      uploadBytes(storageRef, image).then(() => {
-        getDownloadURL(storageRef).then((url) => {
-          urls.push(url);
-          if (images.length === urls.length) {
-            propertyObj = { ...property, images: [...urls] };
-            uploadData(propertyObj);
-          }
+      await uploadBytes(storageRef, image);
+      const url = await getDownloadURL(storageRef);
+      urls.push(url);
+    }
+
+    currentProperty?.images?.length > 0
+      ? (propertyObj = {
+          ...property,
+          images: [...currentProperty.images, ...urls],
+        })
+      : (propertyObj = {
+          ...property,
+          images: [...urls],
         });
-      });
-    });
+
+    uploadData(propertyObj);
   };
 
-  const uploadData = async (propertyObj) => {
+  const uploadData = async (property) => {
+    const updateProperty = currentProperty
+      ? `properties/${currentPropertyId}.json`
+      : `properties.json`;
+    const newOrUpdate = currentProperty ? "PUT" : "POST";
     const response = await fetch(
-      `${process.env.REACT_APP_FIREBASE_DATABASE_URL}properties.json`,
+      `${process.env.REACT_APP_FIREBASE_DATABASE_URL}${updateProperty}`,
       {
-        method: "POST",
-        body: JSON.stringify(propertyObj),
+        method: `${newOrUpdate}`,
+        body: JSON.stringify(property),
         header: {
           "Content-Type": "application/json",
         },
@@ -75,16 +103,23 @@ const UploadForm = () => {
       setProperty(initialState);
       setImages([]);
       dispatch(setLoading(false));
+      if (currentProperty) {
+        dispatch(setShowUploadPropertiesModal(false));
+        dispatch(setCurrentPropertyData(null));
+        dispatch(setCurrentProperty(null));
+      }
     }
   };
 
   const selectedImages =
-    images.length > 0 ? `${images.length} Images Selected` : "Choose Images";
+    images.length + property.images.length > 0
+      ? `${images.length + property.images.length} Images Selected`
+      : "Choose Images";
 
   return (
     <>
       {property && (
-        <form className={styles.inputContainer} onSubmit={handleUploadImages}>
+        <form className={styles.inputContainer} onSubmit={handleUploadProperty}>
           <label>Bedrooms:</label>
           <input
             type="number"
@@ -170,6 +205,7 @@ const UploadForm = () => {
             type="file"
             multiple
             accept="image/*"
+            files={property.images}
             className={styles.uploadFileInput}
             onChange={handleImageSelect}
           />
@@ -177,7 +213,7 @@ const UploadForm = () => {
             type="submit"
             text="Upload"
             className={styles.adminPropertiesButton}
-            onClick={handleUploadImages}
+            onClick={handleUploadProperty}
           />
         </form>
       )}
