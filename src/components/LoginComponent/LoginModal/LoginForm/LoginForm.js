@@ -6,6 +6,7 @@ import {
   setLoginStatus,
   setCurrentUser,
   setShowLoginModal,
+  setCurrentUserId,
 } from "../../../../actions/Actions";
 import { useDispatch } from "react-redux";
 import Button from "../../../UI/Button/Button";
@@ -28,6 +29,7 @@ const LoginForm = () => {
         loginEmail,
         loginPassword
       );
+      dispatch(setCurrentUserId(user.user.uid));
       dispatch(setCurrentUser(user.user.displayName));
       dispatch(setLoginStatus(true));
       dispatch(setShowLoginModal(false));
