@@ -9,7 +9,8 @@ import {
   setLoginStatus,
   setShowLoginModal,
   setCurrentUser,
-  setShowPropertiesModal,
+  setShowUploadPropertiesModal,
+  setCurrentUserId,
 } from "../../actions/Actions";
 import styles from "./NavbarContainer.module.scss";
 
@@ -26,6 +27,7 @@ const NavbarComponent = () => {
       signOut(auth);
       dispatch(setLoginStatus(false));
       dispatch(setCurrentUser(null));
+      dispatch(setCurrentUserId(null));
     } catch (error) {
       console.log(error.message);
     }
@@ -36,7 +38,7 @@ const NavbarComponent = () => {
   };
 
   const AdminPropertiesModal = () => {
-    dispatch(setShowPropertiesModal(true));
+    dispatch(setShowUploadPropertiesModal(true));
   };
 
   const closeOpenMenus = (e) => {

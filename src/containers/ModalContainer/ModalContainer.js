@@ -7,7 +7,7 @@ import {
   setShowDetails,
   setShowLoginModal,
   setShowMobileNavOptions,
-  setShowPropertiesModal,
+  setShowUploadPropertiesModal,
 } from "../../actions/Actions";
 import Backdrop from "../../components/UI/Backdrop/Backdrop";
 import Modal from "./../../components/UI/Modal/Modal";
@@ -21,8 +21,8 @@ const ModalContainer = () => {
   const [modal, setModal] = useState([]);
   const dispatch = useDispatch();
   const login_modal = useSelector((state) => state.login_modal);
-  const show_properties_modal = useSelector(
-    (state) => state.show_properties_modal
+  const show_upload_properties_modal = useSelector(
+    (state) => state.show_upload_properties_modal
   );
   const show_details = useSelector((state) => state.show_details);
   const loading = useSelector((state) => state.loading);
@@ -30,9 +30,9 @@ const ModalContainer = () => {
 
   useEffect(() => {
     let stateArray = [];
-    stateArray.push(login_modal, show_properties_modal, show_details);
+    stateArray.push(login_modal, show_upload_properties_modal, show_details);
     setModal(stateArray.some((val) => val === true));
-  }, [login_modal, show_properties_modal, show_details]);
+  }, [login_modal, show_upload_properties_modal, show_details]);
 
   const onClose = () => {
     if (loading) return;
@@ -40,7 +40,7 @@ const ModalContainer = () => {
     dispatch(setShowLoginModal(false));
     dispatch(setShowDetails(false));
     dispatch(setShowAddComment(false));
-    dispatch(setShowPropertiesModal(false));
+    dispatch(setShowUploadPropertiesModal(false));
     dispatch(setMobileMenu(false));
     dispatch(setShowMobileNavOptions(false));
   };
@@ -57,7 +57,7 @@ const ModalContainer = () => {
         <Modal>
           {login_modal && <LoginModal />}
           {show_details && <PropertiesModal />}
-          {show_properties_modal && <UploadPropertiesModal />}
+          {show_upload_properties_modal && <UploadPropertiesModal />}
         </Modal>
       )}
     </>
