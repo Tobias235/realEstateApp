@@ -10,7 +10,7 @@ const InitialState = {
   show_details: false,
   show_options: false,
   show_comment: false,
-  show_properties_modal: false,
+  show_upload_properties_modal: false,
   properties_update: false,
 };
 
@@ -34,6 +34,8 @@ const Reducer = (state = InitialState, action) => {
       return { ...state, login_status: action.payload };
     case "SET_CURRENT_USER":
       return { ...state, current_user: action.payload };
+    case "SET_CURRENT_USER_ID":
+      return { ...state, current_user_id: action.payload };
     case "SET_LOGIN_MODAL":
       return { ...state, login_modal: action.payload };
     case "SET_MOBILE_MENU":
@@ -44,8 +46,8 @@ const Reducer = (state = InitialState, action) => {
       return { ...state, show_options: action.payload };
     case "SET_SHOW_ADD_COMMENT":
       return { ...state, show_comment: action.payload };
-    case "SET_SHOW_PROPERTIES_MODAL":
-      return { ...state, show_properties_modal: action.payload };
+    case "SET_SHOW_UPLOAD_PROPERTIES_MODAL":
+      return { ...state, show_upload_properties_modal: action.payload };
 
     default:
       return state;

@@ -61,6 +61,13 @@ export const setCurrentUser = (current_user) => {
   };
 };
 
+export const setCurrentUserId = (current_user_id) => {
+  return {
+    type: "SET_CURRENT_USER_ID",
+    payload: current_user_id,
+  };
+};
+
 export const setShowLoginModal = (login_modal) => {
   return {
     type: "SET_LOGIN_MODAL",
@@ -96,9 +103,9 @@ export const setShowAddComment = (show_comment) => {
   };
 };
 
-export const setShowPropertiesModal = (show_properties_modal) => {
+export const setShowUploadPropertiesModal = (show_upload_properties_modal) => {
   return {
-    type: "SET_SHOW_PROPERTIES_MODAL",
-    payload: show_properties_modal,
+    type: "SET_SHOW_UPLOAD_PROPERTIES_MODAL",
+    payload: show_upload_properties_modal,
   };
 };
