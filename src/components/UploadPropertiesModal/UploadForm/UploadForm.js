@@ -5,9 +5,9 @@ import { resizeFile } from "../../utils/ImageConverter";
 import Button from "../../UI/Button/Button";
 import styles from "./UploadForm.module.scss";
 import {
-  setCurrentProperty,
-  setCurrentPropertyData,
   setLoading,
+  setPropertiesUpdated,
+  setShowDetails,
   setShowUploadPropertiesModal,
   setUploadingStatus,
 } from "../../../actions/Actions";
@@ -28,6 +28,7 @@ const UploadForm = () => {
   const [property, setProperty] = useState(initialState);
   const currentPropertyId = useSelector((state) => state.current_property);
   const currentProperty = useSelector((state) => state.current_property_data);
+  const propertiesUpdate = useSelector((state) => state.properties_update);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -104,9 +105,9 @@ const UploadForm = () => {
       setImages([]);
       dispatch(setLoading(false));
       if (currentProperty) {
+        dispatch(setPropertiesUpdated(!propertiesUpdate));
         dispatch(setShowUploadPropertiesModal(false));
-        dispatch(setCurrentPropertyData(null));
-        dispatch(setCurrentProperty(null));
+        dispatch(setShowDetails(true));
       }
     }
   };
