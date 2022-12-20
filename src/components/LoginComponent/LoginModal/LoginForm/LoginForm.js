@@ -77,6 +77,7 @@ const LoginForm = () => {
         type="email"
         placeholder="Enter Your email:"
         className={emailError ? styles.error : null}
+        autoComplete="off"
         onChange={(e) => {
           setLoginEmail(e.target.value);
         }}
@@ -87,6 +88,7 @@ const LoginForm = () => {
         type="password"
         placeholder="Enter Your Password:"
         className={passwordError ? styles.error : null}
+        autoComplete="off"
         onChange={(e) => {
           setLoginPassword(e.target.value);
         }}

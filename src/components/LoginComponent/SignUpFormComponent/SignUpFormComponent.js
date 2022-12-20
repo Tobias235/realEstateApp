@@ -36,6 +36,7 @@ const SignUpFormComponent = () => {
       <input
         type="text"
         placeholder="Enter Your Full Name:"
+        autoComplete="off"
         onChange={(e) => {
           setRegisterName(e.target.value);
         }}
@@ -44,6 +45,7 @@ const SignUpFormComponent = () => {
       <input
         type="email"
         placeholder="Enter Your email:"
+        autoComplete="off"
         onChange={(e) => {
           setRegisterEmail(e.target.value);
         }}
@@ -52,6 +54,7 @@ const SignUpFormComponent = () => {
       <input
         type="password"
         placeholder="Enter Your Password:"
+        autoComplete="off"
         onChange={(e) => {
           setRegisterPassword(e.target.value);
         }}
