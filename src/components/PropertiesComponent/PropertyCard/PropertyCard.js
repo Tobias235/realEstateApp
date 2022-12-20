@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   setCurrentProperty,
@@ -10,16 +11,22 @@ import styles from "./PropertyCard.module.scss";
 const PropertyCard = () => {
   const dispatch = useDispatch();
   const properties = useSelector((state) => state.properties);
+  const currentPropertyKey = useSelector((state) => state.current_property);
   useFetchProperties(
     `${process.env.REACT_APP_FIREBASE_DATABASE_URL}properties.json`
   );
 
+  useEffect(() => {
+    if (currentPropertyKey) {
+      const property = Object.entries(properties).filter(
+        (property) => property[0] === currentPropertyKey
+      );
+      dispatch(setCurrentPropertyData(property[0][1]));
+    }
+  }, [properties, currentPropertyKey, dispatch]);
+
   const handleShowDetails = (key) => {
-    const currentProperty = Object.entries(properties).filter(
-      (property) => property[0] === key
-    );
-    dispatch(setCurrentProperty(currentProperty[0][0]));
-    dispatch(setCurrentPropertyData(currentProperty[0][1]));
+    dispatch(setCurrentProperty(key));
     dispatch(setShowDetails(true));
   };
 
