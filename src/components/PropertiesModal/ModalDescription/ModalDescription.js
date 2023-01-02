@@ -12,7 +12,10 @@ const ModalDescription = () => {
   return (
     <div className={styles.modalDescription}>
       <p>{currentProperty[0][1].description}</p>
-      <span>Location: {currentProperty[0][1].location}</span>
+      <span className={styles.location}>
+        Location:{" "}
+        {currentProperty[0][1].city + ", " + currentProperty[0][1].state}
+      </span>
       <span>Bedrooms: {currentProperty[0][1].bedrooms}</span>
       <span>Bathrooms: {currentProperty[0][1].bathrooms}</span>
       <span>Size: {currentProperty[0][1].size} sqm</span>
