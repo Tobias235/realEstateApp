@@ -35,9 +35,11 @@ const PropertyCard = () => {
       {Object.entries(properties).map(([key, property]) => {
         return (
           <div className={styles.properties} key={key}>
-            <img src={property.images[0]} alt="Placeholder for properties" />
+            {property.images && (
+              <img src={property.images[0]} alt="Placeholder for properties" />
+            )}
             <div className={styles.location}>
-              <span>Location: {property.location}</span>
+              <span>Location: {property.city + ", " + property.state}</span>
             </div>
             <div className={styles.detailContainer}>
               <span>Bedroom: {property.bedrooms}</span>
