@@ -4,19 +4,32 @@
   width: 80%;
   margin: auto;
 
+  .propertyType {
+    width: 100%;
+    box-shadow: none;
+    border: 1px solid black;
+    border-radius: 3px;
+    margin: 5px 0;
+  }
+
   label {
     margin-bottom: 2px;
     font-size: 12px;
+    font-weight: 500;
   }
 
   input {
     margin-bottom: 10px;
     outline: none;
+    border: 1px solid black;
+    border-radius: 3px;
   }
   textarea {
     resize: none;
     margin-bottom: 10px;
     outline: none;
+    border: 1px solid black;
+    border-radius: 3px;
   }
 
   .uploadImage {

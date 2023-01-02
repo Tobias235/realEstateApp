@@ -12,8 +12,10 @@ import {
   setUploadingStatus,
 } from "../../../actions/Actions";
 import { useDispatch, useSelector } from "react-redux";
+import SelectMenu from "../../UI/SelectMenu/SelectMenu";
 
 const initialState = {
+  propertyType: "",
   bedrooms: "",
   bathrooms: "",
   size: "",
@@ -126,6 +128,23 @@ const UploadForm = () => {
     <>
       {property && (
         <form className={styles.inputContainer} onSubmit={handleUploadProperty}>
+          <label>Property Type:</label>
+          <SelectMenu
+            className={styles.propertyType}
+            onChange={(e) =>
+              setProperty({
+                ...property,
+                propertyType: e.target.value,
+              })
+            }
+          >
+            <option value="default" disabled>
+              Select Property Type
+            </option>
+            <option value="apartment">Apartment</option>
+            <option value="condominium">Condominium</option>
+            <option value="house">House</option>
+          </SelectMenu>
           <label>Bedrooms:</label>
           <input
             type="number"
