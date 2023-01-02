@@ -202,10 +202,11 @@ const UploadForm = () => {
             type="text"
             placeholder="City"
             value={property.city}
+            className={styles.capitalize}
             onChange={(e) =>
               setProperty({
                 ...property,
-                city: e.target.value,
+                city: e.target.value.toLowerCase(),
               })
             }
           />
@@ -214,10 +215,11 @@ const UploadForm = () => {
             type="text"
             placeholder="State"
             value={property.state}
+            className={styles.capitalize}
             onChange={(e) =>
               setProperty({
                 ...property,
-                state: e.target.value,
+                state: e.target.value.toLowerCase(),
               })
             }
           />
