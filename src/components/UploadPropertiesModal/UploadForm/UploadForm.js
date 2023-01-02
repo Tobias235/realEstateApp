@@ -18,7 +18,8 @@ const initialState = {
   bathrooms: "",
   size: "",
   price: "",
-  location: "",
+  city: "",
+  state: "",
   description: "",
   images: [],
 };
@@ -85,30 +86,34 @@ const UploadForm = () => {
   };
 
   const uploadData = async (property) => {
-    const updateProperty = currentProperty
-      ? `properties/${currentPropertyId}.json`
-      : `properties.json`;
-    const newOrUpdate = currentProperty ? "PUT" : "POST";
-    const response = await fetch(
-      `${process.env.REACT_APP_FIREBASE_DATABASE_URL}${updateProperty}`,
-      {
-        method: `${newOrUpdate}`,
-        body: JSON.stringify(property),
-        header: {
-          "Content-Type": "application/json",
-        },
+    try {
+      const updateProperty = currentProperty
+        ? `properties/${currentPropertyId}.json`
+        : `properties.json`;
+      const newOrUpdate = currentProperty ? "PUT" : "POST";
+      const response = await fetch(
+        `${process.env.REACT_APP_FIREBASE_DATABASE_URL}${updateProperty}`,
+        {
+          method: `${newOrUpdate}`,
+          body: JSON.stringify(property),
+          header: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const data = await response.json();
+      if (data) {
+        setProperty(initialState);
+        setImages([]);
+        dispatch(setLoading(false));
+        if (currentProperty) {
+          dispatch(setPropertiesUpdated(!propertiesUpdate));
+          dispatch(setShowUploadPropertiesModal(false));
+          dispatch(setShowDetails(true));
+        }
       }
-    );
-    const data = await response.json();
-    if (data) {
-      setProperty(initialState);
-      setImages([]);
-      dispatch(setLoading(false));
-      if (currentProperty) {
-        dispatch(setPropertiesUpdated(!propertiesUpdate));
-        dispatch(setShowUploadPropertiesModal(false));
-        dispatch(setShowDetails(true));
-      }
+    } catch (error) {
+      console.error(error);
     }
   };
 
@@ -173,15 +178,27 @@ const UploadForm = () => {
               })
             }
           />
-          <label>Location:</label>
+          <label>City:</label>
           <input
             type="text"
-            placeholder="Location"
-            value={property.location}
+            placeholder="City"
+            value={property.city}
             onChange={(e) =>
               setProperty({
                 ...property,
-                location: e.target.value,
+                city: e.target.value,
+              })
+            }
+          />
+          <label>State:</label>
+          <input
+            type="text"
+            placeholder="State"
+            value={property.state}
+            onChange={(e) =>
+              setProperty({
+                ...property,
+                state: e.target.value,
               })
             }
           />
