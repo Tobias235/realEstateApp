@@ -1,9 +1,16 @@
 import { useState, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setUpdateFilter } from "../../../actions/Actions";
 import styles from "./DropDownComponent.module.scss";
 
 const DropDownComponent = () => {
   const [showDropdown, setShowDropdown] = useState(false);
   const dropdown = useRef(null);
+  const cities = useSelector((state) => state.cities);
+  const propertyTypes = useSelector((state) => state.propertyTypes);
+  const updateFilter = useSelector((state) => state.update_filter);
+
+  const dispatch = useDispatch();
 
   const closeOpenMenus = (e) => {
     if (
@@ -16,6 +23,10 @@ const DropDownComponent = () => {
   };
 
   document.addEventListener("mousedown", closeOpenMenus);
+
+  const handleFilter = (e) => {
+    dispatch(setUpdateFilter(e.currentTarget.getAttribute("value")));
+  };
 
   return (
     <ul
@@ -31,18 +42,25 @@ const DropDownComponent = () => {
           <li className={styles.locationList}>
             Location
             <ul className={styles.secondList}>
-              <li>Metro Manila</li>
-              <li>Cebu</li>
-              <li>Siargao</li>
+              {cities?.map((city) => {
+                return (
+                  <li key={city} value={city} onClick={handleFilter}>
+                    {city}
+                  </li>
+                );
+              })}
             </ul>
           </li>
           <li className={styles.propertyList}>
             Property Type
             <ul className={styles.secondList}>
-              <li>Apartment</li>
-              <li>Condominum</li>
-              <li>House</li>
-              <li>Beach House</li>
+              {propertyTypes?.map((type) => {
+                return (
+                  <li key={type} value={type} onClick={handleFilter}>
+                    {type}
+                  </li>
+                );
+              })}
             </ul>
           </li>
         </ul>
