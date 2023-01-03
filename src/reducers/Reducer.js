@@ -12,6 +12,7 @@ const InitialState = {
   show_comment: false,
   show_upload_properties_modal: false,
   properties_update: false,
+  update_filter: false,
 };
 
 const Reducer = (state = InitialState, action) => {
@@ -48,7 +49,12 @@ const Reducer = (state = InitialState, action) => {
       return { ...state, show_comment: action.payload };
     case "SET_SHOW_UPLOAD_PROPERTIES_MODAL":
       return { ...state, show_upload_properties_modal: action.payload };
-
+    case "SET_CITIES":
+      return { ...state, cities: action.payload };
+    case "SET_PROPERTY_TYPES":
+      return { ...state, propertyTypes: action.payload };
+    case "SET_UPDATE_FILTER":
+      return { ...state, update_filter: action.payload };
     default:
       return state;
   }

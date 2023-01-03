@@ -109,3 +109,24 @@ export const setShowUploadPropertiesModal = (show_upload_properties_modal) => {
     payload: show_upload_properties_modal,
   };
 };
+
+export const setCities = (cities) => {
+  return {
+    type: "SET_CITIES",
+    payload: cities,
+  };
+};
+
+export const setPropertyTypes = (propertyTypes) => {
+  return {
+    type: "SET_PROPERTY_TYPES",
+    payload: propertyTypes,
+  };
+};
+
+export const setUpdateFilter = (update_filter) => {
+  return {
+    type: "SET_UPDATE_FILTER",
+    payload: update_filter,
+  };
+};
