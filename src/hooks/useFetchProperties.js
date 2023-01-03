@@ -1,6 +1,11 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setProperties, setError } from "../actions/Actions";
+import {
+  setProperties,
+  setError,
+  setCities,
+  setPropertyTypes,
+} from "../actions/Actions";
 
 const useFetchProperties = (url) => {
   const dispatch = useDispatch();
@@ -12,6 +17,22 @@ const useFetchProperties = (url) => {
         const response = await fetch(url);
         const json = await response.json();
         dispatch(setProperties(json));
+        dispatch(
+          setPropertyTypes(
+            Array.from(
+              new Set(
+                Object.values(json).map((property) => property.propertyType)
+              )
+            )
+          )
+        );
+        dispatch(
+          setCities(
+            Array.from(
+              new Set(Object.values(json).map((property) => property.city))
+            )
+          )
+        );
       } catch (error) {
         dispatch(setError(error.message));
       }
