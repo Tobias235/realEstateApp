@@ -4,7 +4,7 @@ const SelectMenu = (props) => {
   return (
     <select
       className={`${styles.selectMenu} ${props.className}`}
-      defaultValue="default"
+      value={props.value}
       onChange={props.onChange}
     >
       {props.children}
