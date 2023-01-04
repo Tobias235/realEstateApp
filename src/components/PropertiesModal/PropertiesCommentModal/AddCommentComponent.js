@@ -10,19 +10,27 @@ import {
 import Button from "../../UI/Button/Button";
 import CommentBox from "./CommentBox";
 import styles from "./AddCommentComponent.module.scss";
+import { CurrentDate } from "../../utils/CurrentDate";
 
 const AddCommentComponent = () => {
   const textRef = useRef("");
   const dispatch = useDispatch();
   const currentProperty = useSelector((state) => state.current_property);
   const currentUser = useSelector((state) => state.current_user);
+  const currentUserId = useSelector((state) => state.current_user_id);
 
   const handleAddComment = (e) => {
     e.preventDefault();
     dispatch(setLoading(true));
+
+    const { month, date, year } = CurrentDate();
+    const currentDate = month + "/" + date + "/" + year;
+
     const comment = {
       text: textRef.current.value,
       user: currentUser,
+      id: currentUserId,
+      date: currentDate,
     };
     textRef.current.value = "";
 
