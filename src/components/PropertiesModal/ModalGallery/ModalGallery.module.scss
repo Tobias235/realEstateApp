@@ -1,10 +1,10 @@
 .gallery {
   display: flex;
   justify-content: center;
-  width: 380px;
+  width: 95%;
   height: 200px;
   margin: 8px;
-  border: 2px solid rgba(231, 161, 48, 1);
+  outline: 2px solid rgba(231, 161, 48, 1);
   border-radius: 5px;
   box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
 
@@ -15,7 +15,7 @@
 
   .arrowContainer {
     position: absolute;
-    width: 370px;
+    width: 355px;
     margin: auto;
     .arrowInnerContainer {
       height: 200px;
