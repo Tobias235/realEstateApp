@@ -8,7 +8,7 @@ const ModalGallery = () => {
   const [currentPicture, setCurrentPicture] = useState(0);
 
   const currentProperty = useSelector((state) => state.current_property_data);
-  const propertyImagesLength = currentProperty.length - 1;
+  const propertyImagesLength = currentProperty.images.length - 1;
 
   const handleIncrement = (e) => {
     if (
