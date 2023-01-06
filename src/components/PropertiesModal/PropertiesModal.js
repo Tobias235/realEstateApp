@@ -7,8 +7,12 @@ import styles from "./PropertiesModal.module.scss";
 const PropertiesModal = () => {
   const addComments = useSelector((state) => state.show_comment);
 
+  const detailsReviewStyling = addComments
+    ? styles.addReview
+    : styles.propertiesModal;
+
   return (
-    <div className={styles.propertiesModal}>
+    <div className={detailsReviewStyling}>
       {!addComments && <LeftModal />}
       {!addComments && <RightModal />}
       {addComments && <AddCommentComponent />}

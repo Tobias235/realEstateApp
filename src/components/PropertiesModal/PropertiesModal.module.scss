@@ -1,6 +1,12 @@
 .propertiesModal {
   display: flex;
   flex-direction: row;
-  width: 800px;
+  width: 70vw;
   height: 500px;
+}
+
+.addReview {
+  width: 35vw;
+  height: auto;
+  padding: 10px;
 }
