@@ -5,16 +5,19 @@
   border-radius: 5px;
   border: 2px solid rgb(231, 161, 48);
   box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
 
   p {
     margin: 5px;
     font-size: 13px;
+    width: 90%;
+  }
 
-    span {
-      display: block;
-      text-align: end;
-      font-size: 12px;
-      margin: 3px;
-    }
+  .commentInformation {
+    font-size: 12px;
+    margin: 7px;
+    align-self: flex-end;
+    text-transform: capitalize;
   }
 }
