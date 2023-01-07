@@ -16,8 +16,8 @@ const LeftModal = () => {
       {login_status && (
         <Button
           type="button"
-          text="Add Comment"
-          className={styles.commentButton}
+          text="Add Review"
+          className={styles.reviewButton}
           onClick={() => dispatch(setShowAddComment(true))}
         />
       )}
