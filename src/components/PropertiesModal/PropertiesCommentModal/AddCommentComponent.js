@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   setCurrentPropertyData,
@@ -7,12 +7,12 @@ import {
   setPropertiesUpdated,
   setShowAddComment,
 } from "../../../actions/Actions";
-import Button from "../../UI/Button/Button";
-import CommentBox from "./CommentBox";
-import styles from "./AddCommentComponent.module.scss";
 import { CurrentDate } from "../../utils/CurrentDate";
+import Button from "../../UI/Button/Button";
+import styles from "./AddCommentComponent.module.scss";
 
 const AddCommentComponent = () => {
+  const [error, setError] = useState("");
   const textRef = useRef("");
   const dispatch = useDispatch();
   const currentProperty = useSelector((state) => state.current_property);
@@ -21,6 +21,11 @@ const AddCommentComponent = () => {
 
   const handleAddComment = (e) => {
     e.preventDefault();
+    if (textRef.current.value.length < 20) {
+      setError("Please enter a review with at least 20 characters");
+      return;
+    }
+
     dispatch(setLoading(true));
 
     const { month, date, year } = CurrentDate();
@@ -72,16 +77,17 @@ const AddCommentComponent = () => {
 
   return (
     <div className={styles.addComment}>
-      <h1>Add your comment</h1>
-      <CommentBox className={styles.comments} />
+      <h1>Add your Review</h1>
       <form className={styles.commentBox} onSubmit={handleAddComment}>
-        <label>Your comment:</label>
+        <label>Your Review:</label>
         <textarea
           type="text"
           rows="5"
-          placeholder="Write your comment..."
+          placeholder="Write your review..."
+          className={error && styles.errorBorder}
           ref={textRef}
         ></textarea>
+        <span className={styles.error}>{error}</span>
         <div className={styles.buttonContainer}>
           <Button
             type="button"
@@ -91,7 +97,7 @@ const AddCommentComponent = () => {
           />
           <Button
             type="Submit"
-            text="Add Comment"
+            text="Add Review"
             className={styles.commentButton}
             onClick={handleAddComment}
           />
