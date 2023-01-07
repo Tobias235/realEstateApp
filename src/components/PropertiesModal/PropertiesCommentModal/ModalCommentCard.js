@@ -12,10 +12,10 @@ const ModalCommentCard = () => {
         Object.entries(currentPropertyData.comments).map(([key, comment]) => {
           return (
             <div className={styles.commentCard} key={key}>
-              <p>
-                {comment.text}
-                <span>By: {comment.user}</span>
-              </p>
+              <p>{comment.text}</p>
+              <span className={styles.reviewUser}>
+                By: {comment.user} <br /> {comment.date}
+              </span>
             </div>
           );
         })}
