@@ -6,10 +6,12 @@ import {
   setError,
   setPropertiesUpdated,
   setShowAddComment,
+  setRating,
 } from "../../../../actions/Actions";
 import { CurrentDate } from "../../../utils/CurrentDate";
 import Button from "../../../UI/Button/Button";
 import styles from "./AddReviewComponent.module.scss";
+import StarRating from "../StarRating/StarRating";
 
 const AddReviewComponent = () => {
   const [errorText, setErrorText] = useState("");
@@ -18,6 +20,7 @@ const AddReviewComponent = () => {
   const currentProperty = useSelector((state) => state.current_property);
   const currentUser = useSelector((state) => state.current_user);
   const currentUserId = useSelector((state) => state.current_user_id);
+  const rating = useSelector((state) => state.rating);
 
   const handleAddReview = (e) => {
     e.preventDefault();
@@ -25,6 +28,7 @@ const AddReviewComponent = () => {
       setErrorText("Please enter a review with at least 20 characters");
       return;
     }
+    errorText && setErrorText("");
 
     dispatch(setLoading(true));
 
@@ -36,8 +40,10 @@ const AddReviewComponent = () => {
       user: currentUser,
       id: currentUserId,
       date: currentDate,
+      rating: rating,
     };
     textRef.current.value = "";
+    dispatch(setRating(null));
 
     handleUpdateData(review);
   };
@@ -78,11 +84,12 @@ const AddReviewComponent = () => {
   return (
     <div className={styles.addReview}>
       <h1>Add your Review</h1>
+      <StarRating />
       <form className={styles.reviewInput} onSubmit={handleAddReview}>
         <label>Your Review:</label>
         <textarea
           type="text"
-          rows="5"
+          rows="7"
           placeholder="Write your review..."
           className={errorText && styles.errorBorder}
           ref={textRef}
@@ -93,11 +100,14 @@ const AddReviewComponent = () => {
             type="button"
             text="Close"
             className={styles.reviewButton}
-            onClick={() => dispatch(setShowAddComment(false))}
+            onClick={() => {
+              dispatch(setShowAddComment(false));
+              dispatch(setRating(null));
+            }}
           />
           <Button
             type="Submit"
-            text="Add Review"
+            text="Submit"
             className={styles.reviewButton}
             onClick={handleAddReview}
           />
