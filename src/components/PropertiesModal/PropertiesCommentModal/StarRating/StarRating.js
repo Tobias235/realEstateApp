@@ -1,9 +1,13 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setRating } from "../../../../actions/Actions";
 import styles from "./StarRating.module.scss";
 
 const StarRating = () => {
-  const [rating, setRating] = useState(0);
   const [hover, setHover] = useState(0);
+  const rating = useSelector((state) => state.rating);
+
+  const dispatch = useDispatch();
 
   return (
     <div className={styles.starRating}>
@@ -13,9 +17,11 @@ const StarRating = () => {
           <button
             key={i}
             className={i <= (hover || rating) ? styles.active : styles.inactive}
-            onClick={() => setRating(i)}
+            onClick={() => {
+              dispatch(setRating(i));
+            }}
             onDoubleClick={() => {
-              setRating(0);
+              dispatch(setRating(0));
               setHover(0);
             }}
             onMouseEnter={() => setHover(i)}
