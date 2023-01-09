@@ -55,6 +55,8 @@ const Reducer = (state = InitialState, action) => {
       return { ...state, propertyTypes: action.payload };
     case "SET_UPDATE_FILTER":
       return { ...state, update_filter: action.payload };
+    case "SET_RATING":
+      return { ...state, rating: action.payload };
     default:
       return state;
   }

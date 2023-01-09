@@ -130,3 +130,10 @@ export const setUpdateFilter = (update_filter) => {
     payload: update_filter,
   };
 };
+
+export const setRating = (rating) => {
+  return {
+    type: "SET_RATING",
+    payload: rating,
+  };
+};
