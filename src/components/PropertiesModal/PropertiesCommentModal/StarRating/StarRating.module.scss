@@ -1,0 +1,19 @@
+.starRating {
+  width: 70%;
+  margin: 5px 0;
+
+  button {
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 25px;
+  }
+  .active {
+    color: rgb(231, 161, 48);
+  }
+  .inactive {
+    color: #ccc;
+  }
+}
