@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setShowAddComment } from "../../../actions/Actions";
 import ModalGallery from "../ModalGallery/ModalGallery";
 import Button from "../../UI/Button/Button";
-import CommentBox from "../PropertiesCommentModal/CommentBox";
+import ReviewContainer from "../PropertiesCommentModal/ReviewContainer";
 import styles from "./LeftModal.module.scss";
 
 const LeftModal = () => {
@@ -12,7 +12,7 @@ const LeftModal = () => {
   return (
     <div className={styles.leftModal}>
       <ModalGallery />
-      <CommentBox />
+      <ReviewContainer />
       {login_status && (
         <Button
           type="button"

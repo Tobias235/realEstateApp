@@ -1,6 +1,6 @@
 import LeftModal from "./LeftModal/LeftModal";
 import RightModal from "./RightModal/RightModal";
-import AddCommentComponent from "../PropertiesModal/PropertiesCommentModal/AddCommentComponent";
+import AddReviewComponent from "../PropertiesModal/PropertiesCommentModal/AddReviewComponent/AddReviewComponent";
 import { useSelector } from "react-redux";
 import styles from "./PropertiesModal.module.scss";
 
@@ -15,7 +15,7 @@ const PropertiesModal = () => {
     <div className={detailsReviewStyling}>
       {!addComments && <LeftModal />}
       {!addComments && <RightModal />}
-      {addComments && <AddCommentComponent />}
+      {addComments && <AddReviewComponent />}
     </div>
   );
 };

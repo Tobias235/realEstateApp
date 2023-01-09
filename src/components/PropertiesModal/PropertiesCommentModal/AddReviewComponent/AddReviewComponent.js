@@ -2,27 +2,27 @@ import { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   setCurrentPropertyData,
-  setError,
   setLoading,
+  setError,
   setPropertiesUpdated,
   setShowAddComment,
-} from "../../../actions/Actions";
-import { CurrentDate } from "../../utils/CurrentDate";
-import Button from "../../UI/Button/Button";
-import styles from "./AddCommentComponent.module.scss";
+} from "../../../../actions/Actions";
+import { CurrentDate } from "../../../utils/CurrentDate";
+import Button from "../../../UI/Button/Button";
+import styles from "./AddReviewComponent.module.scss";
 
-const AddCommentComponent = () => {
-  const [error, setError] = useState("");
+const AddReviewComponent = () => {
+  const [errorText, setErrorText] = useState("");
   const textRef = useRef("");
   const dispatch = useDispatch();
   const currentProperty = useSelector((state) => state.current_property);
   const currentUser = useSelector((state) => state.current_user);
   const currentUserId = useSelector((state) => state.current_user_id);
 
-  const handleAddComment = (e) => {
+  const handleAddReview = (e) => {
     e.preventDefault();
     if (textRef.current.value.length < 20) {
-      setError("Please enter a review with at least 20 characters");
+      setErrorText("Please enter a review with at least 20 characters");
       return;
     }
 
@@ -31,7 +31,7 @@ const AddCommentComponent = () => {
     const { month, date, year } = CurrentDate();
     const currentDate = month + "/" + date + "/" + year;
 
-    const comment = {
+    const review = {
       text: textRef.current.value,
       user: currentUser,
       id: currentUserId,
@@ -39,16 +39,16 @@ const AddCommentComponent = () => {
     };
     textRef.current.value = "";
 
-    handleUpdateData(comment);
+    handleUpdateData(review);
   };
 
-  const handleUpdateData = async (comment) => {
+  const handleUpdateData = async (review) => {
     try {
       await fetch(
         `${process.env.REACT_APP_FIREBASE_DATABASE_URL}properties/${currentProperty}/comments.json`,
         {
           method: "POST",
-          body: JSON.stringify(comment),
+          body: JSON.stringify(review),
           header: {
             "Content-Type": "application/json",
           },
@@ -76,30 +76,30 @@ const AddCommentComponent = () => {
   };
 
   return (
-    <div className={styles.addComment}>
+    <div className={styles.addReview}>
       <h1>Add your Review</h1>
-      <form className={styles.commentBox} onSubmit={handleAddComment}>
+      <form className={styles.reviewInput} onSubmit={handleAddReview}>
         <label>Your Review:</label>
         <textarea
           type="text"
           rows="5"
           placeholder="Write your review..."
-          className={error && styles.errorBorder}
+          className={errorText && styles.errorBorder}
           ref={textRef}
         ></textarea>
-        <span className={styles.error}>{error}</span>
+        {errorText && <span className={styles.error}>{errorText}</span>}
         <div className={styles.buttonContainer}>
           <Button
             type="button"
             text="Close"
-            className={styles.commentButton}
+            className={styles.reviewButton}
             onClick={() => dispatch(setShowAddComment(false))}
           />
           <Button
             type="Submit"
             text="Add Review"
-            className={styles.commentButton}
-            onClick={handleAddComment}
+            className={styles.reviewButton}
+            onClick={handleAddReview}
           />
         </div>
       </form>
@@ -107,4 +107,4 @@ const AddCommentComponent = () => {
   );
 };
 
-export default AddCommentComponent;
+export default AddReviewComponent;
