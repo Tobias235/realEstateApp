@@ -1,4 +1,4 @@
-import ModalCommentCard from "./ModalCommentCard";
+import ModalCommentCard from "../ModalCommentCard/ModalCommentCard";
 import styles from "./ReviewContainer.module.scss";
 
 const ReviewContainer = () => {
