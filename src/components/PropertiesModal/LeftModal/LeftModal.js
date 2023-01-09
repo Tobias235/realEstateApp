@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setShowAddComment } from "../../../actions/Actions";
 import ModalGallery from "../ModalGallery/ModalGallery";
 import Button from "../../UI/Button/Button";
-import ReviewContainer from "../PropertiesCommentModal/ReviewContainer";
+import ReviewContainer from "../PropertiesCommentModal/ReviewContainer/ReviewContainer";
 import styles from "./LeftModal.module.scss";
 
 const LeftModal = () => {
