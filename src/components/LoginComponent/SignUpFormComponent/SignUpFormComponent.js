@@ -32,28 +32,28 @@ const SignUpFormComponent = () => {
 
   return (
     <form onSubmit={handleUserRegister} className={styles.signUpForm}>
-      <label>Enter Your Full Name:</label>
+      <label>Name:</label>
       <input
         type="text"
-        placeholder="Enter Your Full Name:"
+        placeholder="Name:"
         autoComplete="off"
         onChange={(e) => {
           setRegisterName(e.target.value);
         }}
       />
-      <label>Enter Your email:</label>
+      <label>Email:</label>
       <input
         type="email"
-        placeholder="Enter Your email:"
+        placeholder="Email:"
         autoComplete="off"
         onChange={(e) => {
           setRegisterEmail(e.target.value);
         }}
       />
-      <label>Enter Your Password:</label>
+      <label>Password:</label>
       <input
         type="password"
-        placeholder="Enter Your Password:"
+        placeholder="Password:"
         autoComplete="off"
         onChange={(e) => {
           setRegisterPassword(e.target.value);

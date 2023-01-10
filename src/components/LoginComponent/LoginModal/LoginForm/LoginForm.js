@@ -72,10 +72,10 @@ const LoginForm = () => {
 
   return (
     <form onSubmit={handleUserLogin} className={styles.logInForm}>
-      <label className={mailText}>Enter Your email:</label>
+      <label className={mailText}>Email:</label>
       <input
         type="email"
-        placeholder="Enter Your email:"
+        placeholder="Email:"
         className={emailError ? styles.error : null}
         autoComplete="off"
         onChange={(e) => {
@@ -83,10 +83,10 @@ const LoginForm = () => {
         }}
       />
       {errorEmail}
-      <label className={passwordText}>Enter Your Password:</label>
+      <label className={passwordText}>Password:</label>
       <input
         type="password"
-        placeholder="Enter Your Password:"
+        placeholder="Password:"
         className={passwordError ? styles.error : null}
         autoComplete="off"
         onChange={(e) => {
