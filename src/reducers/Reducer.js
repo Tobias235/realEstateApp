@@ -43,7 +43,7 @@ const Reducer = (state = InitialState, action) => {
       return { ...state, mobile_menu: action.payload };
     case "SET_SHOW_DETAILS":
       return { ...state, show_details: action.payload };
-    case "SET_SHOW_MOBILE_NAV_OPTIONS":
+    case "SET_SHOW_MOBILE_USER_DROPDOWN":
       return { ...state, show_options: action.payload };
     case "SET_SHOW_ADD_COMMENT":
       return { ...state, show_comment: action.payload };
@@ -57,6 +57,8 @@ const Reducer = (state = InitialState, action) => {
       return { ...state, update_filter: action.payload };
     case "SET_RATING":
       return { ...state, rating: action.payload };
+    case "SET_MODAL_NAME":
+      return { ...state, modalName: action.payload };
     default:
       return state;
   }

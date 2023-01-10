@@ -89,9 +89,9 @@ export const setShowDetails = (show_details) => {
   };
 };
 
-export const setShowMobileNavOptions = (show_options) => {
+export const setShowMobileUserDropdown = (show_options) => {
   return {
-    type: "SET_SHOW_MOBILE_NAV_OPTIONS",
+    type: "SET_SHOW_MOBILE_USER_DROPDOWN",
     payload: show_options,
   };
 };
@@ -135,5 +135,12 @@ export const setRating = (rating) => {
   return {
     type: "SET_RATING",
     payload: rating,
+  };
+};
+
+export const setModalName = (modalName) => {
+  return {
+    type: "SET_MODAL_NAME",
+    payload: modalName,
   };
 };
