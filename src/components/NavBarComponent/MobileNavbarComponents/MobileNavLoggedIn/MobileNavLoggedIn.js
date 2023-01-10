@@ -4,7 +4,7 @@ import {
   setCurrentUser,
   setLoginStatus,
   setMobileMenu,
-  setShowMobileNavOptions,
+  setShowMobileUserDropdown,
 } from "../../../../actions/Actions";
 import { auth } from "../../../../Firebase";
 
@@ -19,7 +19,7 @@ const MobileNavLoggedIn = () => {
       console.log("logged out");
       dispatch(setLoginStatus(false));
       dispatch(setCurrentUser(null));
-      dispatch(setShowMobileNavOptions(false));
+      dispatch(setShowMobileUserDropdown(false));
       dispatch(setLoginStatus(false));
       dispatch(setMobileMenu(false));
     } catch (error) {
@@ -31,14 +31,8 @@ const MobileNavLoggedIn = () => {
   return (
     <ul className={styles.mobileNav}>
       <h1>PRESMIY</h1>
-      <li>
-        <a href="#">Previous Comments</a>
-      </li>
-      <li>
-        <a href="#" onClick={handleSignOut}>
-          Sign Out
-        </a>
-      </li>
+      <li>Previous Comments</li>
+      <li onClick={handleSignOut}>Sign Out</li>
     </ul>
   );
 };
