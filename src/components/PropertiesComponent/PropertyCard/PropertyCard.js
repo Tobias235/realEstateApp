@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   setCurrentProperty,
   setCurrentPropertyData,
+  setModalName,
   setShowDetails,
 } from "../../../actions/Actions";
 import useFetchProperties from "../../../hooks/useFetchProperties";
@@ -25,11 +26,6 @@ const PropertyCard = () => {
     }
   }, [properties, currentPropertyKey, dispatch]);
 
-  const handleShowDetails = (key) => {
-    dispatch(setCurrentProperty(key));
-    dispatch(setShowDetails(true));
-  };
-
   return (
     <>
       {Object.entries(properties).map(([key, property]) => {
@@ -47,7 +43,13 @@ const PropertyCard = () => {
               <span>Size: {property.size} SQM</span>
             </div>
             <div className={styles.buttonContainer}>
-              <button onClick={() => handleShowDetails(key)}>
+              <button
+                onClick={() => {
+                  dispatch(setCurrentProperty(key));
+                  dispatch(setShowDetails(true));
+                  dispatch(setModalName("details"));
+                }}
+              >
                 Show Details
               </button>
             </div>

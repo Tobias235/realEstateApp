@@ -1,17 +1,19 @@
 import { ReactComponent as BurgerIcon } from "../../../../assets/images/burgerIcon.svg";
 import { useDispatch } from "react-redux";
-import { setMobileMenu } from "../../../../actions/Actions";
+import { setMobileMenu, setModalName } from "../../../../actions/Actions";
 import styles from "./MobileNavbar.module.scss";
 
 const MobileNavbar = () => {
   const dispatch = useDispatch();
 
-  const handleShowMobileNav = () => {
-    dispatch(setMobileMenu(true));
-  };
   return (
-    <div className={styles.mobileNav} onClick={handleShowMobileNav}>
-      <BurgerIcon />
+    <div className={styles.mobileNav}>
+      <BurgerIcon
+        onClick={() => {
+          dispatch(setMobileMenu(true));
+          dispatch(setModalName("mobile"));
+        }}
+      />
     </div>
   );
 };

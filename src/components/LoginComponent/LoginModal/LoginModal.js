@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { setShowLoginModal } from "../../../actions/Actions";
+import { setModalName, setShowLoginModal } from "../../../actions/Actions";
 import LoginForm from "./LoginForm/LoginForm";
 import RegisterComponent from "../RegisterComponent/RegisterComponent";
 import SignUpFormComponent from "../SignUpFormComponent/SignUpFormComponent";
@@ -15,10 +15,6 @@ const LoginModal = () => {
     showRegister ? setShowRegister(false) : setShowRegister(true);
   };
 
-  const onCloseLoginModal = () => {
-    dispatch(setShowLoginModal(false));
-  };
-
   const showLoginForm = !showRegister ? <LoginForm /> : <SignUpFormComponent />;
 
   const formTitle = !showRegister
@@ -28,7 +24,12 @@ const LoginModal = () => {
   return (
     <div className={styles.loginModal}>
       <div className={styles.closingIcon}>
-        <CloseIcon onClick={onCloseLoginModal} />
+        <CloseIcon
+          onClick={() => {
+            dispatch(setShowLoginModal(false));
+            dispatch(setModalName(""));
+          }}
+        />
       </div>
       <h1>{formTitle}</h1>
       {showLoginForm}

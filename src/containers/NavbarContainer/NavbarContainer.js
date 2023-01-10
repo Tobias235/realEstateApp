@@ -11,6 +11,7 @@ import {
   setCurrentUser,
   setShowUploadPropertiesModal,
   setCurrentUserId,
+  setModalName,
 } from "../../actions/Actions";
 import styles from "./NavbarContainer.module.scss";
 
@@ -31,14 +32,6 @@ const NavbarComponent = () => {
     } catch (error) {
       console.log(error.message);
     }
-  };
-
-  const onSignIn = () => {
-    dispatch(setShowLoginModal(true));
-  };
-
-  const AdminPropertiesModal = () => {
-    dispatch(setShowUploadPropertiesModal(true));
   };
 
   const closeOpenMenus = (e) => {
@@ -64,14 +57,27 @@ const NavbarComponent = () => {
       <li className={styles.signInDropdown}>{currentUser}</li>
       {showDropdown && (
         <ul className={styles.dropDown}>
-          <li onClick={AdminPropertiesModal}>Upload Properties</li>
+          <li
+            onClick={() => {
+              dispatch(setShowUploadPropertiesModal(true));
+              dispatch(setModalName("upload"));
+            }}
+          >
+            Upload Properties
+          </li>
           <li>Previous Comments</li>
           <li onClick={onSignOut}>Sign Out</li>
         </ul>
       )}
     </ul>
   ) : (
-    <span className={styles.signIn} onClick={onSignIn}>
+    <span
+      className={styles.signIn}
+      onClick={() => {
+        dispatch(setShowLoginModal(true));
+        dispatch(setModalName("login"));
+      }}
+    >
       Sign In
     </span>
   );

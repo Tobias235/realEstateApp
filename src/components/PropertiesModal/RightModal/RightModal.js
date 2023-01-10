@@ -1,4 +1,7 @@
 import {
+  setCurrentProperty,
+  setCurrentPropertyData,
+  setModalName,
   setShowDetails,
   setShowUploadPropertiesModal,
 } from "../../../actions/Actions";
@@ -9,13 +12,7 @@ import styles from "./RightModal.module.scss";
 
 const RightModal = () => {
   const dispatch = useDispatch();
-
   const uid = useSelector((state) => state.current_user_id);
-
-  const handleEditProperty = () => {
-    dispatch(setShowDetails(false));
-    dispatch(setShowUploadPropertiesModal(true));
-  };
 
   const showEditButton =
     process.env.REACT_APP_ADMIN_USER === uid ? true : false;
@@ -28,14 +25,23 @@ const RightModal = () => {
         {showEditButton && (
           <Button
             type="button"
-            onClick={handleEditProperty}
+            onClick={() => {
+              dispatch(setShowDetails(false));
+              dispatch(setModalName("upload"));
+              dispatch(setShowUploadPropertiesModal(true));
+            }}
             text="Edit Property"
             className={styles.closeButton}
           />
         )}
         <Button
           type="button"
-          onClick={() => dispatch(setShowDetails(false))}
+          onClick={() => {
+            dispatch(setShowDetails(false));
+            dispatch(setCurrentPropertyData(null));
+            dispatch(setCurrentProperty(null));
+            dispatch(setModalName(""));
+          }}
           text="Close Details"
           className={styles.closeButton}
         />

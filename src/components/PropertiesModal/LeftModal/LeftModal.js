@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { setShowAddComment } from "../../../actions/Actions";
+import { setModalName, setShowAddComment } from "../../../actions/Actions";
 import ModalGallery from "../ModalGallery/ModalGallery";
 import Button from "../../UI/Button/Button";
 import ReviewContainer from "../PropertiesCommentModal/ReviewContainer/ReviewContainer";
@@ -18,7 +18,10 @@ const LeftModal = () => {
           type="button"
           text="Add Review"
           className={styles.reviewButton}
-          onClick={() => dispatch(setShowAddComment(true))}
+          onClick={() => {
+            dispatch(setShowAddComment(true));
+            dispatch(setModalName("comment"));
+          }}
         />
       )}
     </div>

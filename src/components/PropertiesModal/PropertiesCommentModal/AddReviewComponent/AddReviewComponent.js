@@ -7,6 +7,7 @@ import {
   setPropertiesUpdated,
   setShowAddComment,
   setRating,
+  setModalName,
 } from "../../../../actions/Actions";
 import { CurrentDate } from "../../../utils/CurrentDate";
 import Button from "../../../UI/Button/Button";
@@ -102,6 +103,7 @@ const AddReviewComponent = () => {
             className={styles.reviewButton}
             onClick={() => {
               dispatch(setShowAddComment(false));
+              dispatch(setModalName("details"));
               dispatch(setRating(null));
             }}
           />
