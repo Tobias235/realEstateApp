@@ -65,6 +65,9 @@ const AddReviewComponent = () => {
       dispatch(setError(error.message));
     } finally {
       dispatch(setLoading(false));
+      dispatch(setShowAddComment(false));
+      dispatch(setModalName("details"));
+      dispatch(setRating(null));
       fetchUpdatedData();
     }
   };
