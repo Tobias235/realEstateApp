@@ -6,6 +6,7 @@ import {
   setCurrentPropertyData,
   setMobileMenu,
   setModalName,
+  setRating,
   setShowAddComment,
   setShowDetails,
   setShowLoginModal,
@@ -63,6 +64,7 @@ const ModalContainer = () => {
         break;
       case "comment":
         dispatch(setShowAddComment(false));
+        dispatch(setRating(null));
         break;
       case "mobile":
         dispatch(setMobileMenu(false));
