@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   setCurrentProperty,
@@ -7,35 +6,38 @@ import {
   setShowDetails,
 } from "../../../actions/Actions";
 import useFetchProperties from "../../../hooks/useFetchProperties";
+import StarRating from "../../PropertiesModal/PropertiesCommentModal/StarRating/StarRating";
+import { RatingCalculator } from "../../utils/RatingCalculator";
 import styles from "./PropertyCard.module.scss";
 
 const PropertyCard = () => {
   const dispatch = useDispatch();
   const properties = useSelector((state) => state.properties);
-  const currentPropertyKey = useSelector((state) => state.current_property);
   useFetchProperties(
     `${process.env.REACT_APP_FIREBASE_DATABASE_URL}properties.json`
   );
 
-  useEffect(() => {
-    if (currentPropertyKey) {
-      const property = Object.entries(properties).filter(
-        (property) => property[0] === currentPropertyKey
-      );
-      dispatch(setCurrentPropertyData(property[0][1]));
-    }
-  }, [properties, currentPropertyKey, dispatch]);
-
   return (
     <>
       {Object.entries(properties).map(([key, property]) => {
+        const rating = RatingCalculator(property.comments);
+
         return (
           <div className={styles.properties} key={key}>
             {property.images && (
               <img src={property.images[0]} alt="Placeholder for properties" />
             )}
             <div className={styles.location}>
-              <span>Location: {property.city + ", " + property.state}</span>
+              <span className={styles.city}>
+                {property.city}, <br />
+                {property.state}
+              </span>
+              <StarRating
+                className={styles.starRating}
+                rating={rating}
+                isHoverable={false}
+                isClickable={false}
+              />
             </div>
             <div className={styles.detailContainer}>
               <span>Bedroom: {property.bedrooms}</span>
@@ -46,6 +48,7 @@ const PropertyCard = () => {
               <button
                 onClick={() => {
                   dispatch(setCurrentProperty(key));
+                  dispatch(setCurrentPropertyData(property));
                   dispatch(setShowDetails(true));
                   dispatch(setModalName("details"));
                 }}
