@@ -1,19 +1,27 @@
-.starRating {
-  width: 70%;
-  margin: 5px 0;
+.stars {
+  margin-top: 5px;
 
-  button {
-    padding: 0;
-    background-color: transparent;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    font-size: 25px;
-  }
   .active {
-    color: rgb(231, 161, 48);
+    fill: rgb(231, 161, 48);
   }
+
   .inactive {
-    color: #ccc;
+    fill: #ccc;
+  }
+
+  .coverContainer {
+    position: relative;
+    .cover {
+      background: rgb(250, 236, 214);
+      height: 25px;
+      mix-blend-mode: saturation;
+      position: absolute;
+      top: -25px;
+      right: 0;
+    }
+  }
+
+  svg {
+    width: 20px;
   }
 }
