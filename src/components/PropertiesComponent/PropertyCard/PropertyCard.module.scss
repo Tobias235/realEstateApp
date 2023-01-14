@@ -24,12 +24,18 @@
   .location {
     width: 100%;
     display: flex;
+    justify-content: space-between;
     align-items: flex-start !important;
     text-transform: capitalize;
-    span {
+    .city {
       font-size: 14px;
       font-weight: bold;
-      margin: 5px;
+      margin: 8px;
+    }
+
+    .starRating {
+      margin-right: 8px;
+      fill: rgb(231, 161, 48);
     }
   }
   .detailContainer {
@@ -39,7 +45,7 @@
 
     span {
       font-size: 13px;
-      margin-left: 5px;
+      margin-left: 8px;
     }
   }
 
