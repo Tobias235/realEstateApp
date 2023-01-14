@@ -88,7 +88,7 @@ const AddReviewComponent = () => {
   return (
     <div className={styles.addReview}>
       <h1>Add your Review</h1>
-      <StarRating />
+      <StarRating isHoverable={true} isClickable={true} />
       <form className={styles.reviewInput} onSubmit={handleAddReview}>
         <label>Your Review:</label>
         <textarea
