@@ -1,176 +1,94 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
 import emailjs from "@emailjs/browser";
 
 import styles from "./ContactFormComponent.module.scss";
+import useForm from "../../../hooks/useForm";
+import { contactValidation } from "../../utils/ValidationRules";
+import Button from "../../UI/Button/Button";
 
 const ContactFormComponent = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [subject, setSubject] = useState("");
-  const [message, setMessage] = useState("");
-
-  const [nameError, setNameError] = useState(false);
-  const [emailError, setEmailError] = useState(false);
-  const [subjectError, setSubjectError] = useState(false);
-  const [messageError, setMessageError] = useState(false);
-  const [disabledButton, setDisabledButton] = useState(true);
-
   const form = useRef();
   const to_name = "PRESMIY";
+  const initialValues = { name: "", email: "", subject: "", message: "" };
+  const { formData, handleChange, handleSubmit, errors } = useForm(
+    initialValues,
+    contactValidation,
+    sendEmail
+  );
+  const { name, email, subject, message } = formData;
+  function sendEmail() {
+    console.log("test");
+    if (form.current && handleSubmit) {
+      console.log("test2");
 
-  const checkNameHandler = (e) => {
-    if (e.target.value.length < 5) {
-      setNameError(true);
-    } else {
-      setNameError(false);
+      emailjs.sendForm(
+        "service_c414x4w",
+        "template_db8af1h",
+        form.current,
+        "user_9ib4kqWUGVsJ6gQ1eBR1k",
+        to_name
+      );
     }
-    setName(e.target.value);
-  };
-
-  const checkEmailHandler = (e) => {
-    const emailRegex = /\S+@\S+\.\S+/;
-    if (emailRegex.test(e.target.value)) {
-      setEmailError(false);
-    } else {
-      setEmailError(true);
-    }
-    setEmail(e.target.value);
-  };
-
-  const checkSubjectHandler = (e) => {
-    if (e.target.value === "") {
-      setSubjectError(true);
-    } else {
-      setSubjectError(false);
-    }
-    setSubject(e.target.value);
-  };
-
-  const checkMessageHandler = (e) => {
-    if (e.target.value.length < 19) {
-      setMessageError(true);
-    } else {
-      setMessageError(false);
-    }
-    setMessage(e.target.value);
-  };
-
-  const sendEmail = (e) => {
-    e.preventDefault();
-    emailjs.sendForm(
-      "service_c414x4w",
-      "template_db8af1h",
-      form.current,
-      "user_9ib4kqWUGVsJ6gQ1eBR1k",
-      to_name
-    );
-    setName("");
-    setEmail("");
-    setSubject("");
-    setMessage("");
-  };
-
-  useEffect(() => {
-    if (
-      nameError ||
-      emailError ||
-      subjectError ||
-      messageError ||
-      name === "" ||
-      email === "" ||
-      subject === "" ||
-      message === ""
-    ) {
-      setDisabledButton(true);
-      return;
-    }
-    setDisabledButton(false);
-  }, [
-    name,
-    email,
-    subject,
-    message,
-    nameError,
-    emailError,
-    subjectError,
-    messageError,
-  ]);
+  }
 
   return (
-    <form ref={form} onSubmit={sendEmail} className={styles.form}>
-      <label>Enter Your Full Name</label>
+    <form ref={form} onSubmit={handleSubmit} className={styles.form}>
+      <label>Name:</label>
       <input
         type="text"
         id="name"
-        placeholder="Full Name"
+        placeholder="Name"
         name="from_name"
         value={name}
-        className={nameError ? styles.error : null}
-        onChange={checkNameHandler}
+        className={errors.name && styles.error}
+        onChange={(e) => handleChange(e)}
       />
-
-      {nameError && (
-        <span className={styles.errorText}>
-          Please enter your full name (first and last name).
-        </span>
-      )}
-
-      <label>Enter Your E-Mail</label>
+      {errors.name && <span className={styles.errorText}>{errors.name}</span>}
+      <label>E-Mail:</label>
       <input
         type="email"
-        placeholder="E-Mail Address"
+        placeholder="E-Mail"
         name="reply_to"
         id="email"
         value={email}
-        className={emailError ? styles.error : null}
-        onChange={checkEmailHandler}
+        className={errors.email && styles.error}
+        onChange={(e) => handleChange(e)}
       />
-      {emailError && (
-        <span className={styles.errorText}>
-          Please enter a valid e-mail address.
-        </span>
-      )}
-
-      <label>Subject</label>
+      {errors.email && <span className={styles.errorText}>{errors.email}</span>}
+      <label>Subject:</label>
       <input
         type="text"
         id="subject"
         placeholder="Subject"
-        name="email_subject"
+        name="subject"
         value={subject}
-        className={subjectError ? styles.error : null}
-        onChange={checkSubjectHandler}
+        className={errors.subject && styles.error}
+        onChange={(e) => handleChange(e)}
       />
-
-      {subjectError && (
-        <span className={styles.errorText}>Please enter a subject.</span>
+      {errors.subject && (
+        <span className={styles.errorText}>{errors.subject}</span>
       )}
-
-      <label>Enter Your Message</label>
+      <label>Message:</label>
       <textarea
-        row="10"
-        placeholder="Enter Your Message"
-        name="message"
         id="message"
+        placeholder="Message"
+        name="message"
         value={message}
-        className={messageError ? styles.error : null}
-        onChange={checkMessageHandler}
-      ></textarea>
-
-      {messageError && (
-        <span className={styles.errorText}>
-          Please enter a message of atleast 20 characters.
-        </span>
+        className={errors.message && styles.error}
+        onChange={(e) => handleChange(e)}
+      />
+      {errors.message && (
+        <span className={styles.errorText}>{errors.message}</span>
       )}
-
-      <button
-        className={disabledButton ? styles.disabled : styles.active}
-        disabled={disabledButton}
+      <Button
+        className={styles.active}
         type="submit"
         value="send"
+        text="Send"
+        onSubmit={handleSubmit}
       >
         Send
-      </button>
+      </Button>
     </form>
   );
 };
