@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   setCurrentProperty,
   setCurrentPropertyData,
+  setError,
   setMobileMenu,
   setModalName,
   setRating,
@@ -21,6 +22,7 @@ import UploadPropertiesModal from "../../components/UploadPropertiesModal/Upload
 import Loader from "../../components/UI/Loader/Loader";
 import styles from "./ModalContainer.module.scss";
 import MobileNavContainer from "../NavbarContainer/MobileNavContainer";
+import ErrorModal from "../../components/UI/ErrorModal/ErrorModal";
 
 const ModalContainer = () => {
   const [modal, setModal] = useState([]);
@@ -35,6 +37,7 @@ const ModalContainer = () => {
   const upload_status = useSelector((state) => state.uploading_status);
   const mobile_menu = useSelector((state) => state.mobile_menu);
   const modalName = useSelector((state) => state.modalName);
+  const error = useSelector((state) => state.error);
 
   useEffect(() => {
     let stateArray = [];
@@ -95,6 +98,8 @@ const ModalContainer = () => {
           {show_upload_properties_modal && <UploadPropertiesModal />}
         </Modal>
       )}
+
+      {error && <ErrorModal onClick={() => dispatch(setError(null))} />}
     </>
   );
 };
