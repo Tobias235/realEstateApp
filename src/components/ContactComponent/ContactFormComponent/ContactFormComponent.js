@@ -17,10 +17,7 @@ const ContactFormComponent = () => {
   );
   const { name, email, subject, message } = formData;
   function sendEmail() {
-    console.log("test");
     if (form.current && handleSubmit) {
-      console.log("test2");
-
       emailjs.sendForm(
         "service_c414x4w",
         "template_db8af1h",
