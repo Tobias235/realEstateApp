@@ -9,14 +9,14 @@ import Button from "../../UI/Button/Button";
 const ContactFormComponent = () => {
   const form = useRef();
   const to_name = "PRESMIY";
-  const initialValues = { name: "", email: "", subject: "", message: "" };
-  const { formData, handleChange, handleSubmit, errors } = useForm(
-    initialValues,
-    contactValidation,
-    sendEmail
-  );
-  const { name, email, subject, message } = formData;
-  function sendEmail() {
+  const initialValues = {
+    from_name: "",
+    reply_to: "",
+    subject: "",
+    message: "",
+  };
+
+  const sendEmail = () => {
     if (form.current && handleSubmit) {
       emailjs.sendForm(
         "service_c414x4w",
@@ -26,17 +26,23 @@ const ContactFormComponent = () => {
         to_name
       );
     }
-  }
+  };
+
+  const { formData, handleChange, handleSubmit, errors } = useForm(
+    initialValues,
+    contactValidation,
+    sendEmail
+  );
+  const { from_name, reply_to, subject, message } = formData;
 
   return (
     <form ref={form} onSubmit={handleSubmit} className={styles.form}>
       <label>Name:</label>
       <input
         type="text"
-        id="name"
         placeholder="Name"
         name="from_name"
-        value={name}
+        value={from_name}
         className={errors.name && styles.error}
         onChange={(e) => handleChange(e)}
       />
@@ -46,8 +52,7 @@ const ContactFormComponent = () => {
         type="email"
         placeholder="E-Mail"
         name="reply_to"
-        id="email"
-        value={email}
+        value={reply_to}
         className={errors.email && styles.error}
         onChange={(e) => handleChange(e)}
       />
@@ -55,7 +60,6 @@ const ContactFormComponent = () => {
       <label>Subject:</label>
       <input
         type="text"
-        id="subject"
         placeholder="Subject"
         name="subject"
         value={subject}
@@ -67,7 +71,6 @@ const ContactFormComponent = () => {
       )}
       <label>Message:</label>
       <textarea
-        id="message"
         placeholder="Message"
         name="message"
         value={message}
