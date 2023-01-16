@@ -1,100 +1,73 @@
-import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import useForm from "../../../../hooks/useForm";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../../../Firebase";
-
 import {
-  setLoginStatus,
   setCurrentUser,
+  setError,
   setShowLoginModal,
-  setCurrentUserId,
 } from "../../../../actions/Actions";
-import { useDispatch } from "react-redux";
+import { loginValidation } from "../../../utils/ValidationRules";
 import Button from "../../../UI/Button/Button";
 import styles from "./LoginForm.module.scss";
 
 const LoginForm = () => {
-  const [loginEmail, setLoginEmail] = useState("");
-  const [loginPassword, setLoginPassword] = useState("");
-  const [currentErrorMessage, setCurrentErrorMessage] = useState(null);
-  const [emailError, setEmailError] = useState(false);
-  const [passwordError, setPasswordError] = useState(false);
-
   const dispatch = useDispatch();
 
-  const handleUserLogin = async (e) => {
-    e.preventDefault();
+  const handleUserLogin = async (formData) => {
     try {
       const user = await signInWithEmailAndPassword(
         auth,
-        loginEmail,
-        loginPassword
+        formData.email,
+        formData.password
       );
-      dispatch(setCurrentUserId(user.user.uid));
-      dispatch(setCurrentUser(user.user.displayName));
-      dispatch(setLoginStatus(true));
+      dispatch(setCurrentUser(user.user.displayName, user.user.uid));
       dispatch(setShowLoginModal(false));
     } catch (error) {
-      setCurrentErrorMessage(error);
+      dispatch(setError(error.message));
     }
   };
 
-  useEffect(() => {
-    if (currentErrorMessage === null) {
-      return;
-    }
-    const error = currentErrorMessage
-      .toString()
-      .split("/")[1]
-      .replace(/[^a-zA-Z0-9 ]/g, " ")
-      .trim();
-    setEmailError(
-      error === "invalid email" ||
-        error === "user not found" ||
-        error === "internal error"
-        ? error
-        : null
-    );
-    setPasswordError(
-      error === "wrong password" || error === "internal error" ? error : null
-    );
-  }, [currentErrorMessage]);
-
-  const passwordText = passwordError ? styles.errorText : null;
-  const mailText = emailError ? styles.errorText : null;
-
-  const errorEmail = emailError && (
-    <span className={mailText}>{emailError}</span>
+  const { formData, errors, handleChange, handleSubmit } = useForm(
+    { email: "", password: "" },
+    loginValidation,
+    handleUserLogin
   );
 
-  const errorPassword = passwordError && (
-    <span className={passwordText}>{passwordError}</span>
-  );
+  const { email, password } = formData;
 
   return (
-    <form onSubmit={handleUserLogin} className={styles.logInForm}>
-      <label className={mailText}>Email:</label>
+    <form className={styles.logInForm} onSubmit={handleSubmit}>
+      <label>Email:</label>
       <input
         type="email"
         placeholder="Email:"
-        className={emailError ? styles.error : null}
+        className={errors.email ? styles.error : null}
+        value={email}
+        name="email"
         autoComplete="off"
-        onChange={(e) => {
-          setLoginEmail(e.target.value);
-        }}
+        onChange={(e) => handleChange(e)}
       />
-      {errorEmail}
-      <label className={passwordText}>Password:</label>
+      {errors.email && <span className={styles.errorText}>{errors.email}</span>}
+      <label>Password:</label>
       <input
         type="password"
         placeholder="Password:"
-        className={passwordError ? styles.error : null}
+        className={errors.password ? styles.error : null}
+        value={password}
+        name="password"
         autoComplete="off"
-        onChange={(e) => {
-          setLoginPassword(e.target.value);
-        }}
+        onChange={(e) => handleChange(e)}
       />
-      {errorPassword}
-      <Button type="submit" text="Sign In" className={styles.signInButton} />
+      {errors.password && (
+        <span className={styles.errorText}>{errors.password}</span>
+      )}
+      <Button
+        type="submit"
+        text="Sign In"
+        className={styles.signInButton}
+        onSubmit={handleSubmit}
+      />
     </form>
   );
 };
