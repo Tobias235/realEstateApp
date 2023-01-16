@@ -47,24 +47,13 @@ export const setUploadingStatus = (status) => {
   };
 };
 
-export const setLoginStatus = (login_status) => {
-  return {
-    type: "SET_LOGIN_STATUS",
-    payload: login_status,
-  };
-};
-
-export const setCurrentUser = (current_user) => {
+export const setCurrentUser = (name, id) => {
   return {
     type: "SET_CURRENT_USER",
-    payload: current_user,
-  };
-};
-
-export const setCurrentUserId = (current_user_id) => {
-  return {
-    type: "SET_CURRENT_USER_ID",
-    payload: current_user_id,
+    payload: {
+      name: name,
+      id: id,
+    },
   };
 };
 
