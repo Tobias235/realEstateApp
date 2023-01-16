@@ -6,11 +6,9 @@ import NavButtonComponent from "../../components/NavBarComponent/NavButtonCompon
 import logo from "../../assets/images/roomrental.webp";
 import { useSelector, useDispatch } from "react-redux";
 import {
-  setLoginStatus,
   setShowLoginModal,
   setCurrentUser,
   setShowUploadPropertiesModal,
-  setCurrentUserId,
   setModalName,
 } from "../../actions/Actions";
 import styles from "./NavbarContainer.module.scss";
@@ -18,17 +16,14 @@ import styles from "./NavbarContainer.module.scss";
 const NavbarComponent = () => {
   const [showDropdown, setShowDropdown] = useState(false);
   const dropdown = useRef(null);
-  const login_status = useSelector((state) => state.login_status);
-  const currentUser = useSelector((state) => state.current_user);
+  const name = useSelector((state) => state.name);
 
   const dispatch = useDispatch();
 
   const onSignOut = () => {
     try {
       signOut(auth);
-      dispatch(setLoginStatus(false));
-      dispatch(setCurrentUser(null));
-      dispatch(setCurrentUserId(null));
+      dispatch(setCurrentUser(null, null));
     } catch (error) {
       console.log(error.message);
     }
@@ -46,7 +41,7 @@ const NavbarComponent = () => {
 
   document.addEventListener("mousedown", closeOpenMenus);
 
-  const signIn = login_status ? (
+  const signIn = name ? (
     <ul
       className={styles.signInDropdownContainer}
       onClick={() =>
@@ -54,7 +49,7 @@ const NavbarComponent = () => {
       }
       ref={dropdown}
     >
-      <li className={styles.signInDropdown}>{currentUser}</li>
+      <li className={styles.signInDropdown}>{name}</li>
       {showDropdown && (
         <ul className={styles.dropDown}>
           <li

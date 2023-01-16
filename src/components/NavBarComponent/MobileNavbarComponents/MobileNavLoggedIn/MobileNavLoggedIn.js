@@ -2,7 +2,6 @@ import { signOut } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import {
   setCurrentUser,
-  setLoginStatus,
   setMobileMenu,
   setShowMobileUserDropdown,
 } from "../../../../actions/Actions";
@@ -17,10 +16,8 @@ const MobileNavLoggedIn = () => {
     try {
       signOut(auth);
       console.log("logged out");
-      dispatch(setLoginStatus(false));
-      dispatch(setCurrentUser(null));
+      dispatch(setCurrentUser(null, null));
       dispatch(setShowMobileUserDropdown(false));
-      dispatch(setLoginStatus(false));
       dispatch(setMobileMenu(false));
     } catch (error) {
       console.log("error");
