@@ -5,9 +5,9 @@ const useForm = (initialValues, validationRules, callback) => {
   const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
-    console.log(e.target.name);
-    const { id, value } = e.target;
-    setFormData({ ...formData, [id]: value });
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+    if (errors[name]) setErrors({ ...errors, [name]: null });
   };
 
   const validate = () => {
@@ -20,13 +20,14 @@ const useForm = (initialValues, validationRules, callback) => {
       }
     );
     setErrors(newErrors);
+    return newErrors;
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    validate();
-    if (!Object.keys(errors).length) {
-      callback(formData);
+    const validationErrors = validate();
+    if (!Object.keys(validationErrors).length) {
+      callback(formData, setFormData(initialValues));
     }
   };
 
