@@ -6,7 +6,9 @@ const Modal = (props) => {
   return (
     <>
       {ReactDOM.createPortal(
-        <div className={styles.modal}>{props.children}</div>,
+        <div className={`${styles.modal} ${props.className}`}>
+          {props.children}
+        </div>,
         portalElement
       )}
     </>
