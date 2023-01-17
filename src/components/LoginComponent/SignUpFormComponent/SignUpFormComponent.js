@@ -1,65 +1,96 @@
-import { useState } from "react";
+import useForm from "../../../hooks/useForm";
+import { signupValidation } from "../../utils/ValidationRules";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../../../Firebase";
-import { setShowLoginModal } from "../../../actions/Actions";
+import { setError, setShowLoginModal } from "../../../actions/Actions";
 import { useDispatch } from "react-redux";
 import styles from "./SignUpFormComponent.module.scss";
 import Button from "../../UI/Button/Button";
+import ErrorMessages from "../../utils/ErrorMessages";
 
 const SignUpFormComponent = () => {
-  const [registerEmail, setRegisterEmail] = useState("");
-  const [registerPassword, setRegisterPassword] = useState("");
-  const [registerName, setRegisterName] = useState("");
   const dispatch = useDispatch();
 
-  const handleUserRegister = async (e) => {
-    e.preventDefault();
+  const handleUserRegister = async () => {
     try {
       const user = await createUserWithEmailAndPassword(
         auth,
-        registerEmail,
-        registerPassword
+        formData.email,
+        formData.password
       );
       updateProfile(auth.currentUser, {
-        displayName: registerName,
+        displayName: formData.name,
       });
       console.log(user);
       dispatch(setShowLoginModal(false));
     } catch (error) {
-      console.log(error.message);
+      let errorMessage = ErrorMessages[error.code] || ErrorMessages.default;
+      dispatch(setError(errorMessage));
     }
   };
 
+  const { formData, errors, handleChange, handleSubmit } = useForm(
+    { name: "", email: "", password: "" },
+    signupValidation,
+    handleUserRegister
+  );
+
+  console.log(errors);
+
+  const { name, email, password } = formData;
+
   return (
-    <form onSubmit={handleUserRegister} className={styles.signUpForm}>
+    <form onSubmit={handleSubmit} className={styles.signUpForm}>
       <label>Name:</label>
       <input
         type="text"
         placeholder="Name:"
+        name="name"
         autoComplete="off"
+        value={name}
+        className={errors.name ? styles.error : null}
         onChange={(e) => {
-          setRegisterName(e.target.value);
+          handleChange(e);
         }}
       />
+      {errors.name && <span className={styles.errorText}>{errors.name}</span>}
+
       <label>Email:</label>
       <input
         type="email"
         placeholder="Email:"
+        name="email"
         autoComplete="off"
+        value={email}
+        className={errors.email ? styles.error : null}
         onChange={(e) => {
-          setRegisterEmail(e.target.value);
+          handleChange(e);
         }}
       />
+      {errors.email && <span className={styles.errorText}>{errors.email}</span>}
+
       <label>Password:</label>
       <input
         type="password"
         placeholder="Password:"
         autoComplete="off"
+        name="password"
+        value={password}
+        className={errors.password ? styles.error : null}
         onChange={(e) => {
-          setRegisterPassword(e.target.value);
+          handleChange(e);
         }}
       />
-      <Button type="submit" className={styles.registerButton} text="Register" />
+      {errors.password && (
+        <span className={styles.errorText}>{errors.password}</span>
+      )}
+
+      <Button
+        type="submit"
+        className={styles.registerButton}
+        text="Register"
+        onSubmit={handleSubmit}
+      />
     </form>
   );
 };
