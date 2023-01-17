@@ -30,22 +30,10 @@
     .errorBorder {
       border: 1px solid red;
     }
-
-    .error {
-      font-size: 10px;
-      color: red;
-      text-transform: capitalize;
-    }
   }
-
-  .buttonContainer {
-    display: flex;
-    justify-content: center;
-
-    .reviewButton {
-      width: 120px;
-      height: 40px;
-      margin: 15px;
-    }
+  .error {
+    font-size: 10px;
+    color: red;
+    text-transform: capitalize;
   }
 }
