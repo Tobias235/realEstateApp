@@ -33,3 +33,11 @@ export const contactValidation = {
       ? "Please enter a message with at least 19 characters."
       : undefined,
 };
+
+export const addReviewValidation = {
+  rating: (value) => (!value ? "Please select a rating." : undefined),
+  review: (value) =>
+    value.length < 19
+      ? "Please enter a review with at least 20 characters."
+      : undefined,
+};
