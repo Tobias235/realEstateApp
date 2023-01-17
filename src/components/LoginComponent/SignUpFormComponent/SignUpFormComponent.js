@@ -4,9 +4,9 @@ import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../../../Firebase";
 import { setError, setShowLoginModal } from "../../../actions/Actions";
 import { useDispatch } from "react-redux";
-import styles from "./SignUpFormComponent.module.scss";
 import Button from "../../UI/Button/Button";
 import ErrorMessages from "../../utils/ErrorMessages";
+import styles from "./SignUpFormComponent.module.scss";
 
 const SignUpFormComponent = () => {
   const dispatch = useDispatch();
@@ -34,8 +34,6 @@ const SignUpFormComponent = () => {
     signupValidation,
     handleUserRegister
   );
-
-  console.log(errors);
 
   const { name, email, password } = formData;
 

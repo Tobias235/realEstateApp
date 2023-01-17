@@ -7,13 +7,13 @@ import styles from "./LeftModal.module.scss";
 
 const LeftModal = () => {
   const dispatch = useDispatch();
-  const login_status = useSelector((state) => state.login_status);
+  const name = useSelector((state) => state.name);
 
   return (
     <div className={styles.leftModal}>
       <ModalGallery />
       <ReviewContainer />
-      {login_status && (
+      {name && (
         <Button
           type="button"
           text="Add Review"
