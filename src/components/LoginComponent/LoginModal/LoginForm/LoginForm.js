@@ -10,6 +10,7 @@ import {
 import { loginValidation } from "../../../utils/ValidationRules";
 import Button from "../../../UI/Button/Button";
 import styles from "./LoginForm.module.scss";
+import ErrorMessages from "../../../utils/ErrorMessages";
 
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -24,7 +25,8 @@ const LoginForm = () => {
       dispatch(setCurrentUser(user.user.displayName, user.user.uid));
       dispatch(setShowLoginModal(false));
     } catch (error) {
-      dispatch(setError(error.message));
+      let errorMessage = ErrorMessages[error.code] || ErrorMessages.default;
+      dispatch(setError(errorMessage));
     }
   };
 
