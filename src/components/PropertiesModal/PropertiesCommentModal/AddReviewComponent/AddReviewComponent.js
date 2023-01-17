@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import useForm from "../../../../hooks/useForm";
 import { useDispatch, useSelector } from "react-redux";
 import {
   setCurrentPropertyData,
@@ -10,40 +10,30 @@ import {
   setModalName,
 } from "../../../../actions/Actions";
 import { CurrentDate } from "../../../utils/CurrentDate";
-import Button from "../../../UI/Button/Button";
 import styles from "./AddReviewComponent.module.scss";
 import StarRating from "../StarRating/StarRating";
+import ReviewButton from "./ReviewButton/ReviewButton";
+import { addReviewValidation } from "../../../utils/ValidationRules";
 
 const AddReviewComponent = () => {
-  const [errorText, setErrorText] = useState("");
-  const textRef = useRef("");
   const dispatch = useDispatch();
   const currentProperty = useSelector((state) => state.current_property);
-  const currentUser = useSelector((state) => state.current_user);
-  const currentUserId = useSelector((state) => state.current_user_id);
-  const rating = useSelector((state) => state.rating);
+  const name = useSelector((state) => state.name);
+  const id = useSelector((state) => state.id);
 
-  const handleAddReview = (e) => {
-    e.preventDefault();
-    if (textRef.current.value.length < 20) {
-      setErrorText("Please enter a review with at least 20 characters");
-      return;
-    }
-    errorText && setErrorText("");
-
+  const handleAddReview = () => {
     dispatch(setLoading(true));
 
     const { month, date, year } = CurrentDate();
     const currentDate = month + "/" + date + "/" + year;
 
     const review = {
-      text: textRef.current.value,
-      user: currentUser,
-      id: currentUserId,
+      review: formData.review,
+      rating: formData.rating,
+      user: name,
+      id: id,
       date: currentDate,
-      rating: rating,
     };
-    textRef.current.value = "";
     dispatch(setRating(null));
 
     handleUpdateData(review);
@@ -85,39 +75,50 @@ const AddReviewComponent = () => {
     }
   };
 
+  const { formData, errors, handleChange, handleSubmit } = useForm(
+    { review: "", rating: null },
+    addReviewValidation,
+    handleAddReview
+  );
+
+  const { review, rating } = formData;
+
+  console.log(errors);
+
   return (
     <div className={styles.addReview}>
       <h1>Add your Review</h1>
-      <StarRating isHoverable={true} isClickable={true} />
-      <form className={styles.reviewInput} onSubmit={handleAddReview}>
+      <StarRating
+        isHoverable={true}
+        isClickable={true}
+        starRating={rating}
+        onClick={(i) => {
+          handleChange({ target: { name: "rating", value: i } });
+        }}
+      />
+      {errors.rating && <span className={styles.error}>{errors.rating}</span>}
+
+      <form className={styles.reviewInput} onSubmit={handleSubmit}>
         <label>Your Review:</label>
         <textarea
           type="text"
           rows="7"
           placeholder="Write your review..."
-          className={errorText && styles.errorBorder}
-          ref={textRef}
+          name="review"
+          className={errors.review && styles.errorBorder}
+          value={review}
+          onChange={(e) => handleChange(e)}
         ></textarea>
-        {errorText && <span className={styles.error}>{errorText}</span>}
-        <div className={styles.buttonContainer}>
-          <Button
-            type="button"
-            text="Close"
-            className={styles.reviewButton}
-            onClick={() => {
-              dispatch(setShowAddComment(false));
-              dispatch(setModalName("details"));
-              dispatch(setRating(null));
-            }}
-          />
-          <Button
-            type="Submit"
-            text="Submit"
-            className={styles.reviewButton}
-            onClick={handleAddReview}
-          />
-        </div>
+        {errors.review && <span className={styles.error}>{errors.review}</span>}
       </form>
+      <ReviewButton
+        onSubmit={handleSubmit}
+        onClose={() => {
+          dispatch(setShowAddComment(false));
+          dispatch(setModalName("details"));
+          dispatch(setRating(null));
+        }}
+      />
     </div>
   );
 };
