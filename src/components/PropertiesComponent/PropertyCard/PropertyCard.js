@@ -20,7 +20,7 @@ const PropertyCard = () => {
   return (
     <>
       {Object.entries(properties).map(([key, property]) => {
-        const rating = RatingCalculator(property.comments);
+        const rating = RatingCalculator(property.reviews);
 
         return (
           <div className={styles.properties} key={key}>
