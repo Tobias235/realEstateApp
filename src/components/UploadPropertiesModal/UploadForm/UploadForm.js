@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import useForm from "../../../hooks/useForm";
+import { useDispatch, useSelector } from "react-redux";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { storage } from "../../../Firebase";
 import { resizeFile } from "../../utils/ImageConverter";
@@ -11,9 +12,7 @@ import {
   setShowUploadPropertiesModal,
   setUploadingStatus,
 } from "../../../actions/Actions";
-import { useDispatch, useSelector } from "react-redux";
-import SelectMenu from "../../UI/SelectMenu/SelectMenu";
-
+import { uploadPropertyValidation } from "../../utils/ValidationRules";
 const initialState = {
   propertyType: "",
   bedrooms: "",
@@ -27,18 +26,10 @@ const initialState = {
 };
 
 const UploadForm = () => {
-  const [images, setImages] = useState([]);
-  const [property, setProperty] = useState(initialState);
   const currentPropertyId = useSelector((state) => state.current_property);
   const currentProperty = useSelector((state) => state.current_property_data);
   const propertiesUpdate = useSelector((state) => state.properties_update);
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    if (currentProperty) return setProperty(currentProperty);
-
-    setProperty(initialState);
-  }, [currentProperty]);
 
   const handleImageSelect = async (e) => {
     dispatch(setLoading(true));
@@ -47,27 +38,30 @@ const UploadForm = () => {
       const newImage = e.target.files[i];
       newImage["id"] = Math.random();
       imageArray.push(await resizeFile(newImage));
-      setImages(imageArray);
       dispatch(
         setUploadingStatus(
           `${imageArray.length} out of ${e.target.files.length} images done`
         )
       );
-      if (imageArray.length === e.target.files.length)
+      if (imageArray.length === e.target.files.length) {
         dispatch(setLoading(false));
+        handleChange({
+          target: { name: "images", value: [...images, ...imageArray] },
+        });
+      }
     }
   };
 
   const handleUploadProperty = async (e) => {
-    e.preventDefault();
     dispatch(setLoading(true));
     dispatch(setUploadingStatus(`Uploading Property To Database`));
     let propertyObj = {};
 
-    if (images.length === 0) return uploadData(property);
+    if (formData.images.length === 0) return uploadData(formData);
 
     const urls = [];
     for (const image of images) {
+      console.log(image, images);
       const storageRef = ref(storage, image.name);
       await uploadBytes(storageRef, image);
       const url = await getDownloadURL(storageRef);
@@ -76,11 +70,11 @@ const UploadForm = () => {
 
     currentProperty?.images?.length > 0
       ? (propertyObj = {
-          ...property,
+          ...formData,
           images: [...currentProperty.images, ...urls],
         })
       : (propertyObj = {
-          ...property,
+          ...formData,
           images: [...urls],
         });
 
@@ -88,6 +82,7 @@ const UploadForm = () => {
   };
 
   const uploadData = async (property) => {
+    console.log("test");
     try {
       const updateProperty = currentProperty
         ? `properties/${currentPropertyId}.json`
@@ -105,8 +100,6 @@ const UploadForm = () => {
       );
       const data = await response.json();
       if (data) {
-        setProperty(initialState);
-        setImages([]);
         dispatch(setLoading(false));
         if (currentProperty) {
           dispatch(setPropertiesUpdated(!propertiesUpdate));
@@ -119,122 +112,107 @@ const UploadForm = () => {
     }
   };
 
+  const { formData, errors, handleChange, handleSubmit } = useForm(
+    currentProperty ? currentProperty : initialState,
+    uploadPropertyValidation,
+    handleUploadProperty
+  );
+
+  const {
+    propertyType,
+    bedrooms,
+    bathrooms,
+    size,
+    price,
+    city,
+    state,
+    description,
+    images,
+  } = formData;
+
+  console.log(formData);
+  console.log(errors);
+
   const selectedImages =
-    images.length + property.images.length > 0
-      ? `${images.length + property.images.length} Images Selected`
+    formData?.images?.length > 0
+      ? `${formData?.images?.length} Images Selected`
       : "Choose Images";
 
+  console.log(formData);
   return (
     <>
-      {property && (
-        <form className={styles.inputContainer} onSubmit={handleUploadProperty}>
+      {formData && (
+        <form className={styles.inputContainer} onSubmit={handleSubmit}>
           <label>Property Type:</label>
-          <SelectMenu
-            className={styles.propertyType}
-            onChange={(e) =>
-              setProperty({
-                ...property,
-                propertyType: e.target.value,
-              })
-            }
-          >
-            <option value="default" disabled>
-              Select Property Type
-            </option>
-            <option value="apartment">Apartment</option>
-            <option value="condominium">Condominium</option>
-            <option value="house">House</option>
-          </SelectMenu>
+          <input
+            type="text"
+            placeholder="Property type"
+            name="propertyType"
+            value={propertyType}
+            onChange={(e) => handleChange(e)}
+          />
           <label>Bedrooms:</label>
           <input
             type="number"
             placeholder="Bedrooms"
+            name="bedrooms"
             min="0"
-            value={property.bedrooms}
-            onChange={(e) =>
-              setProperty({
-                ...property,
-                bedrooms: e.target.value,
-              })
-            }
+            value={bedrooms}
+            onChange={(e) => handleChange(e)}
           />
           <label>Bathrooms:</label>
           <input
             type="number"
             placeholder="Bathrooms"
+            name="bathrooms"
             min="0"
-            value={property.bathrooms}
-            onChange={(e) =>
-              setProperty({
-                ...property,
-                bathrooms: e.target.value,
-              })
-            }
+            value={bathrooms}
+            onChange={(e) => handleChange(e)}
           />
           <label>Size:</label>
           <input
             type="number"
             placeholder="Size"
+            name="size"
             min="0"
-            value={property.size}
-            onChange={(e) =>
-              setProperty({
-                ...property,
-                size: e.target.value,
-              })
-            }
+            value={size}
+            onChange={(e) => handleChange(e)}
           />
           <label>Price:</label>
           <input
             type="number"
             placeholder="Price"
+            name="price"
             min="0"
-            value={property.price}
-            onChange={(e) =>
-              setProperty({
-                ...property,
-                price: e.target.value,
-              })
-            }
+            value={price}
+            onChange={(e) => handleChange(e)}
           />
           <label>City:</label>
           <input
             type="text"
             placeholder="City"
-            value={property.city}
+            name="city"
+            value={city}
             className={styles.capitalize}
-            onChange={(e) =>
-              setProperty({
-                ...property,
-                city: e.target.value.toLowerCase(),
-              })
-            }
+            onChange={(e) => handleChange(e)}
           />
           <label>State:</label>
           <input
             type="text"
             placeholder="State"
-            value={property.state}
+            name="state"
+            value={state}
             className={styles.capitalize}
-            onChange={(e) =>
-              setProperty({
-                ...property,
-                state: e.target.value.toLowerCase(),
-              })
-            }
+            onChange={(e) => handleChange(e)}
           />
           <label>Description:</label>
           <textarea
             type="text"
             rows="5"
             placeholder="Description"
-            value={property.description}
-            onChange={(e) =>
-              setProperty({
-                ...property,
-                description: e.target.value,
-              })
-            }
+            name="description"
+            value={description}
+            onChange={(e) => handleChange(e)}
           />
           <label htmlFor="file-upload" className={styles.uploadImage}>
             {selectedImages}
@@ -244,7 +222,8 @@ const UploadForm = () => {
             type="file"
             multiple
             accept="image/*"
-            files={property.images}
+            name="images"
+            files={images}
             className={styles.uploadFileInput}
             onChange={handleImageSelect}
           />
@@ -252,7 +231,7 @@ const UploadForm = () => {
             type="submit"
             text="Upload"
             className={styles.adminPropertiesButton}
-            onClick={handleUploadProperty}
+            onSubmit={handleSubmit}
           />
         </form>
       )}
