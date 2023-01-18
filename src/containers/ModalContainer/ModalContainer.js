@@ -64,6 +64,8 @@ const ModalContainer = () => {
         break;
       case "upload":
         dispatch(setShowUploadPropertiesModal(false));
+        dispatch(setCurrentProperty(null));
+        dispatch(setCurrentPropertyData(null));
         break;
       case "comment":
         dispatch(setShowAddComment(false));

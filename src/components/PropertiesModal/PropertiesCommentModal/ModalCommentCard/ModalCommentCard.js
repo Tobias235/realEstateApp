@@ -10,7 +10,6 @@ const ModalCommentCard = () => {
     <>
       {currentPropertyData.reviews &&
         Object.entries(currentPropertyData.reviews).map(([key, review]) => {
-          console.log(review);
           return (
             <div className={styles.commentCard} key={key}>
               <p>{review.review}</p>

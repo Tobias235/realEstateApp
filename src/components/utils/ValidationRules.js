@@ -41,3 +41,21 @@ export const addReviewValidation = {
       ? "Please enter a review with at least 20 characters."
       : undefined,
 };
+
+export const uploadPropertyValidation = {
+  propertyType: (value) =>
+    !value ? "Please enter a property type." : undefined,
+  bedrooms: (value) =>
+    !value ? "Please enter the number of bedrooms." : undefined,
+  bathrooms: (value) =>
+    !value ? "Please enter the number of bathrooms." : undefined,
+  size: (value) =>
+    !value ? "Please enter the size of the property." : undefined,
+  price: (value) =>
+    !value ? "Please enter the price of the property." : undefined,
+  city: (value) => (!value ? "Please enter the city." : undefined),
+  state: (value) => (!value ? "Please enter the state." : undefined),
+  description: (value) => (!value ? "Please enter a description." : undefined),
+  images: (value) =>
+    !value.length ? "Please select images to upload." : undefined,
+};
