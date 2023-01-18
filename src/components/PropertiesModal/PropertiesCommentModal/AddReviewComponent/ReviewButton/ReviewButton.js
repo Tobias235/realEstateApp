@@ -11,10 +11,10 @@ const ReviewButton = (props) => {
         onClick={props.onClose}
       />
       <Button
-        type="Submit"
+        type="button"
         text="Submit"
         className={styles.reviewButton}
-        onClick={props.onSubmit}
+        onClick={props.onClick}
       />
     </div>
   );
