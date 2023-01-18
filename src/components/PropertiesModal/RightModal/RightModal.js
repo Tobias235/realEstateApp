@@ -12,10 +12,9 @@ import styles from "./RightModal.module.scss";
 
 const RightModal = () => {
   const dispatch = useDispatch();
-  const uid = useSelector((state) => state.current_user_id);
+  const id = useSelector((state) => state.id);
 
-  const showEditButton =
-    process.env.REACT_APP_ADMIN_USER === uid ? true : false;
+  const showEditButton = process.env.REACT_APP_ADMIN_USER === id ? true : false;
 
   return (
     <div className={styles.rightModal}>
