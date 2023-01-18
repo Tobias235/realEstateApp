@@ -42,7 +42,7 @@ const AddReviewComponent = () => {
   const handleUpdateData = async (review) => {
     try {
       await fetch(
-        `${process.env.REACT_APP_FIREBASE_DATABASE_URL}properties/${currentProperty}/comments.json`,
+        `${process.env.REACT_APP_FIREBASE_DATABASE_URL}properties/${currentProperty}/reviews.json`,
         {
           method: "POST",
           body: JSON.stringify(review),
@@ -83,8 +83,6 @@ const AddReviewComponent = () => {
 
   const { review, rating } = formData;
 
-  console.log(errors);
-
   return (
     <div className={styles.addReview}>
       <h1>Add your Review</h1>
@@ -112,7 +110,7 @@ const AddReviewComponent = () => {
         {errors.review && <span className={styles.error}>{errors.review}</span>}
       </form>
       <ReviewButton
-        onSubmit={handleSubmit}
+        onClick={handleSubmit}
         onClose={() => {
           dispatch(setShowAddComment(false));
           dispatch(setModalName("details"));
