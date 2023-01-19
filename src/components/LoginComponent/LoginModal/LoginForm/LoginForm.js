@@ -9,8 +9,9 @@ import {
 } from "../../../../actions/Actions";
 import { loginValidation } from "../../../utils/ValidationRules";
 import Button from "../../../UI/Button/Button";
-import styles from "./LoginForm.module.scss";
+import ErrorDisplay from "../../../UI/ErrorDisplay/ErrorDisplay";
 import ErrorMessages from "../../../utils/ErrorMessages";
+import styles from "./LoginForm.module.scss";
 
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -50,7 +51,8 @@ const LoginForm = () => {
         autoComplete="off"
         onChange={(e) => handleChange(e)}
       />
-      {errors.email && <span className={styles.errorText}>{errors.email}</span>}
+      <ErrorDisplay errorText={errors.email} />
+
       <label>Password:</label>
       <input
         type="password"
@@ -61,9 +63,8 @@ const LoginForm = () => {
         autoComplete="off"
         onChange={(e) => handleChange(e)}
       />
-      {errors.password && (
-        <span className={styles.errorText}>{errors.password}</span>
-      )}
+      <ErrorDisplay errorText={errors.password} />
+
       <Button
         type="submit"
         text="Sign In"

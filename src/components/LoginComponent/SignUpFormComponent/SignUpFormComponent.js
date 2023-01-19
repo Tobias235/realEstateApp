@@ -6,6 +6,7 @@ import { setError, setShowLoginModal } from "../../../actions/Actions";
 import { useDispatch } from "react-redux";
 import Button from "../../UI/Button/Button";
 import ErrorMessages from "../../utils/ErrorMessages";
+import ErrorDisplay from "../../UI/ErrorDisplay/ErrorDisplay";
 import styles from "./SignUpFormComponent.module.scss";
 
 const SignUpFormComponent = () => {
@@ -51,7 +52,7 @@ const SignUpFormComponent = () => {
           handleChange(e);
         }}
       />
-      {errors.name && <span className={styles.errorText}>{errors.name}</span>}
+      <ErrorDisplay errorText={errors.name} />
 
       <label>Email:</label>
       <input
@@ -65,7 +66,7 @@ const SignUpFormComponent = () => {
           handleChange(e);
         }}
       />
-      {errors.email && <span className={styles.errorText}>{errors.email}</span>}
+      <ErrorDisplay errorText={errors.email} />
 
       <label>Password:</label>
       <input
@@ -79,9 +80,7 @@ const SignUpFormComponent = () => {
           handleChange(e);
         }}
       />
-      {errors.password && (
-        <span className={styles.errorText}>{errors.password}</span>
-      )}
+      <ErrorDisplay errorText={errors.password} />
 
       <Button
         type="submit"
