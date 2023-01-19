@@ -6,14 +6,14 @@ import {
   setError,
   setPropertiesUpdated,
   setShowAddComment,
-  setRating,
   setModalName,
 } from "../../../../actions/Actions";
 import { CurrentDate } from "../../../utils/CurrentDate";
-import styles from "./AddReviewComponent.module.scss";
+import { addReviewValidation } from "../../../utils/ValidationRules";
 import StarRating from "../StarRating/StarRating";
 import ReviewButton from "./ReviewButton/ReviewButton";
-import { addReviewValidation } from "../../../utils/ValidationRules";
+import ErrorDisplay from "../../../UI/ErrorDisplay/ErrorDisplay";
+import styles from "./AddReviewComponent.module.scss";
 
 const AddReviewComponent = () => {
   const dispatch = useDispatch();
@@ -34,7 +34,6 @@ const AddReviewComponent = () => {
       id: id,
       date: currentDate,
     };
-    dispatch(setRating(null));
 
     handleUpdateData(review);
   };
@@ -57,7 +56,6 @@ const AddReviewComponent = () => {
       dispatch(setLoading(false));
       dispatch(setShowAddComment(false));
       dispatch(setModalName("details"));
-      dispatch(setRating(null));
       fetchUpdatedData();
     }
   };
@@ -94,7 +92,7 @@ const AddReviewComponent = () => {
           handleChange({ target: { name: "rating", value: i } });
         }}
       />
-      {errors.rating && <span className={styles.error}>{errors.rating}</span>}
+      <ErrorDisplay errorText={errors.rating} />
 
       <form className={styles.reviewInput} onSubmit={handleSubmit}>
         <label>Your Review:</label>
@@ -107,14 +105,13 @@ const AddReviewComponent = () => {
           value={review}
           onChange={(e) => handleChange(e)}
         ></textarea>
-        {errors.review && <span className={styles.error}>{errors.review}</span>}
+        <ErrorDisplay errorText={errors.review} />
       </form>
       <ReviewButton
         onClick={handleSubmit}
         onClose={() => {
           dispatch(setShowAddComment(false));
           dispatch(setModalName("details"));
-          dispatch(setRating(null));
         }}
       />
     </div>

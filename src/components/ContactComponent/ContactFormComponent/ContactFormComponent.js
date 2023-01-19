@@ -1,10 +1,10 @@
 import React, { useRef } from "react";
 import emailjs from "@emailjs/browser";
-
-import styles from "./ContactFormComponent.module.scss";
 import useForm from "../../../hooks/useForm";
 import { contactValidation } from "../../utils/ValidationRules";
 import Button from "../../UI/Button/Button";
+import ErrorDisplay from "../../UI/ErrorDisplay/ErrorDisplay";
+import styles from "./ContactFormComponent.module.scss";
 
 const ContactFormComponent = () => {
   const form = useRef();
@@ -46,7 +46,8 @@ const ContactFormComponent = () => {
         className={errors.name && styles.error}
         onChange={(e) => handleChange(e)}
       />
-      {errors.name && <span className={styles.errorText}>{errors.name}</span>}
+      <ErrorDisplay errorText={errors.name} />
+
       <label>E-Mail:</label>
       <input
         type="email"
@@ -56,7 +57,8 @@ const ContactFormComponent = () => {
         className={errors.email && styles.error}
         onChange={(e) => handleChange(e)}
       />
-      {errors.email && <span className={styles.errorText}>{errors.email}</span>}
+      <ErrorDisplay errorText={errors.email} />
+
       <label>Subject:</label>
       <input
         type="text"
@@ -66,9 +68,8 @@ const ContactFormComponent = () => {
         className={errors.subject && styles.error}
         onChange={(e) => handleChange(e)}
       />
-      {errors.subject && (
-        <span className={styles.errorText}>{errors.subject}</span>
-      )}
+      <ErrorDisplay errorText={errors.subject} />
+
       <label>Message:</label>
       <textarea
         placeholder="Message"
@@ -77,9 +78,8 @@ const ContactFormComponent = () => {
         className={errors.message && styles.error}
         onChange={(e) => handleChange(e)}
       />
-      {errors.message && (
-        <span className={styles.errorText}>{errors.message}</span>
-      )}
+      <ErrorDisplay errorText={errors.message} />
+
       <Button
         className={styles.active}
         type="submit"
