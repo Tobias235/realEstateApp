@@ -13,20 +13,18 @@
   }
 
   label {
-    margin-bottom: 2px;
+    margin: 7px 0 2px 0;
     font-size: 12px;
     font-weight: 500;
   }
 
   input {
-    margin-bottom: 10px;
     outline: none;
     border: 1px solid black;
     border-radius: 3px;
   }
   textarea {
     resize: none;
-    margin-bottom: 10px;
     outline: none;
     border: 1px solid black;
     border-radius: 3px;
@@ -41,7 +39,6 @@
     padding: 5px;
     border-radius: 5px;
     border: 2px solid transparent;
-    box-shadow: 0 5px 24px rgba(0, 0, 0, 0.3);
     background-color: rgba(231, 161, 48, 0.8);
     font-size: 16px;
     text-align: center;
@@ -66,8 +63,8 @@
     margin-top: 10px;
     height: 40px;
   }
-}
 
-.loadingScreen {
-  z-index: 2;
+  .errorBorder {
+    border: 1px solid red;
+  }
 }

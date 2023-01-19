@@ -60,6 +60,7 @@
   cursor: pointer;
   padding: 0;
   list-style: none;
+  text-transform: capitalize;
 
   &:hover {
     .signInDropdown {
