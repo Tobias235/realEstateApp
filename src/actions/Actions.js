@@ -120,13 +120,6 @@ export const setUpdateFilter = (update_filter) => {
   };
 };
 
-export const setRating = (rating) => {
-  return {
-    type: "SET_RATING",
-    payload: rating,
-  };
-};
-
 export const setModalName = (modalName) => {
   return {
     type: "SET_MODAL_NAME",
