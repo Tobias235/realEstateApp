@@ -3,16 +3,21 @@ import { useDispatch, useSelector } from "react-redux";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { storage } from "../../../Firebase";
 import { resizeFile } from "../../utils/ImageConverter";
-import Button from "../../UI/Button/Button";
-import styles from "./UploadForm.module.scss";
+import { uploadPropertyValidation } from "../../utils/ValidationRules";
 import {
+  setError,
   setLoading,
+  setModalName,
   setPropertiesUpdated,
   setShowDetails,
   setShowUploadPropertiesModal,
   setUploadingStatus,
 } from "../../../actions/Actions";
-import { uploadPropertyValidation } from "../../utils/ValidationRules";
+import Button from "../../UI/Button/Button";
+import ErrorDisplay from "../../UI/ErrorDisplay/ErrorDisplay";
+import ErrorMessages from "../../utils/ErrorMessages";
+import styles from "./UploadForm.module.scss";
+
 const initialState = {
   propertyType: "",
   bedrooms: "",
@@ -55,13 +60,14 @@ const UploadForm = () => {
   const handleUploadProperty = async (e) => {
     dispatch(setLoading(true));
     dispatch(setUploadingStatus(`Uploading Property To Database`));
+    const urls = [];
     let propertyObj = {};
 
-    if (formData.images.length === 0) return uploadData(formData);
+    const newImages = images.filter(
+      (image) => !currentProperty?.images.includes(image)
+    );
 
-    const urls = [];
-    for (const image of images) {
-      console.log(image, images);
+    for (const image of newImages) {
       const storageRef = ref(storage, image.name);
       await uploadBytes(storageRef, image);
       const url = await getDownloadURL(storageRef);
@@ -75,14 +81,13 @@ const UploadForm = () => {
         })
       : (propertyObj = {
           ...formData,
-          images: [...urls],
+          images: urls,
         });
 
     uploadData(propertyObj);
   };
 
   const uploadData = async (property) => {
-    console.log("test");
     try {
       const updateProperty = currentProperty
         ? `properties/${currentPropertyId}.json`
@@ -105,10 +110,12 @@ const UploadForm = () => {
           dispatch(setPropertiesUpdated(!propertiesUpdate));
           dispatch(setShowUploadPropertiesModal(false));
           dispatch(setShowDetails(true));
+          dispatch(setModalName("details"));
         }
       }
     } catch (error) {
-      console.error(error);
+      let ErrorDisplay = ErrorMessages[error.code] || ErrorMessages.default;
+      dispatch(setError(ErrorDisplay));
     }
   };
 
@@ -130,15 +137,11 @@ const UploadForm = () => {
     images,
   } = formData;
 
-  console.log(formData);
-  console.log(errors);
-
   const selectedImages =
-    formData?.images?.length > 0
+    images?.length > 0
       ? `${formData?.images?.length} Images Selected`
       : "Choose Images";
 
-  console.log(formData);
   return (
     <>
       {formData && (
@@ -149,8 +152,11 @@ const UploadForm = () => {
             placeholder="Property type"
             name="propertyType"
             value={propertyType}
+            className={errors.propertyType && styles.errorBorder}
             onChange={(e) => handleChange(e)}
           />
+          <ErrorDisplay errorText={errors.propertyType} />
+
           <label>Bedrooms:</label>
           <input
             type="number"
@@ -158,8 +164,11 @@ const UploadForm = () => {
             name="bedrooms"
             min="0"
             value={bedrooms}
+            className={errors.bedrooms && styles.errorBorder}
             onChange={(e) => handleChange(e)}
           />
+          <ErrorDisplay errorText={errors.bedrooms} />
+
           <label>Bathrooms:</label>
           <input
             type="number"
@@ -167,8 +176,11 @@ const UploadForm = () => {
             name="bathrooms"
             min="0"
             value={bathrooms}
+            className={errors.bathrooms && styles.errorBorder}
             onChange={(e) => handleChange(e)}
           />
+          <ErrorDisplay errorText={errors.bathrooms} />
+
           <label>Size:</label>
           <input
             type="number"
@@ -176,8 +188,11 @@ const UploadForm = () => {
             name="size"
             min="0"
             value={size}
+            className={errors.size && styles.errorBorder}
             onChange={(e) => handleChange(e)}
           />
+          <ErrorDisplay errorText={errors.size} />
+
           <label>Price:</label>
           <input
             type="number"
@@ -185,28 +200,40 @@ const UploadForm = () => {
             name="price"
             min="0"
             value={price}
+            className={errors.price && styles.errorBorder}
             onChange={(e) => handleChange(e)}
           />
+          <ErrorDisplay errorText={errors.price} />
+
           <label>City:</label>
           <input
             type="text"
             placeholder="City"
             name="city"
             value={city}
-            className={styles.capitalize}
+            className={`${styles.capitalize} ${
+              errors.city && styles.errorBorder
+            }`}
             onChange={(e) => handleChange(e)}
           />
+          <ErrorDisplay errorText={errors.city} />
+
           <label>State:</label>
           <input
             type="text"
             placeholder="State"
             name="state"
             value={state}
-            className={styles.capitalize}
+            className={`${styles.capitalize} ${
+              errors.state && styles.errorBorder
+            }`}
             onChange={(e) => handleChange(e)}
           />
+          <ErrorDisplay errorText={errors.state} />
+
           <label>Description:</label>
           <textarea
+            className={errors.description && styles.errorBorder}
             type="text"
             rows="5"
             placeholder="Description"
@@ -214,6 +241,8 @@ const UploadForm = () => {
             value={description}
             onChange={(e) => handleChange(e)}
           />
+          <ErrorDisplay errorText={errors.description} />
+
           <label htmlFor="file-upload" className={styles.uploadImage}>
             {selectedImages}
           </label>
@@ -227,6 +256,8 @@ const UploadForm = () => {
             className={styles.uploadFileInput}
             onChange={handleImageSelect}
           />
+          <ErrorDisplay errorText={errors.images} />
+
           <Button
             type="submit"
             text="Upload"
