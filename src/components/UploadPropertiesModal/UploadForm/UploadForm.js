@@ -1,7 +1,7 @@
 import useForm from "../../../hooks/useForm";
 import { useDispatch, useSelector } from "react-redux";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { storage } from "../../../Firebase";
+import { auth, storage } from "../../../Firebase";
 import { resizeFile } from "../../utils/ImageConverter";
 import { uploadPropertyValidation } from "../../utils/ValidationRules";
 import {
@@ -62,15 +62,16 @@ const UploadForm = () => {
     dispatch(setUploadingStatus(`Uploading Property To Database`));
     const urls = [];
     let propertyObj = {};
+    const userUid = auth.currentUser.uid;
 
     const newImages = images.filter(
       (image) => !currentProperty?.images.includes(image)
     );
 
     for (const image of newImages) {
-      const storageRef = ref(storage, image.name);
-      await uploadBytes(storageRef, image);
-      const url = await getDownloadURL(storageRef);
+      const storageRef = ref(storage, `users/${userUid}/${image.name}`);
+      await uploadBytes(storageRef, image, userUid);
+      const url = await getDownloadURL(storageRef, userUid);
       urls.push(url);
     }
 
@@ -78,10 +79,12 @@ const UploadForm = () => {
       ? (propertyObj = {
           ...formData,
           images: [...currentProperty.images, ...urls],
+          uid: userUid,
         })
       : (propertyObj = {
           ...formData,
           images: urls,
+          uid: userUid,
         });
 
     uploadData(propertyObj);
