@@ -30,11 +30,7 @@ const Reducer = (state = InitialState, action) => {
     case "SET_ERROR":
       return { ...state, error: action.payload };
     case "SET_CURRENT_USER":
-      return {
-        ...state,
-        name: action.payload.name,
-        id: action.payload.id,
-      };
+      return { ...state, name: action.payload };
     case "SET_LOGIN_MODAL":
       return { ...state, login_modal: action.payload };
     case "SET_MOBILE_MENU":
