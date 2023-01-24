@@ -14,12 +14,12 @@ import StarRating from "../StarRating/StarRating";
 import ReviewButton from "./ReviewButton/ReviewButton";
 import ErrorDisplay from "../../../UI/ErrorDisplay/ErrorDisplay";
 import styles from "./AddReviewComponent.module.scss";
+import { auth } from "../../../../Firebase";
 
 const AddReviewComponent = () => {
   const dispatch = useDispatch();
   const currentProperty = useSelector((state) => state.current_property);
   const name = useSelector((state) => state.name);
-  const id = useSelector((state) => state.id);
 
   const handleAddReview = () => {
     dispatch(setLoading(true));
@@ -27,11 +27,13 @@ const AddReviewComponent = () => {
     const { month, date, year } = CurrentDate();
     const currentDate = month + "/" + date + "/" + year;
 
+    const userUid = auth.currentUser.uid;
+
     const review = {
       review: formData.review,
       rating: formData.rating,
       user: name,
-      id: id,
+      uid: userUid,
       date: currentDate,
     };
 
