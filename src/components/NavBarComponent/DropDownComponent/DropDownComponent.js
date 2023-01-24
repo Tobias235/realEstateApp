@@ -8,7 +8,6 @@ const DropDownComponent = () => {
   const dropdown = useRef(null);
   const cities = useSelector((state) => state.cities);
   const propertyTypes = useSelector((state) => state.propertyTypes);
-  const updateFilter = useSelector((state) => state.update_filter);
 
   const dispatch = useDispatch();
 

@@ -52,6 +52,7 @@ const NavbarComponent = () => {
       <li className={styles.signInDropdown}>{name}</li>
       {showDropdown && (
         <ul className={styles.dropDown}>
+          <li>Profile</li>
           <li
             onClick={() => {
               dispatch(setShowUploadPropertiesModal(true));
