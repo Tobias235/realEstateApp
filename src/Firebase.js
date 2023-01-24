@@ -17,8 +17,7 @@ const firebaseConfig = {
   databaseUrl: `${process.env.REACT_APP_FIREBASE_DATABASE_URL}`,
 };
 
-const AppAuth = initializeApp(firebaseConfig);
-const AppStorage = initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 
-export const auth = getAuth(AppAuth);
-export const storage = getStorage(AppStorage);
+export const auth = getAuth(app);
+export const storage = getStorage(app);
