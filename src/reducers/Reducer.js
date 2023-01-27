@@ -51,6 +51,8 @@ const Reducer = (state = InitialState, action) => {
       return { ...state, update_filter: action.payload };
     case "SET_MODAL_NAME":
       return { ...state, modalName: action.payload };
+    case "SET_SHOW_PROFILE":
+      return { ...state, showProfile: action.payload };
     default:
       return state;
   }

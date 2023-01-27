@@ -123,3 +123,10 @@ export const setModalName = (modalName) => {
     payload: modalName,
   };
 };
+
+export const setShowProfile = (showProfile) => {
+  return {
+    type: "SET_SHOW_PROFILE",
+    payload: showProfile,
+  };
+};
