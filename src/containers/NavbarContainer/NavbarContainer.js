@@ -9,6 +9,7 @@ import {
   setShowLoginModal,
   setCurrentUser,
   setShowUploadPropertiesModal,
+  setShowProfile,
   setModalName,
 } from "../../actions/Actions";
 import styles from "./NavbarContainer.module.scss";
@@ -52,7 +53,14 @@ const NavbarComponent = () => {
       <li className={styles.signInDropdown}>{name}</li>
       {showDropdown && (
         <ul className={styles.dropDown}>
-          <li>Profile</li>
+          <li
+            onClick={() => {
+              dispatch(setShowProfile(true));
+              dispatch(setModalName("profile"));
+            }}
+          >
+            Profile
+          </li>
           <li
             onClick={() => {
               dispatch(setShowUploadPropertiesModal(true));
@@ -61,7 +69,6 @@ const NavbarComponent = () => {
           >
             Upload Properties
           </li>
-          <li>Previous Comments</li>
           <li onClick={onSignOut}>Sign Out</li>
         </ul>
       )}
