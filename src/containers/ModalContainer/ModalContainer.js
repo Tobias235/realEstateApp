@@ -11,6 +11,7 @@ import {
   setShowDetails,
   setShowLoginModal,
   setShowMobileUserDropdown,
+  setShowProfile,
   setShowUploadPropertiesModal,
 } from "../../actions/Actions";
 import Backdrop from "../../components/UI/Backdrop/Backdrop";
@@ -18,10 +19,12 @@ import Modal from "./../../components/UI/Modal/Modal";
 import LoginModal from "../../components/LoginComponent/LoginModal/LoginModal";
 import PropertiesModal from "../../components/PropertiesModal/PropertiesModal";
 import UploadPropertiesModal from "../../components/UploadPropertiesModal/UploadPropertiesModal";
-import Loader from "../../components/UI/Loader/Loader";
-import styles from "./ModalContainer.module.scss";
 import MobileNavContainer from "../NavbarContainer/MobileNavContainer";
 import ErrorModal from "../../components/UI/ErrorModal/ErrorModal";
+import ProfileModal from "../../components/LoginComponent/ProfileModal/ProfileModal";
+import Loader from "../../components/UI/Loader/Loader";
+
+import styles from "./ModalContainer.module.scss";
 
 const ModalContainer = () => {
   const [modal, setModal] = useState([]);
@@ -34,6 +37,7 @@ const ModalContainer = () => {
   const show_details = useSelector((state) => state.show_details);
   const loading = useSelector((state) => state.loading);
   const upload_status = useSelector((state) => state.uploading_status);
+  const showProfile = useSelector((state) => state.showProfile);
   const mobile_menu = useSelector((state) => state.mobile_menu);
   const modalName = useSelector((state) => state.modalName);
   const error = useSelector((state) => state.error);
@@ -44,10 +48,17 @@ const ModalContainer = () => {
       login_modal,
       show_upload_properties_modal,
       show_details,
+      showProfile,
       mobile_menu
     );
     setModal(stateArray.some((val) => val === true));
-  }, [login_modal, show_upload_properties_modal, show_details, mobile_menu]);
+  }, [
+    login_modal,
+    show_upload_properties_modal,
+    show_details,
+    showProfile,
+    mobile_menu,
+  ]);
 
   const onClose = () => {
     if (loading) return;
@@ -73,6 +84,9 @@ const ModalContainer = () => {
         dispatch(setMobileMenu(false));
         dispatch(setShowMobileUserDropdown(false));
         break;
+      case "profile":
+        dispatch(setShowProfile(false));
+        break;
       default:
         return;
     }
@@ -80,22 +94,24 @@ const ModalContainer = () => {
     if (modalName !== "") {
       dispatch(setModalName(""));
     }
+    dispatch(setModalName(null));
   };
 
   return (
     <>
       {mobile_menu && <MobileNavContainer />}
-      {modal && !loading && <Backdrop onClick={onClose} />}
       {modal && loading && (
         <Backdrop className={styles.backdropLoader} onClick={onClose}>
           <Loader>{upload_status}</Loader>
         </Backdrop>
       )}
+      {modal && !loading && <Backdrop onClick={onClose} />}
       {modal && (
         <Modal>
           {login_modal && <LoginModal />}
           {show_details && <PropertiesModal />}
           {show_upload_properties_modal && <UploadPropertiesModal />}
+          {showProfile && <ProfileModal />}
         </Modal>
       )}
 
