@@ -60,17 +60,20 @@ export const uploadPropertyValidation = {
     !value.length ? "Please select images to upload." : undefined,
 };
 
-export const changeFormValidation = () => ({
-  email: (value) =>
-    !/\S+@\S+\.\S+/.test(value)
-      ? "Please enter a valid e-mail address."
-      : undefined,
+export const passwordFormValidation = {
   password: (value) =>
     value.length < 8
       ? "Please enter a password with at least 8 characters."
       : undefined,
-  confirmPassword: (value, password) =>
-    value !== password
+  confirmPassword: (value, formData) =>
+    value !== formData.password
       ? "Passwords do not match. Please try again."
       : undefined,
-});
+};
+
+export const emailFormValidation = {
+  email: (value) =>
+    !/\S+@\S+\.\S+/.test(value)
+      ? "Please enter a valid e-mail address."
+      : undefined,
+};
