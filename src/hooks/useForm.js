@@ -14,8 +14,11 @@ const useForm = (initialValues, validationRules, callback) => {
     const newErrors = {};
     Object.entries(validationRules).forEach(
       ([fieldName, validationFunction]) => {
-        if (validationFunction(formData[fieldName])) {
-          newErrors[fieldName] = validationFunction(formData[fieldName]);
+        if (validationFunction(formData[fieldName], formData)) {
+          newErrors[fieldName] = validationFunction(
+            formData[fieldName],
+            formData
+          );
         }
       }
     );
