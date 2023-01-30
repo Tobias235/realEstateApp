@@ -1,6 +1,8 @@
-// import { useState } from "react";
 import useForm from "../../../../../hooks/useForm";
-import { changeFormValidation } from "../../../../utils/ValidationRules";
+import {
+  passwordFormValidation,
+  emailFormValidation,
+} from "../../../../utils/ValidationRules";
 import Modal from "../../../../UI/Modal/Modal";
 import Button from "../../../../UI/Button/Button";
 import styles from "./ChangeForm.module.scss";
@@ -10,7 +12,7 @@ const ChangeForm = (props) => {
 
   const { formData, errors, handleChange, handleSubmit } = useForm(
     { email: "", password: "", confirmPassword: "" },
-    changeFormValidation,
+    props.formType === "email" ? emailFormValidation : passwordFormValidation,
     handleChangeForm
   );
 
@@ -58,7 +60,7 @@ const ChangeForm = (props) => {
           </>
         )}
         <div>
-          <Button type="submit" text="Submit" />
+          <Button type="submit" text="Submit" onSubmit={handleSubmit} />
           <Button type="button" text="Close" onClick={props.closeModal} />
         </div>
       </form>
