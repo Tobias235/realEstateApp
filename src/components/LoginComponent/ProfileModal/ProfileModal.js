@@ -4,11 +4,12 @@ import Backdrop from "../../UI/Backdrop/Backdrop";
 import Button from "../../UI/Button/Button";
 import styles from "./ProfileModal.module.scss";
 import DeleteAccountButton from "./ProfileModalButtons/DeleteAccountButton/DeleteAccountButton";
-import ReviewsButton from "./ProfileModalButtons/ReviewsButton/ReviewsButton";
 import ChangeForm from "./UpdateProfileForms/ChangeForm/ChangeForm";
+import PastReviews from "./ProfileModalButtons/PastReviews/PastReviews";
 
 const ProfileModal = () => {
   const [formType, setFormType] = useState("");
+  const [showReviews, setShowReviews] = useState(false);
 
   const user = useSelector((state) => state.name);
 
@@ -19,7 +20,7 @@ const ProfileModal = () => {
   return (
     <div className={styles.profileModal}>
       <h1>Welcome, {user}</h1>
-      <ReviewsButton />
+      <Button text="reviews" onClick={() => setShowReviews(true)} />
       <Button
         type="button"
         text="change email"
@@ -35,6 +36,12 @@ const ProfileModal = () => {
       {formType !== "" && (
         <Backdrop className={styles.backDrop}>
           <ChangeForm formType={formType} closeModal={closeModal} />
+        </Backdrop>
+      )}
+
+      {showReviews && (
+        <Backdrop className={styles.backDrop}>
+          <PastReviews />
         </Backdrop>
       )}
     </div>
