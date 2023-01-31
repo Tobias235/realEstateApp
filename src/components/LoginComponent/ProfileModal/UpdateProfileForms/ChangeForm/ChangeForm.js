@@ -11,6 +11,7 @@ import { updatePassword, updateEmail } from "firebase/auth";
 import ErrorMessages from "../../../../utils/ErrorMessages";
 import { setError } from "../../../../../actions/Actions";
 import { useDispatch } from "react-redux";
+import ErrorDisplay from "../../../../UI/ErrorDisplay/ErrorDisplay";
 
 const ChangeForm = (props) => {
   const dispatch = useDispatch();
@@ -55,6 +56,7 @@ const ChangeForm = (props) => {
                 handleChange(e);
               }}
             />
+            <ErrorDisplay errorText={errors.email} />
           </>
         )}
         {props.formType === "password" && (
@@ -68,6 +70,7 @@ const ChangeForm = (props) => {
                 handleChange(e);
               }}
             />
+            <ErrorDisplay errorText={errors.password} />
 
             <label>Confirm Password:</label>
             <input
@@ -78,6 +81,7 @@ const ChangeForm = (props) => {
                 handleChange(e);
               }}
             />
+            <ErrorDisplay errorText={errors.confirmPassword} />
           </>
         )}
         <div>
