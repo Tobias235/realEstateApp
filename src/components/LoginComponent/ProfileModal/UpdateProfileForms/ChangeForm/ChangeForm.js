@@ -6,12 +6,33 @@ import {
 import Modal from "../../../../UI/Modal/Modal";
 import Button from "../../../../UI/Button/Button";
 import styles from "./ChangeForm.module.scss";
+import { auth } from "../../../../../Firebase";
+import { updatePassword, updateEmail } from "firebase/auth";
+import ErrorMessages from "../../../../utils/ErrorMessages";
+import { setError } from "../../../../../actions/Actions";
+import { useDispatch } from "react-redux";
 
 const ChangeForm = (props) => {
-  const handleChangeForm = () => {};
+  const dispatch = useDispatch();
+
+  const handleChangeForm = (formData) => {
+    const user = auth.currentUser;
+
+    formData.formType === "email"
+      ? updateEmail(user, formData.email)
+      : updatePassword(user, formData.password)
+          .then(() => {
+            props.closeModal();
+          })
+          .catch((error) => {
+            let ErrorDisplay =
+              ErrorMessages[error.code] || ErrorMessages.default;
+            dispatch(setError(ErrorDisplay));
+          });
+  };
 
   const { formData, errors, handleChange, handleSubmit } = useForm(
-    { email: "", password: "", confirmPassword: "" },
+    { email: "", password: "", confirmPassword: "", formType: props.formType },
     props.formType === "email" ? emailFormValidation : passwordFormValidation,
     handleChangeForm
   );
