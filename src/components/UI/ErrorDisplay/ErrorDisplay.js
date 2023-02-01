@@ -1,4 +1,4 @@
-import styles from "./ErrorMessage.module.scss";
+import styles from "./ErrorDisplay.module.scss";
 
 const ErrorDisplay = (props) => {
   return (
