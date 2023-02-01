@@ -4,7 +4,7 @@ import Backdrop from "../../UI/Backdrop/Backdrop";
 import Button from "../../UI/Button/Button";
 import styles from "./ProfileModal.module.scss";
 import DeleteAccountButton from "./ProfileModalButtons/DeleteAccountButton/DeleteAccountButton";
-import ChangeForm from "./UpdateProfileForms/ChangeForm/ChangeForm";
+import ChangeForm from "./ChangeForm/ChangeForm";
 import PastReviews from "./ProfileModalButtons/PastReviews/PastReviews";
 
 const ProfileModal = () => {
@@ -15,6 +15,7 @@ const ProfileModal = () => {
 
   const closeModal = () => {
     setFormType("");
+    setShowReviews(false);
   };
 
   return (
@@ -33,17 +34,18 @@ const ProfileModal = () => {
       />
       <DeleteAccountButton />
 
-      {formType !== "" && (
-        <Backdrop className={styles.backDrop}>
-          <ChangeForm formType={formType} closeModal={closeModal} />
-        </Backdrop>
+      {(showReviews || formType !== "") && (
+        <Backdrop
+          className={styles.profileBackdrop}
+          onClick={closeModal}
+        ></Backdrop>
       )}
 
-      {showReviews && (
-        <Backdrop className={styles.backDrop}>
-          <PastReviews />
-        </Backdrop>
+      {formType !== "" && (
+        <ChangeForm formType={formType} closeModal={closeModal} />
       )}
+
+      {showReviews && <PastReviews closeModal={closeModal} />}
     </div>
   );
 };
