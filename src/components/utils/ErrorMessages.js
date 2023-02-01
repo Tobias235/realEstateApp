@@ -7,6 +7,7 @@ const ErrorMessages = {
     "No account was found for the email address you entered. Please check the email address and try again.",
   "auth/wrong-password":
     "The password you entered is incorrect. Please check the password and try again.",
+  "auth/missing-email": "Please provide a valid email address.",
   default:
     "Sorry, there was a problem processing your request. Please try again later.",
 };
