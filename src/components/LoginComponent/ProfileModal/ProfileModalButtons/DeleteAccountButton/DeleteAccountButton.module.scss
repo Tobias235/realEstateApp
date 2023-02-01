@@ -1,0 +1,13 @@
+.popupContainer {
+  z-index: 4;
+  padding: 10px;
+
+  button {
+    margin: 5px;
+    padding: 5px;
+  }
+}
+
+.backdrop {
+  z-index: 3;
+}
