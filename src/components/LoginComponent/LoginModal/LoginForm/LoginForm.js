@@ -12,6 +12,7 @@ import Button from "../../../UI/Button/Button";
 import ErrorDisplay from "../../../UI/ErrorDisplay/ErrorDisplay";
 import ErrorMessages from "../../../utils/ErrorMessages";
 import styles from "./LoginForm.module.scss";
+import ForgotPassword from "../../ForgotPassword/ForgotPassword";
 
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -23,7 +24,7 @@ const LoginForm = () => {
         formData.email,
         formData.password
       );
-      dispatch(setCurrentUser(user.user.displayName, user.user.uid));
+      dispatch(setCurrentUser(user.user.displayName));
       dispatch(setShowLoginModal(false));
     } catch (error) {
       let errorMessage = ErrorMessages[error.code] || ErrorMessages.default;
@@ -64,6 +65,7 @@ const LoginForm = () => {
         onChange={(e) => handleChange(e)}
       />
       <ErrorDisplay errorText={errors.password} />
+      <ForgotPassword email={email} />
 
       <Button
         type="submit"
