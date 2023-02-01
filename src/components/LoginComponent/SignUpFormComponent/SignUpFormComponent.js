@@ -22,7 +22,6 @@ const SignUpFormComponent = () => {
       updateProfile(auth.currentUser, {
         displayName: formData.name,
       });
-      console.log(user);
       dispatch(setShowLoginModal(false));
     } catch (error) {
       let errorMessage = ErrorMessages[error.code] || ErrorMessages.default;
