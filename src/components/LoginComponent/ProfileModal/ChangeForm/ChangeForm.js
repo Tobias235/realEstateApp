@@ -1,17 +1,17 @@
-import useForm from "../../../../../hooks/useForm";
+import useForm from "../../../../hooks/useForm";
 import {
   passwordFormValidation,
   emailFormValidation,
-} from "../../../../utils/ValidationRules";
-import Modal from "../../../../UI/Modal/Modal";
-import Button from "../../../../UI/Button/Button";
+} from "../../../utils/ValidationRules";
+import Modal from "../../../UI/Modal/Modal";
+import Button from "../../../UI/Button/Button";
 import styles from "./ChangeForm.module.scss";
-import { auth } from "../../../../../Firebase";
+import { auth } from "../../../../Firebase";
 import { updatePassword, updateEmail } from "firebase/auth";
-import ErrorMessages from "../../../../utils/ErrorMessages";
-import { setError } from "../../../../../actions/Actions";
+import ErrorMessages from "../../../utils/ErrorMessages";
+import { setError } from "../../../../actions/Actions";
 import { useDispatch } from "react-redux";
-import ErrorDisplay from "../../../../UI/ErrorDisplay/ErrorDisplay";
+import ErrorDisplay from "../../../UI/ErrorDisplay/ErrorDisplay";
 
 const ChangeForm = (props) => {
   const dispatch = useDispatch();
@@ -39,8 +39,6 @@ const ChangeForm = (props) => {
   );
 
   const { email, password, confirmPassword } = formData;
-
-  console.log(errors);
 
   return (
     <Modal className={styles.formModal}>
