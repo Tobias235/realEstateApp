@@ -26,9 +26,11 @@ const PastReviews = (props) => {
   return (
     <Modal className={styles.pastReviewsContainer}>
       <h1>Your reviews</h1>
-      {reviews.map((review, i) => {
-        return <ReviewCard review={review} key={i} />;
-      })}
+      <div className={styles.reviewsContainer}>
+        {reviews.map((review, i) => {
+          return <ReviewCard review={review} key={i} />;
+        })}
+      </div>
       <Button type="button" text="Close" onClick={props.closeModal} />
     </Modal>
   );

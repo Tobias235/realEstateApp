@@ -2,32 +2,44 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 400px;
-  height: 300px;
+  max-height: 450px;
   padding: 25px;
   z-index: 4;
-  overflow-x: hidden;
 
   h1 {
     margin: 0;
   }
 
-  &::-webkit-scrollbar {
-    width: 5px;
-    border-radius: 10px;
+  button {
+    width: 100px;
+    height: 40px;
+    margin: 7px;
   }
 
-  &::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 10px;
-  }
+  .reviewsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
+    max-height: 380px;
 
-  &::-webkit-scrollbar-thumb {
-    background: rgba(231, 161, 48, 0.7);
-    border-radius: 10px;
-  }
+    &::-webkit-scrollbar {
+      width: 5px;
+      border-radius: 10px;
+    }
 
-  &::-webkit-scrollbar-thumb:hover {
-    background: rgba(231, 161, 48, 1);
+    &::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: rgba(231, 161, 48, 0.7);
+      border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background: rgba(231, 161, 48, 1);
+    }
   }
 }
