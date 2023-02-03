@@ -63,6 +63,10 @@ const ModalContainer = () => {
   const onClose = () => {
     if (loading) return;
 
+    if (modalName !== "" && modalName !== "comment") {
+      dispatch(setModalName(null));
+    }
+
     switch (modalName) {
       case "login":
         dispatch(setShowLoginModal(false));
@@ -79,6 +83,7 @@ const ModalContainer = () => {
         break;
       case "comment":
         dispatch(setShowAddComment(false));
+        dispatch(setModalName("details"));
         break;
       case "mobile":
         dispatch(setMobileMenu(false));
@@ -90,11 +95,6 @@ const ModalContainer = () => {
       default:
         return;
     }
-
-    if (modalName !== "") {
-      dispatch(setModalName(""));
-    }
-    dispatch(setModalName(null));
   };
 
   return (
