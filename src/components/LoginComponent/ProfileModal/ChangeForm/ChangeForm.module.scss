@@ -1,4 +1,4 @@
-.formModal {
+.changeFormModal {
   display: flex;
   flex-direction: column;
   padding: 25px;
@@ -7,5 +7,15 @@
   .changeForm {
     display: flex;
     flex-direction: column;
+
+    .buttonContainer {
+      display: flex;
+      justify-content: space-around;
+      button {
+        margin: 7px;
+        height: 30px;
+        width: 100px;
+      }
+    }
   }
 }

@@ -41,7 +41,7 @@ const ChangeForm = (props) => {
   const { email, password, confirmPassword } = formData;
 
   return (
-    <Modal className={styles.formModal}>
+    <Modal className={styles.changeFormModal}>
       <form onSubmit={handleSubmit} className={styles.changeForm}>
         {props.formType === "email" && (
           <>
@@ -82,7 +82,7 @@ const ChangeForm = (props) => {
             <ErrorDisplay errorText={errors.confirmPassword} />
           </>
         )}
-        <div>
+        <div className={styles.buttonContainer}>
           <Button type="submit" text="Submit" onSubmit={handleSubmit} />
           <Button type="button" text="Close" onClick={props.closeModal} />
         </div>
