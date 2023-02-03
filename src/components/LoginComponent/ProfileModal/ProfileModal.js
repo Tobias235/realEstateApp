@@ -1,15 +1,18 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setModalName, setShowProfile } from "../../../actions/Actions";
 import Backdrop from "../../UI/Backdrop/Backdrop";
 import Button from "../../UI/Button/Button";
-import styles from "./ProfileModal.module.scss";
 import DeleteAccountButton from "./ProfileModalButtons/DeleteAccountButton/DeleteAccountButton";
 import ChangeForm from "./ChangeForm/ChangeForm";
 import PastReviews from "./ProfileModalButtons/PastReviews/PastReviews";
+import styles from "./ProfileModal.module.scss";
 
 const ProfileModal = () => {
   const [formType, setFormType] = useState("");
   const [showReviews, setShowReviews] = useState(false);
+
+  const dispatch = useDispatch();
 
   const user = useSelector((state) => state.name);
 
@@ -33,6 +36,13 @@ const ProfileModal = () => {
         onClick={() => setFormType("password")}
       />
       <DeleteAccountButton />
+      <Button
+        text="close"
+        onClick={() => {
+          dispatch(setShowProfile(false));
+          dispatch(setModalName(null));
+        }}
+      />
 
       {(showReviews || formType !== "") && (
         <Backdrop
