@@ -23,19 +23,29 @@
     padding: 0;
   }
 
+  .signIn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: capitalize;
+  }
+
   li {
     width: 100%;
     list-style-type: none;
-    text-align: center;
-    padding: 15px 0;
-
-    a {
-      text-decoration: none;
-      color: black;
-    }
+    height: 40px;
 
     &:hover {
       border: 2px solid rgb(228, 156, 22);
+    }
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: black;
+      height: 100%;
+      width: 100%;
     }
   }
 }

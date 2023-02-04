@@ -1,9 +1,15 @@
+@use "../../../assets/util/" as *;
+
 .profileModal {
+  width: 300px;
   display: flex;
   flex-direction: column;
   text-transform: capitalize;
   z-index: 3;
   padding: 20px;
+  @include respond-to("tablet") {
+    width: auto;
+  }
 
   h1 {
     margin-top: 0;

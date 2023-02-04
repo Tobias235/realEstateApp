@@ -14,7 +14,7 @@ const SignUpFormComponent = () => {
 
   const handleUserRegister = async () => {
     try {
-      const user = await createUserWithEmailAndPassword(
+      await createUserWithEmailAndPassword(
         auth,
         formData.email,
         formData.password

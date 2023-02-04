@@ -10,15 +10,14 @@ import styles from "./MobileNav.module.scss";
 const MobileNav = () => {
   const dispatch = useDispatch();
 
-  const login_status = useSelector((state) => state.login_status);
-  const currentUser = useSelector((state) => state.current_user);
+  const name = useSelector((state) => state.name);
 
-  const signIn = login_status ? (
+  const signIn = name ? (
     <li
       className={styles.signIn}
       onClick={() => dispatch(setShowMobileUserDropdown(true))}
     >
-      {currentUser}
+      {name}
     </li>
   ) : (
     <li
