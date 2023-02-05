@@ -112,8 +112,6 @@ const UploadForm = () => {
         if (currentProperty) {
           dispatch(setPropertiesUpdated(!propertiesUpdate));
           dispatch(setShowUploadPropertiesModal(false));
-          dispatch(setShowDetails(true));
-          dispatch(setModalName("details"));
         }
       }
     } catch (error) {

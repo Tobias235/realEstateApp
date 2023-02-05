@@ -48,7 +48,7 @@ const ContactFormComponent = () => {
       />
       <ErrorDisplay errorText={errors.name} />
 
-      <label>EMail:</label>
+      <label>Email:</label>
       <input
         type="email"
         placeholder="Email"
