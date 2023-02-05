@@ -4,7 +4,7 @@ import AddReviewComponent from "../../PropertiesModal/PropertiesCommentModal/Add
 import { useSelector } from "react-redux";
 import styles from "./DesktopDetails.module.scss";
 
-const DesktopDetails = () => {
+const DesktopDetails = (props) => {
   const addComments = useSelector((state) => state.show_comment);
 
   const detailsReviewStyling = addComments
@@ -12,7 +12,7 @@ const DesktopDetails = () => {
     : styles.propertiesModal;
 
   return (
-    <div className={detailsReviewStyling}>
+    <div className={`${detailsReviewStyling} ${props.className}`}>
       {!addComments && <LeftModal />}
       {!addComments && <RightModal />}
       {addComments && <AddReviewComponent />}

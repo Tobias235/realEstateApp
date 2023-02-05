@@ -1,10 +1,12 @@
 import DesktopDetails from "./DesktopDetails/DesktopDetails";
-// import styles from "./PropertiesModal.module.scss";
+import MobileDetails from "./MobileDetails/MobileDetails";
+import styles from "./PropertiesModal.module.scss";
 
 const PropertiesModal = () => {
   return (
     <>
-      <DesktopDetails />
+      <DesktopDetails className={styles.showDesktop} />
+      <MobileDetails />
     </>
   );
 };
