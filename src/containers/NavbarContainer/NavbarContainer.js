@@ -61,14 +61,6 @@ const NavbarComponent = () => {
           >
             Profile
           </li>
-          <li
-            onClick={() => {
-              dispatch(setShowUploadPropertiesModal(true));
-              dispatch(setModalName("upload"));
-            }}
-          >
-            Upload Properties
-          </li>
           <li onClick={onSignOut}>Sign Out</li>
         </ul>
       )}

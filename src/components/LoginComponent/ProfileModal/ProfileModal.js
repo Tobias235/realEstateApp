@@ -1,6 +1,10 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setModalName, setShowProfile } from "../../../actions/Actions";
+import {
+  setModalName,
+  setShowProfile,
+  setShowUploadPropertiesModal,
+} from "../../../actions/Actions";
 import Backdrop from "../../UI/Backdrop/Backdrop";
 import Button from "../../UI/Button/Button";
 import DeleteAccountButton from "./ProfileModalButtons/DeleteAccountButton/DeleteAccountButton";
@@ -24,6 +28,17 @@ const ProfileModal = () => {
   return (
     <div className={styles.profileModal}>
       <h1>Welcome, {user}</h1>
+      <Button
+        type="button"
+        text="upload properties"
+        onClick={() => {
+          dispatch(setShowUploadPropertiesModal(true));
+          dispatch(setShowProfile(false));
+          dispatch(setModalName("upload"));
+        }}
+      >
+        Upload Properties
+      </Button>
       <Button text="reviews" onClick={() => setShowReviews(true)} />
       <Button
         type="button"
