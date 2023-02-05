@@ -4,8 +4,8 @@ import { setModalName, setShowLoginModal } from "../../../actions/Actions";
 import LoginForm from "./LoginForm/LoginForm";
 import RegisterComponent from "../RegisterComponent/RegisterComponent";
 import SignUpFormComponent from "../SignUpFormComponent/SignUpFormComponent";
-import { ReactComponent as CloseIcon } from "../../../assets/images/closeIcon.svg";
 import styles from "./LoginModal.module.scss";
+import ClosingIcon from "../../UI/CloseIcon/ClosingIcon";
 
 const LoginModal = () => {
   const [showRegister, setShowRegister] = useState(false);
@@ -23,14 +23,12 @@ const LoginModal = () => {
 
   return (
     <div className={styles.loginModal}>
-      <div className={styles.closingIcon}>
-        <CloseIcon
-          onClick={() => {
-            dispatch(setShowLoginModal(false));
-            dispatch(setModalName(""));
-          }}
-        />
-      </div>
+      <ClosingIcon
+        onClick={() => {
+          dispatch(setShowLoginModal(false));
+          dispatch(setModalName(""));
+        }}
+      />
       <h1>{formTitle}</h1>
       {showLoginForm}
       {!showRegister && <div className={styles.notRegisteredBorder}></div>}
