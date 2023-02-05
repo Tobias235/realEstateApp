@@ -34,7 +34,12 @@ const ForgotPassword = () => {
 
   return (
     <>
-      <span onClick={() => setShowForgotPassword(true)}>Forgot Password?</span>
+      <span
+        className={styles.forgotPasswordBtn}
+        onClick={() => setShowForgotPassword(true)}
+      >
+        Forgot Password?
+      </span>
 
       {showForgotPassword && (
         <Modal className={styles.forgotPasswordModal}>

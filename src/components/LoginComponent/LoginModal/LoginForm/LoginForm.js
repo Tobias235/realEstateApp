@@ -69,7 +69,7 @@ const LoginForm = () => {
 
       <Button
         type="submit"
-        text="Sign In"
+        text="Sign in"
         className={styles.signInButton}
         onSubmit={handleSubmit}
       />

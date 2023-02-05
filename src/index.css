@@ -19,6 +19,7 @@ input {
 
 input::placeholder {
   font-size: 12px;
+  opacity: 0.8;
 }
 
 textarea {
