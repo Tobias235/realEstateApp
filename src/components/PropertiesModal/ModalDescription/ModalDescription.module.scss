@@ -8,11 +8,45 @@
 
   .location {
     text-transform: capitalize;
+    font-size: 18px;
+    font-weight: 600;
   }
 
   span {
-    margin: 3px;
+    margin: 5px;
     margin-left: 10px;
     font-size: 14px;
+    font-weight: 500;
+  }
+
+  .details {
+    display: flex;
+    justify-content: space-around;
+  }
+  .details:last-of-type {
+    margin-bottom: 10px;
+  }
+
+  .description {
+    font-weight: 500;
+    font-size: 16px;
+    max-height: 200px;
+    overflow: scroll;
+    overflow-x: hidden;
+    &::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: rgba(231, 161, 48, 0.7);
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background: rgba(231, 161, 48, 1);
+    }
   }
 }
