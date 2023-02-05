@@ -1,0 +1,8 @@
+@use "../../assets/util/" as *;
+
+.showDesktop {
+  display: none;
+  @include respond-to("tablet") {
+    display: flex;
+  }
+}

@@ -1,3 +1,5 @@
+@use "../../../assets/util/" as *;
+
 .gallery {
   display: flex;
   justify-content: center;
@@ -15,8 +17,11 @@
 
   .arrowContainer {
     position: absolute;
-    width: 45%;
+    width: 85%;
     margin: auto;
+    @include respond-to("tablet") {
+      width: 45%;
+    }
     .arrowInnerContainer {
       height: 200px;
       display: flex;
