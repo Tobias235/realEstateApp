@@ -73,7 +73,7 @@ const NavbarComponent = () => {
         dispatch(setModalName("login"));
       }}
     >
-      Sign In
+      Sign in
     </span>
   );
 

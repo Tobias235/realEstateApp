@@ -1,7 +1,7 @@
 export const loginValidation = {
   email: (value) =>
     !/\S+@\S+\.\S+/.test(value)
-      ? "Please enter a valid e-mail address."
+      ? "Please enter a valid email address."
       : undefined,
   password: (value) =>
     value.length < 8
@@ -13,7 +13,7 @@ export const signupValidation = {
   name: (value) => (value.length < 2 ? "Please enter your name." : undefined),
   email: (value) =>
     !/\S+@\S+\.\S+/.test(value)
-      ? "Please enter a valid e-mail address."
+      ? "Please enter a valid email address."
       : undefined,
   password: (value) =>
     value.length < 8
@@ -25,7 +25,7 @@ export const contactValidation = {
   name: (value) => (value.length < 5 ? "Please enter your name." : undefined),
   email: (value) =>
     !/\S+@\S+\.\S+/.test(value)
-      ? "Please enter a valid e-mail address."
+      ? "Please enter a valid email address."
       : undefined,
   subject: (value) => (!value ? "Please enter a subject." : undefined),
   message: (value) =>
@@ -74,6 +74,6 @@ export const passwordFormValidation = {
 export const emailFormValidation = {
   email: (value) =>
     !/\S+@\S+\.\S+/.test(value)
-      ? "Please enter a valid e-mail address."
+      ? "Please enter a valid email address."
       : undefined,
 };
