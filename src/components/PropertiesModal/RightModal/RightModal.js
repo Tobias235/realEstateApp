@@ -14,7 +14,9 @@ const RightModal = () => {
   const dispatch = useDispatch();
   const id = useSelector((state) => state.id);
 
-  const showEditButton = process.env.REACT_APP_ADMIN_USER === id ? true : false;
+  // const showEditButton = process.env.REACT_APP_ADMIN_USER === id ? true : false;
+
+  const showEditButton = true;
 
   return (
     <div className={styles.rightModal}>
