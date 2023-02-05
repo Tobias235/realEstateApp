@@ -7,7 +7,9 @@ import {
 } from "../../../actions/Actions";
 import useFetchProperties from "../../../hooks/useFetchProperties";
 import StarRating from "../../PropertiesModal/PropertiesCommentModal/StarRating/StarRating";
+import Button from "../../UI/Button/Button";
 import { RatingCalculator } from "../../utils/RatingCalculator";
+import EditPropertyButton from "./EditPropertyButton/EditPropertyButton";
 import styles from "./PropertyCard.module.scss";
 
 const PropertyCard = () => {
@@ -45,16 +47,17 @@ const PropertyCard = () => {
               <span>Size: {property.size} SQM</span>
             </div>
             <div className={styles.buttonContainer}>
-              <button
+              <Button
+                type="button"
+                text="show details"
                 onClick={() => {
                   dispatch(setCurrentProperty(key));
                   dispatch(setCurrentPropertyData(property));
                   dispatch(setShowDetails(true));
                   dispatch(setModalName("details"));
                 }}
-              >
-                Show Details
-              </button>
+              />
+              <EditPropertyButton property={property} keyProp={key} />
             </div>
           </div>
         );

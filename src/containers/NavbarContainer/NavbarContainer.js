@@ -8,7 +8,6 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   setShowLoginModal,
   setCurrentUser,
-  setShowUploadPropertiesModal,
   setShowProfile,
   setModalName,
 } from "../../actions/Actions";
