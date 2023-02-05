@@ -1,7 +1,12 @@
 .error {
+  margin-top: 2px;
   font-size: 10px !important;
   color: red;
-  text-transform: capitalize;
+  text-transform: lowercase;
+}
+
+.error::first-letter {
+  text-transform: uppercase;
 }
 
 .hidden {

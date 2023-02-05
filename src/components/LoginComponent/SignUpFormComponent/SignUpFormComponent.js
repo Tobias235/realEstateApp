@@ -42,7 +42,7 @@ const SignUpFormComponent = () => {
       <label>Name:</label>
       <input
         type="text"
-        placeholder="Name:"
+        placeholder="Name"
         name="name"
         autoComplete="off"
         value={name}
@@ -56,7 +56,7 @@ const SignUpFormComponent = () => {
       <label>Email:</label>
       <input
         type="email"
-        placeholder="Email:"
+        placeholder="Email"
         name="email"
         autoComplete="off"
         value={email}
@@ -70,7 +70,7 @@ const SignUpFormComponent = () => {
       <label>Password:</label>
       <input
         type="password"
-        placeholder="Password:"
+        placeholder="Password"
         autoComplete="off"
         name="password"
         value={password}

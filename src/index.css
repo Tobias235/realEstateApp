@@ -11,3 +11,21 @@ body {
   height: 100%;
   width: 100%;
 }
+
+input {
+  padding: 0 3px;
+  margin: 3px;
+}
+
+input::placeholder {
+  font-size: 12px;
+}
+
+textarea {
+  padding: 0 3px;
+  margin: 3px;
+}
+
+textarea::placeholder {
+  font-size: 12px;
+}

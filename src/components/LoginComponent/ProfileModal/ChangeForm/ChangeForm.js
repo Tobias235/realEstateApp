@@ -64,6 +64,7 @@ const ChangeForm = (props) => {
               type="password"
               name="password"
               value={password}
+              autoComplete="off"
               onChange={(e) => {
                 handleChange(e);
               }}
@@ -75,6 +76,7 @@ const ChangeForm = (props) => {
               type="password"
               name="confirmPassword"
               value={confirmPassword}
+              autoComplete="off"
               onChange={(e) => {
                 handleChange(e);
               }}

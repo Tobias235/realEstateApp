@@ -45,7 +45,7 @@ const LoginForm = () => {
       <label>Email:</label>
       <input
         type="email"
-        placeholder="Email:"
+        placeholder="Email"
         className={errors.email ? styles.error : null}
         value={email}
         name="email"
@@ -57,7 +57,7 @@ const LoginForm = () => {
       <label>Password:</label>
       <input
         type="password"
-        placeholder="Password:"
+        placeholder="Password"
         className={errors.password ? styles.error : null}
         value={password}
         name="password"

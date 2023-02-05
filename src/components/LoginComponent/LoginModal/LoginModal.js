@@ -19,7 +19,7 @@ const LoginModal = () => {
 
   const formTitle = !showRegister
     ? "Login to your account"
-    : "Register Your Account";
+    : "Register your account";
 
   return (
     <div className={styles.loginModal}>
