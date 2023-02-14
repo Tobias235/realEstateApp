@@ -1,5 +1,4 @@
 import { useSelector } from "react-redux";
-import AddReviewButton from "../LeftModal/AddReviewButton/AddReviewButton";
 import ModalDescription from "../ModalDescription/ModalDescription";
 import ModalGallery from "../ModalGallery/ModalGallery";
 import AddReviewComponent from "../PropertiesCommentModal/AddReviewComponent/AddReviewComponent";
@@ -19,7 +18,6 @@ const MobileDetails = (props) => {
           <ModalDescription />
           <ReviewContainer />
           <div className={styles.buttonContainer}>
-            <AddReviewButton />
             <CloseDetailsButton />
           </div>
         </div>
