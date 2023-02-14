@@ -43,10 +43,10 @@ const ContactFormComponent = () => {
         placeholder="Name"
         name="from_name"
         value={from_name}
-        className={errors.name && styles.error}
+        className={errors.from_name && styles.error}
         onChange={(e) => handleChange(e)}
       />
-      <ErrorDisplay errorText={errors.name} />
+      <ErrorDisplay errorText={errors.from_name} />
 
       <label>Email:</label>
       <input
@@ -54,10 +54,10 @@ const ContactFormComponent = () => {
         placeholder="Email"
         name="reply_to"
         value={reply_to}
-        className={errors.email && styles.error}
+        className={errors.reply_to && styles.error}
         onChange={(e) => handleChange(e)}
       />
-      <ErrorDisplay errorText={errors.email} />
+      <ErrorDisplay errorText={errors.reply_to} />
 
       <label>Subject:</label>
       <input

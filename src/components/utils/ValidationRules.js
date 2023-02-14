@@ -22,8 +22,9 @@ export const signupValidation = {
 };
 
 export const contactValidation = {
-  name: (value) => (value.length < 5 ? "Please enter your name." : undefined),
-  email: (value) =>
+  from_name: (value) =>
+    !value || value.length < 3 ? "Please enter your name." : undefined,
+  reply_to: (value) =>
     !/\S+@\S+\.\S+/.test(value)
       ? "Please enter a valid email address."
       : undefined,
