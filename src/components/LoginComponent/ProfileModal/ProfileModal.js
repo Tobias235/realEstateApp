@@ -4,7 +4,7 @@ import {
   setModalName,
   setShowProfile,
   setShowUploadPropertiesModal,
-} from "../../../actions/Actions";
+} from "../../../actions/ModalActions";
 import Backdrop from "../../UI/Backdrop/Backdrop";
 import Button from "../../UI/Button/Button";
 import DeleteAccountButton from "./ProfileModalButtons/DeleteAccountButton/DeleteAccountButton";
@@ -18,7 +18,7 @@ const ProfileModal = () => {
 
   const dispatch = useDispatch();
 
-  const user = useSelector((state) => state.name);
+  const user = useSelector((state) => state.userReducer.name);
 
   const closeModal = () => {
     setFormType("");

@@ -1,6 +1,7 @@
 import { ReactComponent as BurgerIcon } from "../../../../assets/images/burgerIcon.svg";
 import { useDispatch } from "react-redux";
-import { setMobileMenu, setModalName } from "../../../../actions/Actions";
+import { setMobileMenu } from "../../../../actions/MobileActions";
+import { setModalName } from "../../../../actions/ModalActions";
 import styles from "./MobileNavbar.module.scss";
 
 const MobileNavbar = () => {

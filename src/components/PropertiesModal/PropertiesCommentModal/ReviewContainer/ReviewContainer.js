@@ -4,7 +4,7 @@ import styles from "./ReviewContainer.module.scss";
 
 const ReviewContainer = () => {
   const currentPropertyData = useSelector(
-    (state) => state.current_property_data
+    (state) => state.propertyReducer.current_property_data
   );
   return (
     <div className={styles.reviewContainer}>

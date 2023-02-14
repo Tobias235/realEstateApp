@@ -4,18 +4,17 @@ import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { auth, storage } from "../../../Firebase";
 import { resizeFile } from "../../utils/ImageConverter";
 import { uploadPropertyValidation } from "../../utils/ValidationRules";
-import {
-  setError,
-  setLoading,
-  setModalName,
-  setPropertiesUpdated,
-  setShowDetails,
-  setShowUploadPropertiesModal,
-  setUploadingStatus,
-} from "../../../actions/Actions";
 import Button from "../../UI/Button/Button";
 import ErrorDisplay from "../../UI/ErrorDisplay/ErrorDisplay";
 import ErrorMessages from "../../utils/ErrorMessages";
+import {
+  setError,
+  setLoading,
+  setUploadingStatus,
+} from "../../../actions/LoadingActions";
+import { setPropertiesUpdated } from "../../../actions/PropertyActions";
+import { setShowUploadPropertiesModal } from "../../../actions/ModalActions";
+
 import styles from "./UploadForm.module.scss";
 
 const initialState = {
@@ -31,9 +30,15 @@ const initialState = {
 };
 
 const UploadForm = () => {
-  const currentPropertyId = useSelector((state) => state.current_property);
-  const currentProperty = useSelector((state) => state.current_property_data);
-  const propertiesUpdate = useSelector((state) => state.properties_update);
+  const currentPropertyId = useSelector(
+    (state) => state.propertyReducer.current_property
+  );
+  const currentProperty = useSelector(
+    (state) => state.propertyReducer.current_property_data
+  );
+  const propertiesUpdate = useSelector(
+    (state) => state.propertyReducer.properties_update
+  );
   const dispatch = useDispatch();
 
   const handleImageSelect = async (e) => {

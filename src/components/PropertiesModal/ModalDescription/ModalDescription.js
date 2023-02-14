@@ -5,8 +5,10 @@ import { ReactComponent as HouseSize } from "../../../assets/images/houseSize.sv
 import styles from "./ModalDescription.module.scss";
 
 const ModalDescription = () => {
-  const properties = useSelector((state) => state.properties);
-  const current_property = useSelector((state) => state.current_property);
+  const properties = useSelector((state) => state.propertyReducer.properties);
+  const current_property = useSelector(
+    (state) => state.propertyReducer.current_property
+  );
 
   const currentProperty = Object.entries(properties).filter(
     (property) => property[0] === current_property

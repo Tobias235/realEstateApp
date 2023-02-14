@@ -1,10 +1,13 @@
 import { useDispatch } from "react-redux";
 import {
-  setCurrentProperty,
-  setCurrentPropertyData,
   setModalName,
   setShowUploadPropertiesModal,
-} from "../../../../actions/Actions";
+} from "../../../../actions/ModalActions";
+import {
+  setCurrentProperty,
+  setCurrentPropertyData,
+} from "../../../../actions/PropertyActions";
+
 import Button from "../../../UI/Button/Button";
 import styles from "./EditPropertyButton.module.scss";
 

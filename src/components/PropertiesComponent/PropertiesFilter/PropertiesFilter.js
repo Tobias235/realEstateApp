@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setProperties, setUpdateFilter } from "../../../actions/Actions";
+import { setUpdateFilter } from "../../../actions/FilterActions";
+import { setProperties } from "../../../actions/PropertyActions";
 import SelectMenu from "../../UI/SelectMenu/SelectMenu";
 import { FetchProperties } from "../../utils/FetchProperties";
 import styles from "./PropertiesFilter.module.scss";
@@ -10,9 +11,13 @@ const PropertiesFilter = () => {
   const [propertyType, setPropertyType] = useState("default");
 
   const dispatch = useDispatch();
-  const cities = useSelector((state) => state.cities);
-  const propertyTypes = useSelector((state) => state.propertyTypes);
-  const updateFilter = useSelector((state) => state.update_filter);
+  const cities = useSelector((state) => state.filterReducer.cities);
+  const propertyTypes = useSelector(
+    (state) => state.filterReducer.property_types
+  );
+  const updateFilter = useSelector(
+    (state) => state.filterReducer.update_filter
+  );
 
   useEffect(() => {
     if (updateFilter) {

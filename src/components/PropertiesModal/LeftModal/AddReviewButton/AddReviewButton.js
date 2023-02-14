@@ -1,11 +1,14 @@
 import { useDispatch, useSelector } from "react-redux";
-import { setModalName, setShowAddComment } from "../../../../actions/Actions";
+import {
+  setModalName,
+  setShowAddReview,
+} from "../../../../actions/ModalActions";
 import Button from "../../../UI/Button/Button";
 import styles from "./AddReviewButton.module.scss";
 
 const AddReviewButton = () => {
   const dispatch = useDispatch();
-  const name = useSelector((state) => state.name);
+  const name = useSelector((state) => state.userReducer.name);
   return (
     <>
       {name && (
@@ -14,8 +17,8 @@ const AddReviewButton = () => {
           text="Add Review"
           className={styles.reviewButton}
           onClick={() => {
-            dispatch(setShowAddComment(true));
-            dispatch(setModalName("comment"));
+            dispatch(setShowAddReview(true));
+            dispatch(setModalName("review"));
           }}
         />
       )}

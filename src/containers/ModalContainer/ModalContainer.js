@@ -1,19 +1,6 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  setCurrentProperty,
-  setCurrentPropertyData,
-  setError,
-  setMobileMenu,
-  setModalName,
-  setShowAddComment,
-  setShowDetails,
-  setShowLoginModal,
-  setShowMobileUserDropdown,
-  setShowProfile,
-  setShowUploadPropertiesModal,
-} from "../../actions/Actions";
 import Backdrop from "../../components/UI/Backdrop/Backdrop";
 import Modal from "./../../components/UI/Modal/Modal";
 import LoginModal from "../../components/LoginComponent/LoginModal/LoginModal";
@@ -23,24 +10,42 @@ import MobileNavContainer from "../NavbarContainer/MobileNavContainer";
 import ErrorModal from "../../components/UI/ErrorModal/ErrorModal";
 import ProfileModal from "../../components/LoginComponent/ProfileModal/ProfileModal";
 import Loader from "../../components/UI/Loader/Loader";
-
+import {
+  setModalName,
+  setShowAddReview,
+  setShowDetails,
+  setShowLoginModal,
+  setShowProfile,
+  setShowUploadPropertiesModal,
+} from "../../actions/ModalActions";
+import {
+  setCurrentProperty,
+  setCurrentPropertyData,
+} from "../../actions/PropertyActions";
+import {
+  setMobileMenu,
+  setShowMobileUserDropdown,
+} from "../../actions/MobileActions";
+import { setError } from "../../actions/LoadingActions";
 import styles from "./ModalContainer.module.scss";
 
 const ModalContainer = () => {
   const [modal, setModal] = useState([]);
   const dispatch = useDispatch();
 
-  const login_modal = useSelector((state) => state.login_modal);
+  const login_modal = useSelector((state) => state.modalReducer.login_modal);
   const show_upload_properties_modal = useSelector(
-    (state) => state.show_upload_properties_modal
+    (state) => state.modalReducer.show_upload_properties_modal
   );
-  const show_details = useSelector((state) => state.show_details);
-  const loading = useSelector((state) => state.loading);
-  const upload_status = useSelector((state) => state.uploading_status);
-  const showProfile = useSelector((state) => state.showProfile);
-  const mobile_menu = useSelector((state) => state.mobile_menu);
-  const modalName = useSelector((state) => state.modalName);
-  const error = useSelector((state) => state.error);
+  const show_details = useSelector((state) => state.modalReducer.show_details);
+  const showProfile = useSelector((state) => state.modalReducer.show_profile);
+  const modalName = useSelector((state) => state.modalReducer.modal_name);
+  const mobile_menu = useSelector((state) => state.mobileReducer.mobile_menu);
+  const error = useSelector((state) => state.loadingReducer.error);
+  const loading = useSelector((state) => state.loadingReducer.loading);
+  const upload_status = useSelector(
+    (state) => state.loadingReducer.uploading_status
+  );
 
   useEffect(() => {
     let stateArray = [];
@@ -81,8 +86,8 @@ const ModalContainer = () => {
         dispatch(setCurrentProperty(null));
         dispatch(setCurrentPropertyData(null));
         break;
-      case "comment":
-        dispatch(setShowAddComment(false));
+      case "review":
+        dispatch(setShowAddReview(false));
         dispatch(setModalName("details"));
         break;
       case "mobile":

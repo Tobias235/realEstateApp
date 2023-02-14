@@ -1,10 +1,9 @@
 import { useDispatch } from "react-redux";
+import { setModalName, setShowDetails } from "../../../../actions/ModalActions";
 import {
   setCurrentProperty,
   setCurrentPropertyData,
-  setModalName,
-  setShowDetails,
-} from "../../../../actions/Actions";
+} from "../../../../actions/PropertyActions";
 import Button from "../../../UI/Button/Button";
 import styles from "./CloseDetailsButton.module.scss";
 

@@ -2,11 +2,13 @@ import UploadForm from "./UploadForm/UploadForm";
 import ClosingIcon from "../UI/CloseIcon/ClosingIcon";
 import { useDispatch } from "react-redux";
 import {
+  setModalName,
   setShowUploadPropertiesModal,
+} from "../../actions/ModalActions";
+import {
   setCurrentProperty,
   setCurrentPropertyData,
-  setModalName,
-} from "../../actions/Actions";
+} from "../../actions/PropertyActions";
 import styles from "./UploadPropertiesModal.module.scss";
 
 const UploadPropertiesModal = () => {

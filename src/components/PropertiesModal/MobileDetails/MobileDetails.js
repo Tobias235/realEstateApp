@@ -7,20 +7,23 @@ import ReviewContainer from "../PropertiesCommentModal/ReviewContainer/ReviewCon
 import CloseDetailsButton from "../RightModal/CloseDetailsButton/CloseDetailsButton";
 import styles from "./MobileDetails.module.scss";
 
-const MobileDetails = () => {
-  const addComments = useSelector((state) => state.show_comment);
+const MobileDetails = (props) => {
+  const addReviews = useSelector((state) => state.modalReducer.show_review);
 
-  return addComments ? (
-    <> {addComments && <AddReviewComponent />}</>
-  ) : (
-    <div className={styles.mobileDetailsContainer}>
-      <ModalGallery />
-      <ModalDescription />
-      <ReviewContainer />
-      <div className={styles.buttonContainer}>
-        <AddReviewButton />
-        <CloseDetailsButton />
-      </div>
+  return (
+    <div className={props.className}>
+      {addReviews && <AddReviewComponent />}
+      {!addReviews && (
+        <div className={styles.mobileDetailsContainer}>
+          <ModalGallery />
+          <ModalDescription />
+          <ReviewContainer />
+          <div className={styles.buttonContainer}>
+            <AddReviewButton />
+            <CloseDetailsButton />
+          </div>
+        </div>
+      )}
     </div>
   );
 };

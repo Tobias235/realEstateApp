@@ -1,13 +1,15 @@
 import { useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setUpdateFilter } from "../../../actions/Actions";
+import { setUpdateFilter } from "../../../actions/FilterActions";
 import styles from "./DropDownComponent.module.scss";
 
 const DropDownComponent = () => {
   const [showDropdown, setShowDropdown] = useState(false);
   const dropdown = useRef(null);
-  const cities = useSelector((state) => state.cities);
-  const propertyTypes = useSelector((state) => state.propertyTypes);
+  const cities = useSelector((state) => state.filterReducer.cities);
+  const propertyTypes = useSelector(
+    (state) => state.filterReducer.propertyTypes
+  );
 
   const dispatch = useDispatch();
 

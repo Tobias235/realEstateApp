@@ -1,8 +1,7 @@
 import { ReactComponent as CallIcon } from "../../../assets/images/callIcon.svg";
 import { ReactComponent as MessageIcon } from "../../../assets/images/messageIcon.svg";
-
-import styles from "./ContactInformationComponent.module.scss";
 import contactUs from "../../../assets/images/contactUs.webp";
+import styles from "./ContactInformationComponent.module.scss";
 
 const ContactInformationComponent = () => {
   return (

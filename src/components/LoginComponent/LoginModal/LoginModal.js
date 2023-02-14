@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { setModalName, setShowLoginModal } from "../../../actions/Actions";
+import { setModalName, setShowLoginModal } from "../../../actions/ModalActions";
 import LoginForm from "./LoginForm/LoginForm";
 import RegisterComponent from "../RegisterComponent/RegisterComponent";
 import SignUpFormComponent from "../SignUpFormComponent/SignUpFormComponent";
-import styles from "./LoginModal.module.scss";
 import ClosingIcon from "../../UI/CloseIcon/ClosingIcon";
+import styles from "./LoginModal.module.scss";
 
 const LoginModal = () => {
   const [showRegister, setShowRegister] = useState(false);

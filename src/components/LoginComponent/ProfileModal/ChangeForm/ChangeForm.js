@@ -9,9 +9,9 @@ import styles from "./ChangeForm.module.scss";
 import { auth } from "../../../../Firebase";
 import { updatePassword, updateEmail } from "firebase/auth";
 import ErrorMessages from "../../../utils/ErrorMessages";
-import { setError } from "../../../../actions/Actions";
 import { useDispatch } from "react-redux";
 import ErrorDisplay from "../../../UI/ErrorDisplay/ErrorDisplay";
+import { setError } from "../../../../actions/LoadingActions";
 
 const ChangeForm = (props) => {
   const dispatch = useDispatch();

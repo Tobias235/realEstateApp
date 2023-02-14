@@ -5,17 +5,17 @@ import { useSelector } from "react-redux";
 import styles from "./DesktopDetails.module.scss";
 
 const DesktopDetails = (props) => {
-  const addComments = useSelector((state) => state.show_comment);
+  const addReviews = useSelector((state) => state.modalReducer.show_review);
 
-  const detailsReviewStyling = addComments
+  const detailsReviewStyling = addReviews
     ? styles.addReview
     : styles.propertiesModal;
 
   return (
     <div className={`${detailsReviewStyling} ${props.className}`}>
-      {!addComments && <LeftModal />}
-      {!addComments && <RightModal />}
-      {addComments && <AddReviewComponent />}
+      {!addReviews && <LeftModal />}
+      {!addReviews && <RightModal />}
+      {addReviews && <AddReviewComponent />}
     </div>
   );
 };

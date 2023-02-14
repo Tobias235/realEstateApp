@@ -3,7 +3,9 @@ import MobileNav from "../../components/NavBarComponent/MobileNavbarComponents/M
 import MobileNavLoggedIn from "../../components/NavBarComponent/MobileNavbarComponents/MobileNavLoggedIn/MobileNavLoggedIn";
 
 const MobileNavContainer = () => {
-  const profileClicked = useSelector((state) => state.show_options);
+  const profileClicked = useSelector(
+    (state) => state.mobileReducer.show_options
+  );
 
   const showLoggedinOptions = profileClicked ? (
     <MobileNavLoggedIn />

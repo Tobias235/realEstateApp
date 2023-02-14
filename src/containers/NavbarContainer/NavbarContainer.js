@@ -5,18 +5,18 @@ import DropDownComponent from "../../components/NavBarComponent/DropDownComponen
 import NavButtonComponent from "../../components/NavBarComponent/NavButtonComponent/NavButtonComponent";
 import logo from "../../assets/images/roomrental.webp";
 import { useSelector, useDispatch } from "react-redux";
+import { setCurrentUser } from "../../actions/UserActions";
 import {
-  setShowLoginModal,
-  setCurrentUser,
-  setShowProfile,
   setModalName,
-} from "../../actions/Actions";
+  setShowLoginModal,
+  setShowProfile,
+} from "../../actions/ModalActions";
 import styles from "./NavbarContainer.module.scss";
 
 const NavbarComponent = () => {
   const [showDropdown, setShowDropdown] = useState(false);
   const dropdown = useRef(null);
-  const name = useSelector((state) => state.name);
+  const name = useSelector((state) => state.userReducer.name);
 
   const dispatch = useDispatch();
 

@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 
 const PopupNotifications = () => {
   const [showMessage, setShowMessage] = useState(false);
-  const name = useSelector((state) => state.name);
+  const name = useSelector((state) => state.userReducer.name);
 
   useEffect(() => {
     if (name) {

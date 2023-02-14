@@ -5,7 +5,7 @@ import Modal from "../Modal/Modal";
 import styles from "./ErrorModal.module.scss";
 
 const ErrorModal = (props) => {
-  const error = useSelector((state) => state.error);
+  const error = useSelector((state) => state.loadingReducer.error);
 
   return (
     <Modal className={styles.errorModalContainer}>

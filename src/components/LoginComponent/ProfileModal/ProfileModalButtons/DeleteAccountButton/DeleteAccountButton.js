@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { setCurrentUser, setError } from "../../../../../actions/Actions";
+import { setError } from "../../../../../actions/LoadingActions";
+import { setCurrentUser } from "../../../../../actions/UserActions";
 import { auth } from "../../../../../Firebase";
 import Backdrop from "../../../../UI/Backdrop/Backdrop";
 import Button from "../../../../UI/Button/Button";

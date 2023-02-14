@@ -2,17 +2,15 @@ import { useDispatch } from "react-redux";
 import useForm from "../../../../hooks/useForm";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../../../Firebase";
-import {
-  setCurrentUser,
-  setError,
-  setShowLoginModal,
-} from "../../../../actions/Actions";
 import { loginValidation } from "../../../utils/ValidationRules";
+import { setCurrentUser } from "../../../../actions/UserActions";
+import { setShowLoginModal } from "../../../../actions/ModalActions";
+import { setError } from "../../../../actions/LoadingActions";
 import Button from "../../../UI/Button/Button";
 import ErrorDisplay from "../../../UI/ErrorDisplay/ErrorDisplay";
 import ErrorMessages from "../../../utils/ErrorMessages";
-import styles from "./LoginForm.module.scss";
 import ForgotPassword from "../../ForgotPassword/ForgotPassword";
+import styles from "./LoginForm.module.scss";
 
 const LoginForm = () => {
   const dispatch = useDispatch();

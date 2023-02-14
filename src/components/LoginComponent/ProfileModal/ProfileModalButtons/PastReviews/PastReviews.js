@@ -6,7 +6,7 @@ import ReviewCard from "../../../../UI/ReviewCard/ReviewCard";
 import styles from "./PastReviews.module.scss";
 
 const PastReviews = (props) => {
-  const properties = useSelector((state) => state.properties);
+  const properties = useSelector((state) => state.propertyReducer.properties);
 
   const userUID = auth.currentUser.uid;
 

@@ -1,25 +1,29 @@
 import useForm from "../../../../hooks/useForm";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  setCurrentPropertyData,
-  setLoading,
-  setError,
-  setPropertiesUpdated,
-  setShowAddComment,
-  setModalName,
-} from "../../../../actions/Actions";
+
 import { CurrentDate } from "../../../utils/CurrentDate";
 import { addReviewValidation } from "../../../utils/ValidationRules";
 import StarRating from "../StarRating/StarRating";
 import ReviewButton from "./ReviewButton/ReviewButton";
 import ErrorDisplay from "../../../UI/ErrorDisplay/ErrorDisplay";
-import styles from "./AddReviewComponent.module.scss";
 import { auth } from "../../../../Firebase";
+import { setError, setLoading } from "../../../../actions/LoadingActions";
+import {
+  setModalName,
+  setShowAddReview,
+} from "../../../../actions/ModalActions";
+import {
+  setCurrentPropertyData,
+  setPropertiesUpdated,
+} from "../../../../actions/PropertyActions";
+import styles from "./AddReviewComponent.module.scss";
 
 const AddReviewComponent = () => {
   const dispatch = useDispatch();
-  const currentProperty = useSelector((state) => state.current_property);
-  const name = useSelector((state) => state.name);
+  const currentProperty = useSelector(
+    (state) => state.propertyReducer.current_property
+  );
+  const name = useSelector((state) => state.userReducer.name);
 
   const handleAddReview = () => {
     dispatch(setLoading(true));
@@ -56,7 +60,7 @@ const AddReviewComponent = () => {
       dispatch(setError(error.message));
     } finally {
       dispatch(setLoading(false));
-      dispatch(setShowAddComment(false));
+      dispatch(setShowAddReview(false));
       dispatch(setModalName("details"));
       fetchUpdatedData();
     }
@@ -112,7 +116,7 @@ const AddReviewComponent = () => {
       <ReviewButton
         onClick={handleSubmit}
         onClose={() => {
-          dispatch(setShowAddComment(false));
+          dispatch(setShowAddReview(false));
           dispatch(setModalName("details"));
         }}
       />

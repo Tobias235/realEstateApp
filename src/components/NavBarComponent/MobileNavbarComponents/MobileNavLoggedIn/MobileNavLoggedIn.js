@@ -1,16 +1,14 @@
 import { signOut } from "firebase/auth";
 import { useDispatch } from "react-redux";
+import { setError } from "../../../../actions/LoadingActions";
 import {
-  setCurrentUser,
-  setError,
   setMobileMenu,
-  setModalName,
   setShowMobileUserDropdown,
-  setShowProfile,
-} from "../../../../actions/Actions";
+} from "../../../../actions/MobileActions";
+import { setModalName, setShowProfile } from "../../../../actions/ModalActions";
+import { setCurrentUser } from "../../../../actions/UserActions";
 import { auth } from "../../../../Firebase";
 import ErrorMessages from "../../../utils/ErrorMessages";
-
 import styles from "./MobileNavLoggedIn.module.scss";
 
 const MobileNavLoggedIn = () => {

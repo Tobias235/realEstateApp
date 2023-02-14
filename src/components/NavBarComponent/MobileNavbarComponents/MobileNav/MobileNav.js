@@ -1,16 +1,19 @@
 import { useDispatch, useSelector } from "react-redux";
 import {
   setMobileMenu,
+  setShowMobileUserDropdown,
+} from "../../../../actions/MobileActions";
+import {
   setModalName,
   setShowLoginModal,
-  setShowMobileUserDropdown,
-} from "../../../../actions/Actions";
+} from "../../../../actions/ModalActions";
+
 import styles from "./MobileNav.module.scss";
 
 const MobileNav = () => {
   const dispatch = useDispatch();
 
-  const name = useSelector((state) => state.name);
+  const name = useSelector((state) => state.userReducer.name);
 
   const signIn = name ? (
     <li
