@@ -6,3 +6,10 @@
     display: flex;
   }
 }
+
+.showMobile {
+  display: flex;
+  @include respond-to("tablet") {
+    display: none;
+  }
+}

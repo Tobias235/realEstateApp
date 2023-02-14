@@ -6,7 +6,7 @@ const PropertiesModal = () => {
   return (
     <>
       <DesktopDetails className={styles.showDesktop} />
-      <MobileDetails />
+      <MobileDetails className={styles.showMobile} />
     </>
   );
 };
