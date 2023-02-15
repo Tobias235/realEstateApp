@@ -38,8 +38,8 @@ const ModalContainer = () => {
     (state) => state.modalReducer.show_upload_properties_modal
   );
   const show_details = useSelector((state) => state.modalReducer.show_details);
-  const showProfile = useSelector((state) => state.modalReducer.show_profile);
-  const modalName = useSelector((state) => state.modalReducer.modal_name);
+  const show_profile = useSelector((state) => state.modalReducer.show_profile);
+  const modal_name = useSelector((state) => state.modalReducer.modal_name);
   const mobile_menu = useSelector((state) => state.mobileReducer.mobile_menu);
   const error = useSelector((state) => state.loadingReducer.error);
   const loading = useSelector((state) => state.loadingReducer.loading);
@@ -53,7 +53,7 @@ const ModalContainer = () => {
       login_modal,
       show_upload_properties_modal,
       show_details,
-      showProfile,
+      show_profile,
       mobile_menu
     );
     setModal(stateArray.some((val) => val === true));
@@ -61,18 +61,18 @@ const ModalContainer = () => {
     login_modal,
     show_upload_properties_modal,
     show_details,
-    showProfile,
+    show_profile,
     mobile_menu,
   ]);
 
   const onClose = () => {
     if (loading) return;
 
-    if (modalName !== "" && modalName !== "comment") {
+    if (modal_name !== "" && modal_name !== "comment") {
       dispatch(setModalName(null));
     }
 
-    switch (modalName) {
+    switch (modal_name) {
       case "login":
         dispatch(setShowLoginModal(false));
         break;
@@ -116,7 +116,7 @@ const ModalContainer = () => {
           {login_modal && <LoginModal />}
           {show_details && <PropertiesModal />}
           {show_upload_properties_modal && <UploadPropertiesModal />}
-          {showProfile && <ProfileModal />}
+          {show_profile && <ProfileModal />}
         </Modal>
       )}
 
