@@ -155,7 +155,6 @@ const UploadForm = () => {
           <label>Property Type:</label>
           <input
             type="text"
-            placeholder="Property type"
             name="propertyType"
             value={propertyType}
             className={errors.propertyType && styles.errorBorder}
@@ -166,7 +165,6 @@ const UploadForm = () => {
           <label>Bedrooms:</label>
           <input
             type="number"
-            placeholder="Bedrooms"
             name="bedrooms"
             min="0"
             value={bedrooms}
@@ -178,7 +176,6 @@ const UploadForm = () => {
           <label>Bathrooms:</label>
           <input
             type="number"
-            placeholder="Bathrooms"
             name="bathrooms"
             min="0"
             value={bathrooms}
@@ -190,7 +187,6 @@ const UploadForm = () => {
           <label>Size:</label>
           <input
             type="number"
-            placeholder="Size"
             name="size"
             min="0"
             value={size}
@@ -202,7 +198,6 @@ const UploadForm = () => {
           <label>Price:</label>
           <input
             type="number"
-            placeholder="Price"
             name="price"
             min="0"
             value={price}
@@ -227,7 +222,6 @@ const UploadForm = () => {
           <label>State:</label>
           <input
             type="text"
-            placeholder="State"
             name="state"
             value={state}
             className={`${styles.capitalize} ${
@@ -242,7 +236,6 @@ const UploadForm = () => {
             className={errors.description && styles.errorBorder}
             type="text"
             rows="5"
-            placeholder="Description"
             name="description"
             value={description}
             onChange={(e) => handleChange(e)}

@@ -40,7 +40,6 @@ const ContactFormComponent = () => {
       <label>Name:</label>
       <input
         type="text"
-        placeholder="Name"
         name="from_name"
         value={from_name}
         className={errors.from_name && styles.error}
@@ -51,7 +50,6 @@ const ContactFormComponent = () => {
       <label>Email:</label>
       <input
         type="email"
-        placeholder="Email"
         name="reply_to"
         value={reply_to}
         className={errors.reply_to && styles.error}
@@ -62,7 +60,6 @@ const ContactFormComponent = () => {
       <label>Subject:</label>
       <input
         type="text"
-        placeholder="Subject"
         name="subject"
         value={subject}
         className={errors.subject && styles.error}
@@ -72,7 +69,6 @@ const ContactFormComponent = () => {
 
       <label>Message:</label>
       <textarea
-        placeholder="Message"
         name="message"
         value={message}
         className={errors.message && styles.error}
