@@ -122,6 +122,7 @@ const UploadForm = () => {
     } catch (error) {
       let ErrorDisplay = ErrorMessages[error.code] || ErrorMessages.default;
       dispatch(setError(ErrorDisplay));
+      dispatch(setLoading(false));
     }
   };
 
@@ -152,95 +153,115 @@ const UploadForm = () => {
     <>
       {formData && (
         <form className={styles.inputContainer} onSubmit={handleSubmit}>
-          <label>Property Type:</label>
-          <input
-            type="text"
-            name="propertyType"
-            value={propertyType}
-            className={errors.propertyType && styles.errorBorder}
-            onChange={(e) => handleChange(e)}
-          />
-          <ErrorDisplay errorText={errors.propertyType} />
+          <div className={styles.row}>
+            <label>
+              Property Type:
+              <input
+                type="text"
+                name="propertyType"
+                value={propertyType}
+                className={errors.propertyType && styles.errorBorder}
+                onChange={(e) => handleChange(e)}
+              />
+              <ErrorDisplay errorText={errors.propertyType} />
+            </label>
 
-          <label>Bedrooms:</label>
-          <input
-            type="number"
-            name="bedrooms"
-            min="0"
-            value={bedrooms}
-            className={errors.bedrooms && styles.errorBorder}
-            onChange={(e) => handleChange(e)}
-          />
-          <ErrorDisplay errorText={errors.bedrooms} />
+            <label>
+              Price:
+              <input
+                type="number"
+                name="price"
+                min="0"
+                value={price}
+                className={errors.price && styles.errorBorder}
+                onChange={(e) => handleChange(e)}
+              />
+              <ErrorDisplay errorText={errors.price} />
+            </label>
+          </div>
 
-          <label>Bathrooms:</label>
-          <input
-            type="number"
-            name="bathrooms"
-            min="0"
-            value={bathrooms}
-            className={errors.bathrooms && styles.errorBorder}
-            onChange={(e) => handleChange(e)}
-          />
-          <ErrorDisplay errorText={errors.bathrooms} />
+          <div className={styles.row}>
+            <label>
+              City:
+              <input
+                type="text"
+                name="city"
+                value={city}
+                className={`${styles.capitalize} ${
+                  errors.city && styles.errorBorder
+                }`}
+                onChange={(e) => handleChange(e)}
+              />
+              <ErrorDisplay errorText={errors.city} />
+            </label>
 
-          <label>Size:</label>
-          <input
-            type="number"
-            name="size"
-            min="0"
-            value={size}
-            className={errors.size && styles.errorBorder}
-            onChange={(e) => handleChange(e)}
-          />
-          <ErrorDisplay errorText={errors.size} />
+            <label>
+              State:
+              <input
+                type="text"
+                name="state"
+                value={state}
+                className={`${styles.capitalize} ${
+                  errors.state && styles.errorBorder
+                }`}
+                onChange={(e) => handleChange(e)}
+              />
+              <ErrorDisplay errorText={errors.state} />
+            </label>
+          </div>
 
-          <label>Price:</label>
-          <input
-            type="number"
-            name="price"
-            min="0"
-            value={price}
-            className={errors.price && styles.errorBorder}
-            onChange={(e) => handleChange(e)}
-          />
-          <ErrorDisplay errorText={errors.price} />
+          <div className={styles.row}>
+            <label className={styles.triple}>
+              Bedrooms:
+              <input
+                type="number"
+                name="bedrooms"
+                min="0"
+                value={bedrooms}
+                className={errors.bedrooms && styles.errorBorder}
+                onChange={(e) => handleChange(e)}
+              />
+              <ErrorDisplay errorText={errors.bedrooms} />
+            </label>
+            <label className={styles.triple}>
+              Bathrooms:
+              <input
+                type="number"
+                name="bathrooms"
+                min="0"
+                value={bathrooms}
+                className={errors.bathrooms && styles.errorBorder}
+                onChange={(e) => handleChange(e)}
+              />
+              <ErrorDisplay errorText={errors.bathrooms} />
+            </label>
 
-          <label>City:</label>
-          <input
-            type="text"
-            placeholder="City"
-            name="city"
-            value={city}
-            className={`${styles.capitalize} ${
-              errors.city && styles.errorBorder
-            }`}
-            onChange={(e) => handleChange(e)}
-          />
-          <ErrorDisplay errorText={errors.city} />
+            <label className={styles.triple}>
+              Size:
+              <input
+                type="number"
+                name="size"
+                min="0"
+                value={size}
+                className={errors.size && styles.errorBorder}
+                onChange={(e) => handleChange(e)}
+              />
+              <ErrorDisplay errorText={errors.size} />
+            </label>
+          </div>
 
-          <label>State:</label>
-          <input
-            type="text"
-            name="state"
-            value={state}
-            className={`${styles.capitalize} ${
-              errors.state && styles.errorBorder
-            }`}
-            onChange={(e) => handleChange(e)}
-          />
-          <ErrorDisplay errorText={errors.state} />
-
-          <label>Description:</label>
-          <textarea
-            className={errors.description && styles.errorBorder}
-            type="text"
-            rows="5"
-            name="description"
-            value={description}
-            onChange={(e) => handleChange(e)}
-          />
-          <ErrorDisplay errorText={errors.description} />
+          <label>
+            Description:
+            <textarea
+              className={errors.description && styles.errorBorder}
+              type="text"
+              rows="5"
+              name="description"
+              value={description}
+              onChange={(e) => handleChange(e)}
+            />
+            <ErrorDisplay errorText={errors.description} />
+          </label>
 
           <label htmlFor="file-upload" className={styles.uploadImage}>
             {selectedImages}
