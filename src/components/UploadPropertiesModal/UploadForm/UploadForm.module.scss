@@ -1,28 +1,32 @@
 .inputContainer {
   display: flex;
   flex-direction: column;
-  width: 80%;
+  width: 90%;
+  max-height: 600px;
   margin: auto;
-
-  .propertyType {
-    width: 100%;
-    box-shadow: none;
-    border: 1px solid black;
-    border-radius: 3px;
-    margin: 5px 0;
-  }
+  justify-content: space-between;
+  align-items: stretch;
 
   label {
+    display: flex;
+    flex-direction: column;
     margin-top: 5px;
     font-size: 12px;
     font-weight: 500;
+  }
+
+  input,
+  textarea {
+    font-family: inherit;
   }
 
   input {
     outline: none;
     border: 1px solid black;
     border-radius: 3px;
+    height: 25px;
   }
+
   textarea {
     resize: none;
     outline: none;
@@ -30,12 +34,8 @@
     border-radius: 3px;
   }
 
-  .capitalize {
-    text-transform: capitalize;
-  }
-
   .uploadImage {
-    width: 100px;
+    width: 113px;
     padding: 5px;
     border-radius: 5px;
     border: 2px solid transparent;
@@ -67,4 +67,18 @@
   .errorBorder {
     border: 1px solid red;
   }
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  label {
+    width: 49%;
+  }
+}
+
+.triple {
+  width: 32% !important;
 }
