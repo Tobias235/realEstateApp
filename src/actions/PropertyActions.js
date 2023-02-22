@@ -1,10 +1,3 @@
-export const setProperties = (properties) => {
-  return {
-    type: "SET_PROPERTIES",
-    payload: properties,
-  };
-};
-
 export const setCurrentProperty = (id) => {
   return {
     type: "SET_CURRENT_PROPERTY",

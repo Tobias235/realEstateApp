@@ -12,9 +12,12 @@ export const setPropertyTypes = (property_types) => {
   };
 };
 
-export const setUpdateFilter = (update_filter) => {
+export const setUpdateFilter = (city, type) => {
   return {
     type: "SET_UPDATE_FILTER",
-    payload: update_filter,
+    payload: {
+      city: city,
+      type: type,
+    },
   };
 };

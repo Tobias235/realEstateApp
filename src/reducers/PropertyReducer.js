@@ -1,5 +1,4 @@
 const InitialState = {
-  properties: [],
   current_property: null,
   current_property_data: null,
   properties_update: false,
@@ -7,8 +6,6 @@ const InitialState = {
 
 const PropertyReducer = (state = InitialState, action) => {
   switch (action.type) {
-    case "SET_PROPERTIES":
-      return { ...state, properties: action.payload };
     case "SET_CURRENT_PROPERTY":
       return { ...state, current_property: action.payload };
     case "SET_CURRENT_PROPERTY_DATA":
