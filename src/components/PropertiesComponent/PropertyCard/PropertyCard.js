@@ -4,8 +4,8 @@ import {
   setCurrentProperty,
   setCurrentPropertyData,
 } from "../../../actions/PropertyActions";
+import useFetch from "../../../hooks/useFetch";
 
-import useFetchProperties from "../../../hooks/useFetchProperties";
 import StarRating from "../../PropertiesModal/PropertiesCommentModal/StarRating/StarRating";
 import Button from "../../UI/Button/Button";
 import { RatingCalculator } from "../../utils/RatingCalculator";
@@ -14,9 +14,13 @@ import styles from "./PropertyCard.module.scss";
 
 const PropertyCard = () => {
   const dispatch = useDispatch();
-  const properties = useSelector((state) => state.propertyReducer.properties);
-  useFetchProperties(
-    `${process.env.REACT_APP_FIREBASE_DATABASE_URL}properties.json`
+
+  const { city, type } = useSelector((state) => state.filterReducer);
+
+  const [properties] = useFetch(
+    `${process.env.REACT_APP_FIREBASE_DATABASE_URL}properties.json`,
+    city,
+    type
   );
 
   return (
@@ -24,7 +28,6 @@ const PropertyCard = () => {
       {properties &&
         Object.entries(properties).map(([key, property]) => {
           const rating = RatingCalculator(property.reviews);
-
           return (
             <div className={styles.properties} key={key}>
               {property.images && (
@@ -61,7 +64,11 @@ const PropertyCard = () => {
                     dispatch(setModalName("details"));
                   }}
                 />
-                <EditPropertyButton property={property} keyProp={key} />
+                <EditPropertyButton
+                  property={property}
+                  keyProp={key}
+                  uid={property.uid}
+                />
               </div>
             </div>
           );
