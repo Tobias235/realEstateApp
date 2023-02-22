@@ -1,59 +1,20 @@
-import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setUpdateFilter } from "../../../actions/FilterActions";
-import { setProperties } from "../../../actions/PropertyActions";
 import SelectMenu from "../../UI/SelectMenu/SelectMenu";
-import { FetchProperties } from "../../utils/FetchProperties";
 import styles from "./PropertiesFilter.module.scss";
 
 const PropertiesFilter = () => {
-  const [location, setLocation] = useState("default");
-  const [propertyType, setPropertyType] = useState("default");
-
   const dispatch = useDispatch();
-  const cities = useSelector((state) => state.filterReducer.cities);
-  const propertyTypes = useSelector(
-    (state) => state.filterReducer.property_types
+
+  const { city, type, cities, property_types } = useSelector(
+    (state) => state.filterReducer
   );
-  const updateFilter = useSelector(
-    (state) => state.filterReducer.update_filter
-  );
-
-  useEffect(() => {
-    if (updateFilter) {
-      if (cities.includes(updateFilter)) {
-        setLocation(updateFilter);
-      }
-      if (propertyTypes.includes(updateFilter)) {
-        setPropertyType(updateFilter);
-      }
-    }
-  }, [updateFilter, cities, propertyTypes]);
-
-  useEffect(() => {
-    dispatch(setUpdateFilter(null));
-    const allLocations =
-      location === "default"
-        ? `${process.env.REACT_APP_FIREBASE_DATABASE_URL}properties.json`
-        : `${process.env.REACT_APP_FIREBASE_DATABASE_URL}properties.json?orderBy="city"&equalTo="${location}"`;
-
-    FetchProperties(allLocations).then((properties) => {
-      if (propertyType === "default") {
-        return dispatch(setProperties(properties));
-      }
-
-      const propertiesValues = Object.entries(properties)
-        .filter((property) => property[1].propertyType === propertyType)
-        .reduce((obj, [key, value]) => ({ ...obj, [key]: value }), {});
-      dispatch(setProperties(propertiesValues));
-    });
-  }, [location, propertyType, dispatch]);
 
   return (
     <div className={styles.filter}>
       <SelectMenu
-        value={location}
-        onChange={(e) => setLocation(e.target.value)}
+        value={city}
+        onChange={(e) => dispatch(setUpdateFilter(e.target.value, type))}
       >
         <option value="default">All Locations</option>
         {cities?.map((city) => {
@@ -65,11 +26,11 @@ const PropertiesFilter = () => {
         })}
       </SelectMenu>
       <SelectMenu
-        value={propertyType}
-        onChange={(e) => setPropertyType(e.target.value)}
+        value={type}
+        onChange={(e) => dispatch(setUpdateFilter(city, e.target.value))}
       >
         <option value="default">All Properties</option>
-        {propertyTypes?.map((type) => {
+        {property_types?.map((type) => {
           return (
             <option value={type} key={type}>
               {type}
