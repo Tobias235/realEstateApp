@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   setModalName,
   setShowUploadPropertiesModal,
@@ -7,17 +7,15 @@ import {
   setCurrentProperty,
   setCurrentPropertyData,
 } from "../../../../actions/PropertyActions";
-
 import Button from "../../../UI/Button/Button";
 import styles from "./EditPropertyButton.module.scss";
 
 const EditPropertyButton = (props) => {
   const dispatch = useDispatch();
 
-  // const id = useSelector((state) => state.id);
-  // const showEditButton = process.env.REACT_APP_ADMIN_USER === id ? true : false;
+  const id = useSelector((state) => state.userReducer.id);
 
-  const showEditButton = true;
+  const showEditButton = id === props.uid ? true : false;
 
   return (
     <>

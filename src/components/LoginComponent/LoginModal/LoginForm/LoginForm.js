@@ -22,7 +22,7 @@ const LoginForm = () => {
         formData.email,
         formData.password
       );
-      dispatch(setCurrentUser(user.user.displayName));
+      dispatch(setCurrentUser(user.user.displayName, user.user.uid));
       dispatch(setShowLoginModal(false));
     } catch (error) {
       let errorMessage = ErrorMessages[error.code] || ErrorMessages.default;
