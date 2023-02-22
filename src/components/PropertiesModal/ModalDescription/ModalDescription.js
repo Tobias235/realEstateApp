@@ -5,19 +5,14 @@ import { ReactComponent as HouseSize } from "../../../assets/images/houseSize.sv
 import styles from "./ModalDescription.module.scss";
 
 const ModalDescription = () => {
-  const properties = useSelector((state) => state.propertyReducer.properties);
-  const current_property = useSelector(
-    (state) => state.propertyReducer.current_property
-  );
-
-  const currentProperty = Object.entries(properties).filter(
-    (property) => property[0] === current_property
+  const current_property_data = useSelector(
+    (state) => state.propertyReducer.current_property_data
   );
 
   return (
     <div className={styles.modalDescription}>
       <span className={styles.location}>
-        {currentProperty[0][1].city + ", " + currentProperty[0][1].state}
+        {current_property_data.city + ", " + current_property_data.state}
       </span>
       <div className={styles.details}>
         <BedIcon />
@@ -25,14 +20,14 @@ const ModalDescription = () => {
         <HouseSize />
       </div>
       <div className={styles.details}>
-        <span>Bedrooms: {currentProperty[0][1].bedrooms}</span>
-        <span>Bathrooms: {currentProperty[0][1].bathrooms}</span>
-        <span>Size: {currentProperty[0][1].size} sqm</span>
+        <span>Bedrooms: {current_property_data.bedrooms}</span>
+        <span>Bathrooms: {current_property_data.bathrooms}</span>
+        <span>Size: {current_property_data.size} sqm</span>
       </div>
 
-      <span>Price: ₱{currentProperty[0][1].price}</span>
+      <span>Price: ₱{current_property_data.price}</span>
 
-      <p className={styles.description}>{currentProperty[0][1].description}</p>
+      <p className={styles.description}>{current_property_data.description}</p>
     </div>
   );
 };
