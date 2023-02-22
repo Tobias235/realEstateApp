@@ -13,7 +13,10 @@ import {
   setUploadingStatus,
 } from "../../../actions/LoadingActions";
 import { setPropertiesUpdated } from "../../../actions/PropertyActions";
-import { setShowUploadPropertiesModal } from "../../../actions/ModalActions";
+import {
+  setModalName,
+  setShowUploadPropertiesModal,
+} from "../../../actions/ModalActions";
 
 import styles from "./UploadForm.module.scss";
 
@@ -63,11 +66,22 @@ const UploadForm = () => {
   };
 
   const handleUploadProperty = async (e) => {
-    dispatch(setLoading(true));
-    dispatch(setUploadingStatus(`Uploading Property To Database`));
     const urls = [];
     let propertyObj = {};
-    const userUid = auth.currentUser.uid;
+    const userUid = auth.currentUser?.uid;
+
+    if (!userUid) {
+      dispatch(
+        setError(
+          "You must be logged in to upload a property. Please log in or create an account to continue."
+        )
+      );
+      dispatch(setShowUploadPropertiesModal(false));
+      dispatch(setModalName(""));
+      return;
+    }
+    dispatch(setLoading(true));
+    dispatch(setUploadingStatus(`Uploading Property To Database`));
 
     const newImages = images.filter(
       (image) => !currentProperty?.images.includes(image)
