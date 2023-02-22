@@ -12,11 +12,9 @@ import {
   setModalName,
   setShowAddReview,
 } from "../../../../actions/ModalActions";
-import {
-  setCurrentPropertyData,
-  setPropertiesUpdated,
-} from "../../../../actions/PropertyActions";
+import { setCurrentPropertyData } from "../../../../actions/PropertyActions";
 import styles from "./AddReviewComponent.module.scss";
+import ErrorMessages from "../../../utils/ErrorMessages";
 
 const AddReviewComponent = () => {
   const dispatch = useDispatch();
@@ -56,26 +54,19 @@ const AddReviewComponent = () => {
           },
         }
       );
-    } catch (error) {
-      dispatch(setError(error.message));
-    } finally {
-      dispatch(setLoading(false));
-      dispatch(setShowAddReview(false));
-      dispatch(setModalName("details"));
-      fetchUpdatedData();
-    }
-  };
 
-  const fetchUpdatedData = async () => {
-    try {
       const response = await fetch(
         `${process.env.REACT_APP_FIREBASE_DATABASE_URL}properties/${currentProperty}.json`
       );
       const json = await response.json();
       dispatch(setCurrentPropertyData(json));
-      dispatch(setPropertiesUpdated(true));
     } catch (error) {
-      dispatch(setError(error.message));
+      let errorMessage = ErrorMessages[error.code] || ErrorMessages.default;
+      dispatch(setError(errorMessage));
+    } finally {
+      dispatch(setLoading(false));
+      dispatch(setShowAddReview(false));
+      dispatch(setModalName("details"));
     }
   };
 
