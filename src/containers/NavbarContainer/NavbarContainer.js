@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import { signOut } from "firebase/auth";
 import { auth } from "../../Firebase";
-import DropDownComponent from "../../components/NavBarComponent/DropDownComponent/DropDownComponent";
+import DropdownComponent from "../../components/NavBarComponent/DropdownComponent/DropdownComponent";
 import NavButtonComponent from "../../components/NavBarComponent/NavButtonComponent/NavButtonComponent";
 import logo from "../../assets/images/roomrental.webp";
 import { useSelector, useDispatch } from "react-redux";
@@ -84,7 +84,7 @@ const NavbarComponent = () => {
         </a>
       </div>
       <div className={styles.rightNav}>
-        <DropDownComponent />
+        <DropdownComponent />
         <NavButtonComponent href="#about">About</NavButtonComponent>
         <NavButtonComponent href="#contact">Contact</NavButtonComponent>
         {signIn}
