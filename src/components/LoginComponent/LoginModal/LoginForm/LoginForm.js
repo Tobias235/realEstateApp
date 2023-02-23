@@ -15,12 +15,32 @@ import styles from "./LoginForm.module.scss";
 const LoginForm = () => {
   const dispatch = useDispatch();
 
+  const DemoEmail = process.env.REACT_APP_DEMO_EMAIL;
+  const DemoPassword = process.env.REACT_APP_DEMO_PASSWORD;
+
+  console.log(process.env);
+
   const handleUserLogin = async (formData) => {
     try {
       const user = await signInWithEmailAndPassword(
         auth,
         formData.email,
         formData.password
+      );
+      dispatch(setCurrentUser(user.user.displayName, user.user.uid));
+      dispatch(setShowLoginModal(false));
+    } catch (error) {
+      let errorMessage = ErrorMessages[error.code] || ErrorMessages.default;
+      dispatch(setError(errorMessage));
+    }
+  };
+
+  const handleDemoLogin = async () => {
+    try {
+      const user = await signInWithEmailAndPassword(
+        auth,
+        DemoEmail,
+        DemoPassword
       );
       dispatch(setCurrentUser(user.user.displayName, user.user.uid));
       dispatch(setShowLoginModal(false));
@@ -68,6 +88,12 @@ const LoginForm = () => {
         text="Sign in"
         className={styles.signInButton}
         onSubmit={handleSubmit}
+      />
+      <Button
+        type="button"
+        text="Demo Login"
+        className={styles.demoLoginButton}
+        onClick={handleDemoLogin}
       />
     </form>
   );
