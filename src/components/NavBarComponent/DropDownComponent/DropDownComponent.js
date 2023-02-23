@@ -1,17 +1,15 @@
 import { useState, useRef } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { setUpdateFilter } from "../../../actions/FilterActions";
-import styles from "./DropDownComponent.module.scss";
+import { useSelector } from "react-redux";
+import NestedDropdown from "./NestedDropdown/NestedDropdown";
+import styles from "./DropdownComponent.module.scss";
 
-const DropDownComponent = () => {
+const DropdownComponent = () => {
   const [showDropdown, setShowDropdown] = useState(false);
   const dropdown = useRef(null);
-  const cities = useSelector((state) => state.filterReducer.cities);
-  const propertyTypes = useSelector(
-    (state) => state.filterReducer.propertyTypes
-  );
 
-  const dispatch = useDispatch();
+  const { cities, property_types } = useSelector(
+    (state) => state.filterReducer
+  );
 
   const closeOpenMenus = (e) => {
     if (
@@ -25,10 +23,6 @@ const DropDownComponent = () => {
 
   document.addEventListener("mousedown", closeOpenMenus);
 
-  const handleFilter = (e) => {
-    dispatch(setUpdateFilter(e.currentTarget.getAttribute("value")));
-  };
-
   return (
     <ul
       className={styles.dropDownComponent}
@@ -39,30 +33,24 @@ const DropDownComponent = () => {
     >
       <li className={styles.propertiesButton}>Properties</li>
       {showDropdown && (
-        <ul className={styles.dropDownList}>
-          <li className={styles.locationList}>
-            Location
-            <ul className={styles.secondList}>
-              {cities?.map((city) => {
-                return (
-                  <li key={city} value={city} onClick={handleFilter}>
-                    {city}
-                  </li>
-                );
-              })}
-            </ul>
+        <ul className={styles.dropdownList}>
+          <li className={styles.nestedListDropdown}>
+            <a className={styles.locationButton} href="#properties">
+              Location
+            </a>
+            <NestedDropdown
+              className={styles.nestedList}
+              items={cities}
+              filterType="city"
+            />
           </li>
-          <li className={styles.propertyList}>
-            Property Type
-            <ul className={styles.secondList}>
-              {propertyTypes?.map((type) => {
-                return (
-                  <li key={type} value={type} onClick={handleFilter}>
-                    {type}
-                  </li>
-                );
-              })}
-            </ul>
+          <li className={styles.nestedListDropdown}>
+            <a href="#properties">Property Type</a>
+            <NestedDropdown
+              className={styles.nestedList}
+              items={property_types}
+              filterType="type"
+            />
           </li>
         </ul>
       )}
@@ -70,4 +58,4 @@ const DropDownComponent = () => {
   );
 };
 
-export default DropDownComponent;
+export default DropdownComponent;
