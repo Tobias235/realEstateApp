@@ -1,8 +1,8 @@
 import { useState, useRef } from "react";
 import { signOut } from "firebase/auth";
 import { auth } from "../../Firebase";
-import DropdownComponent from "../../components/NavBarComponent/DropdownComponent/DropdownComponent";
 import NavButtonComponent from "../../components/NavBarComponent/NavButtonComponent/NavButtonComponent";
+import DropdownComponent from "../../components/NavBarComponent/DropdownComponent/DropdownComponent";
 import logo from "../../assets/images/roomrental.webp";
 import { useSelector, useDispatch } from "react-redux";
 import { setCurrentUser } from "../../actions/UserActions";

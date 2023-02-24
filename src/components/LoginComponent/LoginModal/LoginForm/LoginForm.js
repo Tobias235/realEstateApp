@@ -15,8 +15,8 @@ import styles from "./LoginForm.module.scss";
 const LoginForm = () => {
   const dispatch = useDispatch();
 
-  const DemoEmail = process.env.REACT_APP_DEMO_EMAIL;
-  const DemoPassword = process.env.REACT_APP_DEMO_PASSWORD;
+  const demoEmail = process.env.REACT_APP_DEMO_EMAIL;
+  const demoPassword = process.env.REACT_APP_DEMO_PASSWORD;
 
   console.log(process.env);
 
@@ -39,8 +39,8 @@ const LoginForm = () => {
     try {
       const user = await signInWithEmailAndPassword(
         auth,
-        DemoEmail,
-        DemoPassword
+        demoEmail,
+        demoPassword
       );
       dispatch(setCurrentUser(user.user.displayName, user.user.uid));
       dispatch(setShowLoginModal(false));
