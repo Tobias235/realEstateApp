@@ -16,7 +16,9 @@ const NavbarComponent = () => {
   const [showDropdown, setShowDropdown] = useState(false);
   const dropdown = useRef(null);
   const name = useSelector((state) => state.userReducer.name);
+
   const dispatch = useDispatch();
+
   const onSignOut = () => {
     try {
       signOut(auth);
@@ -25,6 +27,7 @@ const NavbarComponent = () => {
       console.log(error.message);
     }
   };
+
   const closeOpenMenus = (e) => {
     if (
       dropdown.current &&
@@ -34,7 +37,9 @@ const NavbarComponent = () => {
       setShowDropdown(false);
     }
   };
+
   document.addEventListener("mousedown", closeOpenMenus);
+
   const signIn = name ? (
     <ul
       className={styles.signInDropdownContainer}
@@ -69,6 +74,7 @@ const NavbarComponent = () => {
       Sign in
     </span>
   );
+
   return (
     <div className={styles.nav}>
       <div className={styles.logo}>
@@ -85,4 +91,5 @@ const NavbarComponent = () => {
     </div>
   );
 };
+
 export default NavbarComponent;
