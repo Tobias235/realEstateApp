@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import { useSelector } from "react-redux";
-import NestedDropdown from "./NestedDropdown/NestedDropdown";
 import styles from "./DropDownComponent.module.scss";
+import DropdownList from "./NestedDropdown/DropdownList";
 
 const DropdownComponent = () => {
   const [showDropdown, setShowDropdown] = useState(false);
@@ -37,7 +37,7 @@ const DropdownComponent = () => {
             <a className={styles.locationButton} href="#properties">
               Location
             </a>
-            <NestedDropdown
+            <DropdownList
               className={styles.nestedList}
               items={cities}
               filterType="city"
@@ -45,7 +45,7 @@ const DropdownComponent = () => {
           </li>
           <li className={styles.nestedListDropdown}>
             <a href="#properties">Property Type</a>
-            <NestedDropdown
+            <DropdownList
               className={styles.nestedList}
               items={property_types}
               filterType="type"
