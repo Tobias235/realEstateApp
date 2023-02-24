@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setUpdateFilter } from "../../../../actions/FilterActions";
 import styles from "./NestedDropdown.module.scss";
 
-const DropdownList = (props) => {
+const NestedDropdown = (props) => {
   const dispatch = useDispatch();
 
   const { city, type } = useSelector((state) => state.filterReducer);
@@ -30,4 +30,4 @@ const DropdownList = (props) => {
   );
 };
 
-export default DropdownList;
+export default NestedDropdown;
