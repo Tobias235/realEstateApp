@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import { useSelector } from "react-redux";
 import NestedDropdown from "./NestedDropdown/NestedDropdown";
-import styles from "./DropdownComponent.module.scss";
+import styles from "./DropDownComponent.module.scss";
 
 const DropdownComponent = () => {
   const [showDropdown, setShowDropdown] = useState(false);
