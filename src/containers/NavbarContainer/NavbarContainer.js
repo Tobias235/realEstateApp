@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import { signOut } from "firebase/auth";
 import { auth } from "../../Firebase";
-import DropDownComponent from "../../components/NavBarComponent/DropdownComponent/DropDownComponent";
+import DropDownComponent from "../../components/NavBarComponent/DropDownComponent/DropDownComponent";
 import NavButtonComponent from "../../components/NavBarComponent/NavButtonComponent/NavButtonComponent";
 import logo from "../../assets/images/roomrental.webp";
 import { useSelector, useDispatch } from "react-redux";
@@ -12,14 +12,11 @@ import {
   setShowProfile,
 } from "../../actions/ModalActions";
 import styles from "./NavbarContainer.module.scss";
-
 const NavbarComponent = () => {
   const [showDropdown, setShowDropdown] = useState(false);
   const dropdown = useRef(null);
   const name = useSelector((state) => state.userReducer.name);
-
   const dispatch = useDispatch();
-
   const onSignOut = () => {
     try {
       signOut(auth);
@@ -28,7 +25,6 @@ const NavbarComponent = () => {
       console.log(error.message);
     }
   };
-
   const closeOpenMenus = (e) => {
     if (
       dropdown.current &&
@@ -38,9 +34,7 @@ const NavbarComponent = () => {
       setShowDropdown(false);
     }
   };
-
   document.addEventListener("mousedown", closeOpenMenus);
-
   const signIn = name ? (
     <ul
       className={styles.signInDropdownContainer}
@@ -75,7 +69,6 @@ const NavbarComponent = () => {
       Sign in
     </span>
   );
-
   return (
     <div className={styles.nav}>
       <div className={styles.logo}>
@@ -92,5 +85,4 @@ const NavbarComponent = () => {
     </div>
   );
 };
-
 export default NavbarComponent;
