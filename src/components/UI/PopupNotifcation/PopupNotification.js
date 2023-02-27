@@ -12,7 +12,7 @@ const PopupNotifications = () => {
     }
     const timeout = setTimeout(() => {
       setShowMessage(false);
-    }, 3000);
+    }, 2000);
 
     return () => {
       clearTimeout(timeout);

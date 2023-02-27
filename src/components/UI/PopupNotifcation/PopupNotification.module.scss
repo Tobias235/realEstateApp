@@ -5,11 +5,12 @@
   align-items: center;
   background-color: rgba(228, 156, 22, 0.8);
   height: 50px;
-  top: 82px;
+  top: 80px;
   width: 100%;
   z-index: 2;
+  text-transform: capitalize;
 }
 
 .hidden {
-  display: none;
+  display: hidden;
 }
