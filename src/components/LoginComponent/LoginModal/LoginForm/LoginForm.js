@@ -18,8 +18,6 @@ const LoginForm = () => {
   const demoEmail = process.env.REACT_APP_DEMO_EMAIL;
   const demoPassword = process.env.REACT_APP_DEMO_PASSWORD;
 
-  console.log(process.env);
-
   const handleUserLogin = async (formData) => {
     try {
       const user = await signInWithEmailAndPassword(
