@@ -4,6 +4,7 @@ import ModalGallery from "../ModalGallery/ModalGallery";
 import AddReviewComponent from "../PropertiesCommentModal/AddReviewComponent/AddReviewComponent";
 import ReviewContainer from "../PropertiesCommentModal/ReviewContainer/ReviewContainer";
 import CloseDetailsButton from "../RightModal/CloseDetailsButton/CloseDetailsButton";
+import DeleteProperty from "../RightModal/DeleteProperty/DeleteProperty";
 import styles from "./MobileDetails.module.scss";
 
 const MobileDetails = (props) => {
@@ -19,6 +20,7 @@ const MobileDetails = (props) => {
           <ReviewContainer />
           <div className={styles.buttonContainer}>
             <CloseDetailsButton />
+            <DeleteProperty />
           </div>
         </div>
       )}

@@ -3,9 +3,11 @@ import Button from "../../../UI/Button/Button";
 import styles from "./DeleteProperty.module.scss";
 
 const DeleteProperty = () => {
-  const current_property = useSelector(
-    (state) => state.propertyReducer.current_property
+  const { current_property, current_property_data } = useSelector(
+    (state) => state.propertyReducer
   );
+
+  const id = useSelector((state) => state.userReducer.id);
 
   const handleDeleteProperty = async () => {
     try {
@@ -21,12 +23,16 @@ const DeleteProperty = () => {
     }
   };
   return (
-    <Button
-      type="button"
-      text="delete property"
-      className={styles.deleteButton}
-      onClick={handleDeleteProperty}
-    />
+    <>
+      {current_property_data.uid === id && (
+        <Button
+          type="button"
+          text="delete property"
+          className={styles.deleteButton}
+          onClick={handleDeleteProperty}
+        />
+      )}
+    </>
   );
 };
 
