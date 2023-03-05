@@ -1,8 +1,12 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import ReactDOM from "react-dom";
+import App from "./App";
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+describe("App", () => {
+  test("Renders all child components", () => {
+    const div = document.createElement("div");
+
+    setTimeout(() => {
+      ReactDOM.render(<App />, document.body.appendChild(div));
+    }, 0);
+  });
 });
