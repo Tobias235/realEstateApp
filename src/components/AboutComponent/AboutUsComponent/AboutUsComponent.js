@@ -3,7 +3,7 @@ import team from "../../../assets/images/team.webp";
 
 const AboutUsComponent = () => {
   return (
-    <div className={styles.aboutUs}>
+    <div className={styles.aboutUs} data-testid="about-us-component">
       <img src={team} alt="the team together" />
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non purus
