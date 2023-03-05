@@ -37,8 +37,9 @@ const ContactFormComponent = () => {
 
   return (
     <form ref={form} onSubmit={handleSubmit} className={styles.form}>
-      <label>Name:</label>
+      <label htmlFor="name">Name:</label>
       <input
+        id="name"
         type="text"
         name="from_name"
         value={from_name}
@@ -47,8 +48,9 @@ const ContactFormComponent = () => {
       />
       <ErrorDisplay errorText={errors.from_name} />
 
-      <label>Email:</label>
+      <label htmlFor="email">Email:</label>
       <input
+        id="email"
         type="email"
         name="reply_to"
         value={reply_to}
@@ -57,8 +59,9 @@ const ContactFormComponent = () => {
       />
       <ErrorDisplay errorText={errors.reply_to} />
 
-      <label>Subject:</label>
+      <label htmlFor="subject">Subject:</label>
       <input
+        id="subject"
         type="text"
         name="subject"
         value={subject}
@@ -67,8 +70,9 @@ const ContactFormComponent = () => {
       />
       <ErrorDisplay errorText={errors.subject} />
 
-      <label>Message:</label>
+      <label htmlFor="message">Message:</label>
       <textarea
+        id="message"
         name="message"
         value={message}
         className={errors.message && styles.error}
