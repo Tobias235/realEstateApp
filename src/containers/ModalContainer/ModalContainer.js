@@ -33,19 +33,18 @@ const ModalContainer = () => {
   const [modal, setModal] = useState([]);
   const dispatch = useDispatch();
 
-  const login_modal = useSelector((state) => state.modalReducer.login_modal);
+  const { login_modal, show_details, show_profile, modal_name } = useSelector(
+    (state) => state.modalReducer
+  );
+
+  const { error, loading, upload_status } = useSelector(
+    (state) => state.loadingReducer
+  );
+
   const show_upload_properties_modal = useSelector(
     (state) => state.modalReducer.show_upload_properties_modal
   );
-  const show_details = useSelector((state) => state.modalReducer.show_details);
-  const show_profile = useSelector((state) => state.modalReducer.show_profile);
-  const modal_name = useSelector((state) => state.modalReducer.modal_name);
   const mobile_menu = useSelector((state) => state.mobileReducer.mobile_menu);
-  const error = useSelector((state) => state.loadingReducer.error);
-  const loading = useSelector((state) => state.loadingReducer.loading);
-  const upload_status = useSelector(
-    (state) => state.loadingReducer.uploading_status
-  );
 
   useEffect(() => {
     let stateArray = [];
