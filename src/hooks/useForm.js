@@ -30,7 +30,7 @@ const useForm = (initialValues, validationRules, callback) => {
     e.preventDefault();
     const validationErrors = validate();
     if (!Object.keys(validationErrors).length) {
-      callback(formData, setFormData(initialValues));
+      callback(formData, initialValues);
     }
   };
 
