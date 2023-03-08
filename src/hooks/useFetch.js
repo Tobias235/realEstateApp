@@ -41,6 +41,7 @@ const useFetch = (url, location, propertyType) => {
       } catch (error) {
         let errorMessage = ErrorMessages[error.code] || ErrorMessages.default;
         dispatch(setError(errorMessage));
+        setProperties(null);
       }
     };
 
