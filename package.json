@@ -15,7 +15,6 @@
     "react-redux": "^8.0.5",
     "react-scripts": "5.0.1",
     "redux": "^4.2.0",
-    "redux-mock-store": "^1.5.4",
     "redux-persist": "^6.0.0",
     "sass": "^1.57.1",
     "web-vitals": "^2.1.4"
@@ -47,6 +46,7 @@
   "devDependencies": {
     "@testing-library/dom": "^9.0.0",
     "@testing-library/react-hooks": "^8.0.1",
-    "jest": "^29.4.3"
+    "jest": "^29.5.0",
+    "redux-mock-store": "^1.5.4"
   }
 }
